@@ -3,7 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mom0tomo.github.io/post/go/</loc>
+    <loc>https://mom0tomo.github.io/post/20170818/</loc>
+    <lastmod>2017-08-18T12:59:30+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mom0tomo.github.io/post/20170810/</loc>
     <lastmod>2017-08-12T14:57:16+09:00</lastmod>
   </url>
   
@@ -31,8 +36,14 @@
   </url>
   
   <url>
+    <loc>https://mom0tomo.github.io/tags/others/</loc>
+    <lastmod>2017-08-18T12:59:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2017-08-12T14:57:16+09:00</lastmod>
+    <lastmod>2017-08-18T12:59:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -44,7 +55,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2017-08-12T14:57:16+09:00</lastmod>
+    <lastmod>2017-08-18T12:59:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   
