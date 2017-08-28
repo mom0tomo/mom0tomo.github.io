@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/20170828/</loc>
+    <lastmod>2017-08-28T11:22:35+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/20170818/</loc>
     <lastmod>2017-08-18T12:59:30+09:00</lastmod>
   </url>
@@ -14,6 +19,12 @@
   
   <url>
     <loc>https://mom0tomo.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mom0tomo.github.io/tags/english/</loc>
+    <lastmod>2017-08-28T11:22:35+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -31,7 +42,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/meetup/</loc>
-    <lastmod>2017-08-12T14:57:16+09:00</lastmod>
+    <lastmod>2017-08-28T11:22:35+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -43,19 +54,19 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2017-08-18T12:59:30+09:00</lastmod>
+    <lastmod>2017-08-28T11:22:35+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/</loc>
-    <lastmod>2017-08-12T14:57:16+09:00</lastmod>
+    <lastmod>2017-08-28T11:22:35+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2017-08-18T12:59:30+09:00</lastmod>
+    <lastmod>2017-08-28T11:22:35+09:00</lastmod>
     <priority>0</priority>
   </url>
   
