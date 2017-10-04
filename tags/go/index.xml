@@ -6,10 +6,19 @@
     <description>Recent content in Go on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 12 Aug 2017 14:57:16 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 08 Sep 2017 22:50:56 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Goコーディングのベストプラクティス集</title>
+      <link>https://mom0tomo.github.io/post/20170908/</link>
+      <pubDate>Fri, 08 Sep 2017 22:50:56 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170908/</guid>
+      <description>社内でGoを使うプロジェクトができて、Goをはじめようというエンジニアが増えて来ました。 Go初心者向けにコーディングに役立つリンクをまとめま</description>
+    </item>
     
     <item>
       <title>eureka Meetup #06 -Go! Go! Go!-</title>
