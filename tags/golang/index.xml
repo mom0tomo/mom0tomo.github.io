@@ -30,12 +30,30 @@
     </item>
     
     <item>
-      <title>golang.tokyo #7</title>
+      <title>golang.tokyo #7 参加レポート</title>
       <link>https://mom0tomo.github.io/post/20170703/</link>
       <pubDate>Mon, 03 Jul 2017 22:57:01 +0900</pubDate>
       
       <guid>https://mom0tomo.github.io/post/20170703/</guid>
       <description>@インテリジェンスさんのコワーキングスペース Tech play(旧dots) で開催された勉強会の参加メモです。 当日の様子(動画) https://crash.academy/class/105/ 登壇#1 from インテリ</description>
+    </item>
+    
+    <item>
+      <title>「恥ずかしいGo言語」ハンズオン</title>
+      <link>https://mom0tomo.github.io/post/20170606/</link>
+      <pubDate>Tue, 06 Jun 2017 23:58:09 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170606/</guid>
+      <description>『恥ずかしい勉強会』とは 「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」という</description>
+    </item>
+    
+    <item>
+      <title>golang.tokyo #6 参加レポート</title>
+      <link>https://mom0tomo.github.io/post/20170601/</link>
+      <pubDate>Thu, 01 Jun 2017 00:19:45 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170601/</guid>
+      <description>@DeNA 今回のメインコンテンツは、ソーシャルゲームプラットフォームと先日アメリカで開催されたGopher Fest 2017！！ #5に引き続き130人オーバ</description>
     </item>
     
   </channel>
