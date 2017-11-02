@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/20171102/</loc>
+    <lastmod>2017-11-02T22:49:49+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/20171009/</loc>
     <lastmod>2017-10-09T15:50:36+09:00</lastmod>
   </url>
@@ -59,7 +64,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/career/</loc>
-    <lastmod>2017-10-05T01:44:26+09:00</lastmod>
+    <lastmod>2017-11-02T22:49:49+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -87,6 +92,12 @@
   </url>
   
   <url>
+    <loc>https://mom0tomo.github.io/tags/life/</loc>
+    <lastmod>2017-11-02T22:49:49+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/tags/meetup/</loc>
     <lastmod>2017-08-28T11:22:35+09:00</lastmod>
     <priority>0</priority>
@@ -100,19 +111,19 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2017-10-09T15:50:36+09:00</lastmod>
+    <lastmod>2017-11-02T22:49:49+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/</loc>
-    <lastmod>2017-10-05T01:44:26+09:00</lastmod>
+    <lastmod>2017-11-02T22:49:49+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2017-10-09T15:50:36+09:00</lastmod>
+    <lastmod>2017-11-02T22:49:49+09:00</lastmod>
     <priority>0</priority>
   </url>
   
