@@ -21,3 +21,7 @@ a.symbol {
 	color: #999;
 	margin: -0.3rem 0 1.2rem 0;
 }
+
+#post-list .read-more a:hover {
+    color: #5694f1;
+}
