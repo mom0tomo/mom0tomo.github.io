@@ -6,18 +6,18 @@
     <description>Recent content in Others on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 18 Aug 2017 12:59:30 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 26 Aug 2017 18:29:10 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/tags/others/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>一年前の投稿を読んで１年間の成長を振り返る</title>
-      <link>https://mom0tomo.github.io/post/20170818/</link>
-      <pubDate>Fri, 18 Aug 2017 12:59:30 +0900</pubDate>
+      <title>ブログをHugo&#43;wrecker&#43;GitHub Pagesに移行しました</title>
+      <link>https://mom0tomo.github.io/post/20170826/</link>
+      <pubDate>Sat, 26 Aug 2017 18:29:10 +0900</pubDate>
       
-      <guid>https://mom0tomo.github.io/post/20170818/</guid>
-      <description>ちょうど一年前に某媒体に書いた記事を発見しました。 初めてのバックエンド開発の環境構築で詰まったところをまとめていて、「一年前はこんなことも知</description>
+      <guid>https://mom0tomo.github.io/post/20170826/</guid>
+      <description>Go製のジェネレーターhugoでブログをつくり、werckerでCIデプロイしたかったため、GitHub Pagesでサイトをつくりました。 技</description>
     </item>
     
   </channel>
