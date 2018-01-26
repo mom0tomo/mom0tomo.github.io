@@ -6,10 +6,19 @@
     <description>Recent content in Tags on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 02 Jan 2018 21:09:29 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jan 2018 18:07:19 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Book</title>
+      <link>https://mom0tomo.github.io/tags/book/</link>
+      <pubDate>Fri, 26 Jan 2018 18:07:19 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/tags/book/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Career</title>
@@ -17,6 +26,15 @@
       <pubDate>Tue, 02 Jan 2018 21:09:29 +0900</pubDate>
       
       <guid>https://mom0tomo.github.io/tags/career/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Db</title>
+      <link>https://mom0tomo.github.io/tags/db/</link>
+      <pubDate>Fri, 26 Jan 2018 18:07:19 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/tags/db/</guid>
       <description></description>
     </item>
     
