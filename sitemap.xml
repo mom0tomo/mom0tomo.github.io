@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/20180228/</loc>
+    <lastmod>2018-02-28T18:07:28+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/20180226/</loc>
     <lastmod>2018-02-26T13:26:34+09:00</lastmod>
   </url>
@@ -103,6 +108,12 @@
   </url>
   
   <url>
+    <loc>https://mom0tomo.github.io/tags/a-small-good-thing/</loc>
+    <lastmod>2018-02-28T18:07:28+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/tags/book/</loc>
     <lastmod>2018-01-26T18:07:19+09:00</lastmod>
     <priority>0</priority>
@@ -139,7 +150,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/go/</loc>
-    <lastmod>2018-02-26T13:26:34+09:00</lastmod>
+    <lastmod>2018-02-28T18:07:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -157,19 +168,19 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2018-02-26T13:26:34+09:00</lastmod>
+    <lastmod>2018-02-28T18:07:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/</loc>
-    <lastmod>2018-01-26T18:07:19+09:00</lastmod>
+    <lastmod>2018-02-28T18:07:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2018-02-26T13:26:34+09:00</lastmod>
+    <lastmod>2018-02-28T18:07:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
