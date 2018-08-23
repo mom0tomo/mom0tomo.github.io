@@ -48,7 +48,7 @@
                     </h1>
                     <h2 class="headline">
                     Aug 21, 2018 22:57
-                    · 1801 words
+                    · 1674 words
                     · 4 minutes read
                       <span class="tags">
                       
@@ -99,26 +99,6 @@
 
 <p>わかりやすいサンプルコードもついていて、Goのテストを書く人みんなにありがたいまとめ。
 発表資料は、今後テストを書くときに見返すことになりそうです。</p>
-
-<p>個人的には、 <code>-v</code>オブションでテストケースそれぞれに名前をつけて、 <code>-run</code>オプションで個別に実行できるのが便利だと感じました。明日から使いたい。</p>
-
-<p>-v / -runオプションの例：</p>
-
-<pre><code class="language-go">$ go test ./... -v
---- PASS: TestFizzBuzz (0.00s)
-  --- PASS: TestFizzBuzz/Num    (0.00s)
-  --- PASS: TestFizzBuzz/Multi3 (0.00s)
-  --- PASS: TestFizzBuzz/Multi5 (0.00s)
-PASS
-
-
-$ go test ./... -v -run FizzBuzz/Multi5
-
---- PASS: TestFizzBuzz (0.00s)
-  --- PASS: TestFizzBuzz/Num    (0.00s)
-  --- PASS: TestFizzBuzz/Multi3 (0.00s)
-PASS
-</code></pre>
 
 <hr />
 
