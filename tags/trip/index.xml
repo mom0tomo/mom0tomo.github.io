@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trip on mom0tomo</title>
+    <link>https://mom0tomo.github.io/tags/trip/</link>
+    <description>Recent content in Trip on mom0tomo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 29 Aug 2018 13:26:16 -0600</lastBuildDate>
+    
+	<atom:link href="https://mom0tomo.github.io/tags/trip/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GopherConに行く人に向けた超具体的なアドバイス</title>
+      <link>https://mom0tomo.github.io/post/20180829/</link>
+      <pubDate>Wed, 29 Aug 2018 13:26:16 -0600</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20180829/</guid>
+      <description>初めてのアメリカでのカンファレンス、初めてのGopherConに行って知見が貯まったのでシェアします。 宿関係 AirBnBが便利です。 カンファ</description>
+    </item>
+    
+  </channel>
+</rss>
