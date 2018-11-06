@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/20181106/</loc>
+    <lastmod>2018-11-06T15:59:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mom0tomo.github.io/post/20180913/</loc>
+    <lastmod>2018-09-13T16:15:58+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/20180830/</loc>
     <lastmod>2018-08-29T17:43:43-06:00</lastmod>
   </url>
@@ -179,19 +189,19 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/english/</loc>
-    <lastmod>2018-08-29T17:43:43-06:00</lastmod>
+    <lastmod>2018-09-13T16:15:58+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/event/</loc>
-    <lastmod>2018-08-29T17:43:43-06:00</lastmod>
+    <lastmod>2018-09-13T16:15:58+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/go/</loc>
-    <lastmod>2018-08-29T13:26:16-06:00</lastmod>
+    <lastmod>2018-09-13T16:15:58+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -215,7 +225,13 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2018-08-29T17:43:43-06:00</lastmod>
+    <lastmod>2018-11-06T15:59:40+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mom0tomo.github.io/tags/ruby/</loc>
+    <lastmod>2018-11-06T15:59:40+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -239,7 +255,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2018-08-29T17:43:43-06:00</lastmod>
+    <lastmod>2018-11-06T15:59:40+09:00</lastmod>
     <priority>0</priority>
   </url>
   
