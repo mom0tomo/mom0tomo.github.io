@@ -6,10 +6,19 @@
     <description>Recent content on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 07 Dec 2018 21:56:58 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 13 Dec 2018 14:08:06 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2018年のふりかえりと2019年の目標</title>
+      <link>https://mom0tomo.github.io/post/20181213/</link>
+      <pubDate>Thu, 13 Dec 2018 14:08:06 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20181213/</guid>
+      <description>はじめに 今年はまだ2週間あるので若干フライングですが、振り返りをします。 なぜ今週ふりかえるかというと、12月最終週に振り返りをするとそのまま</description>
+    </item>
     
     <item>
       <title>Google Formでイベントの参加者管理をするためのスクリプトを書いた</title>
