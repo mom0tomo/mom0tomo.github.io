@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/20181223/</loc>
+    <lastmod>2018-12-23T22:10:12+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/20181213/</loc>
     <lastmod>2018-12-13T14:08:06+09:00</lastmod>
   </url>
@@ -241,13 +246,19 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2018-12-13T14:08:06+09:00</lastmod>
+    <lastmod>2018-12-23T22:10:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mom0tomo.github.io/tags/rails/</loc>
+    <lastmod>2018-12-23T22:10:12+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/ruby/</loc>
-    <lastmod>2018-11-06T15:59:40+09:00</lastmod>
+    <lastmod>2018-12-23T22:10:12+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -271,7 +282,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2018-12-13T14:08:06+09:00</lastmod>
+    <lastmod>2018-12-23T22:10:12+09:00</lastmod>
     <priority>0</priority>
   </url>
   

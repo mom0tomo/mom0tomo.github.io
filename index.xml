@@ -6,10 +6,19 @@
     <description>Recent content on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 13 Dec 2018 14:08:06 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Dec 2018 22:10:12 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Railsのtravel_toの実装を読む</title>
+      <link>https://mom0tomo.github.io/post/20181223/</link>
+      <pubDate>Sun, 23 Dec 2018 22:10:12 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20181223/</guid>
+      <description>travel_toを使ったテスト もうすぐ今年も終わりますね。 年末年始は会社も休業するので、仕事で関わっているサービスでも休業期間のご案内を表</description>
+    </item>
     
     <item>
       <title>2018年のふりかえりと2019年の目標</title>
