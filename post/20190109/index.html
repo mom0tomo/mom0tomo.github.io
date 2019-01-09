@@ -8,7 +8,7 @@
 		
 		<meta name="description" content="mom0tomo&#39;s Blog">
 		<meta name="generator" content="Hugo 0.26" />
-		<title>JavaScriptのthisをわかりやすく整理する（関数とメソッド編） &middot; mom0tomo</title>
+		<title>JavaScriptのthisをわかりやすく整理する（Arrow Function編） &middot; mom0tomo</title>
 		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
 		<link rel="stylesheet" href="https://mom0tomo.github.io/css/style.css">
 		<link rel="stylesheet" href="https://mom0tomo.github.io/css/highlight.css">
@@ -42,12 +42,12 @@
             <article class="post">
                 <header>
                     <h1>
-                        JavaScriptのthisをわかりやすく整理する（関数とメソッド編）
+                        JavaScriptのthisをわかりやすく整理する（Arrow Function編）
                     </h1>
                     <h2 class="headline">
-                    Jan 7, 2019 10:24
-                    · 1025 words
-                    · 3 minutes read
+                    Jan 9, 2019 15:03
+                    · 662 words
+                    · 2 minutes read
                       <span class="tags">
                       
                       
@@ -66,15 +66,8 @@
 <li>
 <ul>
 <li><a href="#読んだもの">読んだもの</a></li>
-<li><a href="#thisの基本">thisの基本</a></li>
-<li><a href="#問題が発生する場合">問題が発生する場合</a>
-<ul>
-<li>
-<ul>
-<li><a href="#1-thisを含むメソッドを変数に代入した場合">1. thisを含むメソッドを変数に代入した場合</a></li>
-<li><a href="#2-コールバック関数の中でthisを参照する場合">2. コールバック関数の中でthisを参照する場合</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#arrow-functionにおけるthis">Arrow Functionにおけるthis</a></li>
+<li><a href="#arrow-functionとコールバック関数">Arrow Functionとコールバック関数</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -83,11 +76,7 @@
                 <section id="post-body">
                     
 
-<p>JavaScriptのthisの挙動がわからないとTwitterで嘆いていたところ、JavaScriptに詳しい知人がわかりやすい資料を共有してくれました。</p>
-
-<p>関数とメソッド編/Arrow Function編に分けて自分のために整理しようと思います。</p>
-
-<p>（この記事では、strictモードを使った場合を想定しています。）</p>
+<p><a href="https://mom0tomo.github.io/post/20190106/" target="_blank">前回</a>は関数とメソッド編でした。</p>
 
 <hr />
 
@@ -98,62 +87,19 @@
 
 <hr />
 
-<h2 id="thisの基本">thisの基本</h2>
+<h2 id="arrow-functionにおけるthis">Arrow Functionにおけるthis</h2>
 
-<p>thisは、関数が呼び出されたときにその関数が所属していたオブジェクトを指します。
-つまり、呼び出されるときに初めて値が決まります。</p>
+<p>関数/メソッドにおけるthisの値は呼び出されたときに決まるのに対し、<br>Arrow Functionにおけるthisの値は定義時に静的に決まります。</p>
 
-<pre><code>const person = {
-  name : '太郎',
-  sayHello() {
-    console.log('Hello, ' + this.name);
-  }
-};
-
-person.sayHello();
-
-// =&gt; Hello, 太郎
-</code></pre>
-
-<p>この場合のthisはpersonオブジェクトです。</p>
-
-<p>このように、メソッドが所属するオブジェクトのプロパティを、オブジェクト名.プロパティ名(person.name)の代わりにthis.プロパティ名(this.name)で参照できます。</p>
+<p>これが大きな違いです。</p>
 
 <hr />
 
-<h2 id="問題が発生する場合">問題が発生する場合</h2>
+<h2 id="arrow-functionとコールバック関数">Arrow Functionとコールバック関数</h2>
 
-<h4 id="1-thisを含むメソッドを変数に代入した場合">1. thisを含むメソッドを変数に代入した場合</h4>
+<p>thisの値が定義時に決まるというArrow Funcgtionの特徴は、コールバック関数を呼び出すときに活用できます。</p>
 
-<p>personオブジェクトのsayHelloメソッドを、変数sayに関数として代入してから実行してみます。</p>
-
-<pre><code>&quot;use strict&quot;;
-
-const person = {
-  name : '太郎',
-  sayHello() {
-    console.log('Hello, ' + this.name);
-  }
-};
-
-const say = person.sayHello;
-
-say();
-// =&gt; TypeError: Cannot read property 'name' of undefined
-</code></pre>
-
-<p>say関数はsayHelloメソッドを参照しており、sayHelloメソッドはpersonオブジェクトに所属しています。
-しかし、say関数には所属するオブジェクトがありません。</p>
-
-<pre><code>// ココ
-say();
-</code></pre>
-
-<p>このため、say関数が呼び出された際にsayHelloメソッド内のthisはundefinedとなり、エラーが発生します。</p>
-
-<h4 id="2-コールバック関数の中でthisを参照する場合">2. コールバック関数の中でthisを参照する場合</h4>
-
-<p>printNameメソッドの中でArray#mapメソッドを使ってみます。</p>
+<p>メソッドの場合は、コールバック関数の中でthisを定義すると、<a href="https://mom0tomo.github.io/post/20190106/#2-%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E9%96%A2%E6%95%B0%E3%81%AE%E4%B8%AD%E3%81%A7this%E3%82%92%E5%8F%82%E7%85%A7%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88" target="_blank">呼び出し時に予期せぬオブジェクトを指して問題になる</a>ことがありました。</p>
 
 <pre><code>&quot;use strict&quot;;
 
@@ -169,20 +115,29 @@ const person = {
 
 person.printName([&quot;太郎&quot;, &quot;二郎&quot;, &quot;三郎&quot;]);
 // =&gt; TypeError: Cannot read property 'suffix' of undefined
+// thisに匿名関数が渡っているため、thisはundefindとなる
 </code></pre>
 
-<p>printNameメソッドで、thisは定義時にはpersonを指しています。
-しかし、Array#mapメソッドを呼び出すときに、コールバック関数として匿名関数を渡しています。</p>
+<p>一方、Arrow Functionの場合は、thisは常に一つ外側のオブジェクトを指しています。</p>
 
-<pre><code>// ココ
-        return names.map(function(name) {
+<p>このため、呼び出す時のことは気にせずコールバック関数を使うことができます。</p>
+
+<pre><code>&quot;use strict&quot;;
+
+const person = {
+    suffix: &quot;さん&quot;,
+
+     printName(names) {
+        return names.map((name) =&gt; {
+            return name + this.suffix;
+        });
+    }
+};
+
+person.printName([&quot;太郎&quot;, &quot;二郎&quot;, &quot;三郎&quot;]);
+// =&gt; [ '太郎さん', '二郎さん', '三郎さん' ]
+// thisは常にpersonを指している
 </code></pre>
-
-<p>このとき、匿名関数が所属するオブジェクトはないので、thisがundefindになり、this.nameを呼び出せずエラーが発生します。</p>
-
-<hr />
-
-<p>次回はArrow Function編です。</p>
 
                 </section>
             </article>
