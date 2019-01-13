@@ -8,7 +8,7 @@
 		
 		<meta name="description" content="mom0tomo&#39;s Blog">
 		<meta name="generator" content="Hugo 0.26" />
-		<title>JavaScriptのthisをわかりやすく整理する（Arrow Function編） &middot; mom0tomo</title>
+		<title>JavaScriptの関数式とArrow Functionについて整理する &middot; mom0tomo</title>
 		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
 		<link rel="stylesheet" href="https://mom0tomo.github.io/css/style.css">
 		<link rel="stylesheet" href="https://mom0tomo.github.io/css/highlight.css">
@@ -42,11 +42,11 @@
             <article class="post">
                 <header>
                     <h1>
-                        JavaScriptのthisをわかりやすく整理する（Arrow Function編）
+                        JavaScriptの関数式とArrow Functionについて整理する
                     </h1>
                     <h2 class="headline">
-                    Jan 9, 2019 15:03
-                    · 856 words
+                    Jan 13, 2019 09:01
+                    · 696 words
                     · 2 minutes read
                       <span class="tags">
                       
@@ -67,8 +67,11 @@
 <ul>
 <li><a href="#はじめに">はじめに</a></li>
 <li><a href="#読んだもの">読んだもの</a></li>
-<li><a href="#arrow-functionにおけるthis">Arrow Functionにおけるthis</a></li>
-<li><a href="#arrow-functionとコールバック関数">Arrow Functionとコールバック関数</a></li>
+<li><a href="#関数式とはなにか">関数式とはなにか</a>
+<ul>
+<li><a href="#シンプルな関数式">シンプルな関数式</a></li>
+<li><a href="#arrow-functionを使った関数式">Arrow Functionを使った関数式</a></li>
+</ul></li>
 <li><a href="#おわりに">おわりに</a>
 <ul>
 <li><a href="#関連記事">関連記事</a></li>
@@ -83,83 +86,95 @@
 
 <h2 id="はじめに">はじめに</h2>
 
-<p><a href="https://mom0tomo.github.io/post/20190106/" target="_blank">前回</a>は関数とメソッド編でした。</p>
+<p>ReactでES2015を使ってJSを書いていると、Arrow Functionがよく出てきます。</p>
 
-<p>Arrow Function自体についての説明は<a href="https://mom0tomo.github.iopost/2019013/" target="_blank">次回の記事</a>で行います。</p>
+<p><a href="https://mom0tomo.github.iopost/20190109/" target="_blank">前回の記事</a>ではArrow Functionにおけるthisの挙動について整理しましたが、今回はArrow Function自体について整理します。</p>
 
 <hr />
 
 <h2 id="読んだもの">読んだもの</h2>
 
-<p><a href="https://jsprimer.net/basic/function-this/" target="_blank">JavaScriptの入門書 - 関数とthis</a><br>
-<a href="https://www.slideshare.net/yuka2py/javascript-23768378" target="_blank">最強オブジェクト指向言語 JavaScript 再入門！</a></p>
+<ul>
+<li><a href="https://jsprimer.net/basic/function-declaration/#function-and-declaration" target="_blank">関数と宣言 · JavaScriptの入門書 #jsprimer</a></li>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">アロー関数 | MDN</a></li>
+</ul>
 
 <hr />
 
-<h2 id="arrow-functionにおけるthis">Arrow Functionにおけるthis</h2>
+<h2 id="関数式とはなにか">関数式とはなにか</h2>
 
-<p>関数/メソッドにおけるthisの値は呼び出されたときに決まるのに対し、<br>Arrow Functionにおけるthisの値は定義時に静的に決まります。</p>
+<p>関数式とは、関数を値として変数へ代入している式のことです。</p>
 
-<p>これが大きな違いです。</p>
+<p>関数式を使う場合、関数の名前は省略することができます。<br>
+このような名前を持たない関数を匿名関数（または無名関数）と呼びます。</p>
 
 <hr />
 
-<h2 id="arrow-functionとコールバック関数">Arrow Functionとコールバック関数</h2>
+<h3 id="シンプルな関数式">シンプルな関数式</h3>
 
-<p>thisの値が定義時に決まるというArrow Funcgtionの特徴は、コールバック関数を呼び出すときに活用できます。</p>
+<p>無名関数を使ったシンプルな例です。</p>
 
-<p>メソッドの場合は、コールバック関数の中でthisを定義すると、<a href="https://mom0tomo.github.io/post/20190106/#2-%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E9%96%A2%E6%95%B0%E3%81%AE%E4%B8%AD%E3%81%A7this%E3%82%92%E5%8F%82%E7%85%A7%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88" target="_blank">呼び出し時に予期せぬオブジェクトを指して問題になる</a>ことがありました。</p>
+<pre><code>const 変数名 = function() {
 
-<pre><code>&quot;use strict&quot;;
-
-const person = {
-    suffix: &quot;さん&quot;,
-
-    printName(names) {
-        return names.map(function(name) {
-            return name + this.suffix;
-        });
-    }
+  return hoge;
 };
-
-person.printName([&quot;太郎&quot;, &quot;二郎&quot;, &quot;三郎&quot;]);
-// =&gt; TypeError: Cannot read property 'suffix' of undefined
-// thisに匿名関数が渡っているため、thisはundefindとなる
 </code></pre>
 
-<p>一方、Arrow Functionの場合は、thisは常に一つ外側のオブジェクトを指しています。</p>
+<p>関数式では引数を使うこともできます。</p>
 
-<p>このため、呼び出す時のことは気にせずコールバック関数を使うことができます。</p>
+<pre><code>const 変数名 = function(n, m) {
 
-<pre><code>&quot;use strict&quot;;
-
-const person = {
-    suffix: &quot;さん&quot;,
-
-     printName(names) {
-        return names.map((name) =&gt; {
-            return name + this.suffix;
-        });
-    }
+  return n + m;
 };
-
-person.printName([&quot;太郎&quot;, &quot;二郎&quot;, &quot;三郎&quot;]);
-// =&gt; [ '太郎さん', '二郎さん', '三郎さん' ]
-// thisは常にpersonを指している
 </code></pre>
+
+<hr />
+
+<h3 id="arrow-functionを使った関数式">Arrow Functionを使った関数式</h3>
+
+<p>Arrow Functionは関数式の書き方のひとつです。</p>
+
+<pre><code>const 変数名 = () =&gt; {
+
+  return hoge;
+};
+</code></pre>
+
+<p>Arrow Functionを使う場合、関数の処理が一つの式であれば、returnは省略できます。</p>
+
+<pre><code>const 変数名 = (n, m) =&gt; {
+
+  n + m;
+};
+</code></pre>
+
+<p>また、引数が一つであれば <code>()</code>を省略できます。</p>
+
+<pre><code>const 変数名 = n =&gt; {
+
+  return n;
+};
+</code></pre>
+
+<hr />
 
 <h2 id="おわりに">おわりに</h2>
 
-<p>次回はArrow Functionについて説明します。</p>
+<p>他にも、Arrow Functionを使った関数式には次のような特徴があります。</p>
 
-<p>← 前の記事: <a href="https://mom0tomo.github.iopost/20190109/" target="_blank">JavaScriptのthisをわかりやすく整理する（関数とメソッド編）</a><br>
-→ 次の記事: <a href="https://mom0tomo.github.iopost/2019013/" target="_blank">JavaScriptの関数式とArrow Functionについて整理する</a></p>
+<ul>
+<li>関数に名前を付けることができないので、常に匿名関数である</li>
+<li>thisを静的に決定する (<a href="https://mom0tomo.github.iopost/20190109/" target="_blank">前回の記事で詳しく書きました</a>)</li>
+</ul>
 
-<p><br></p>
+<p>省略形を使うことができ、thisの値を静的に決定することができるArrow Functionにはメリットが多く、メソッドでない関数式を扱う場合は、優先して利用することが推奨されています。</p>
 
 <h3 id="関連記事">関連記事</h3>
 
-<p><a href="https://mom0tomo.github.iopost/20190109/" target="_blank">JavaScriptのthisをわかりやすく整理する（Arrow Function編）</a></p>
+<ul>
+<li><a href="https://mom0tomo.github.iopost/20190109/" target="_blank">JavaScriptのthisをわかりやすく整理する（関数とメソッド編）</a></li>
+<li><a href="https://mom0tomo.github.iopost/20190109/" target="_blank">JavaScriptのthisをわかりやすく整理する（Arrow Function編）</a></li>
+</ul>
 
                 </section>
             </article>
