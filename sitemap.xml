@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/20190117/</loc>
+    <lastmod>2019-01-18T10:10:37+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/20190113/</loc>
     <lastmod>2019-01-13T09:01:03+09:00</lastmod>
   </url>
@@ -248,7 +253,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/js/</loc>
-    <lastmod>2019-01-13T09:01:03+09:00</lastmod>
+    <lastmod>2019-01-18T10:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -272,13 +277,19 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-01-13T09:01:03+09:00</lastmod>
+    <lastmod>2019-01-18T10:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/rails/</loc>
     <lastmod>2018-12-23T22:10:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mom0tomo.github.io/tags/react/</loc>
+    <lastmod>2019-01-18T10:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -314,7 +325,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-01-13T09:01:03+09:00</lastmod>
+    <lastmod>2019-01-18T10:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
