@@ -193,13 +193,26 @@
   </url>
   
   <url>
+    <loc>https://mom0tomo.github.io/series/js-this/</loc>
+    <lastmod>2019-01-13T09:01:03+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/</loc>
     <lastmod>2019-01-18T10:10:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://mom0tomo.github.io/series/react-syntax/</loc>
+    <lastmod>2019-01-18T10:10:37+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/series/</loc>
+    <lastmod>2019-01-13T09:01:03+09:00</lastmod>
     <priority>0</priority>
   </url>
   
