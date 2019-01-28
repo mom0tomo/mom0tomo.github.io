@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/golang_tokyo_recruitment/</loc>
+    <lastmod>2019-01-28T19:35:51+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/hugo_related_posts/</loc>
     <lastmod>2019-01-21T20:18:22+09:00</lastmod>
   </url>
@@ -240,7 +245,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/event/</loc>
-    <lastmod>2018-09-13T16:15:58+09:00</lastmod>
+    <lastmod>2019-01-28T19:35:51+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -252,7 +257,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/go/</loc>
-    <lastmod>2018-09-13T16:15:58+09:00</lastmod>
+    <lastmod>2019-01-28T19:35:51+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -282,7 +287,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-01-21T20:18:22+09:00</lastmod>
+    <lastmod>2019-01-28T19:35:51+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -330,7 +335,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-01-21T20:18:22+09:00</lastmod>
+    <lastmod>2019-01-28T19:35:51+09:00</lastmod>
     <priority>0</priority>
   </url>
   
