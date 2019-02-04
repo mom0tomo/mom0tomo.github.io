@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/active_model_attributes/</loc>
+    <lastmod>2019-02-04T22:13:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/golang_tokyo_recruitment/</loc>
     <lastmod>2019-01-28T19:35:51+09:00</lastmod>
   </url>
@@ -287,13 +292,13 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-01-28T19:35:51+09:00</lastmod>
+    <lastmod>2019-02-04T22:13:32+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/rails/</loc>
-    <lastmod>2018-12-23T22:10:12+09:00</lastmod>
+    <lastmod>2019-02-04T22:13:32+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -305,7 +310,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/ruby/</loc>
-    <lastmod>2018-12-23T22:10:12+09:00</lastmod>
+    <lastmod>2019-02-04T22:13:32+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -335,7 +340,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-01-28T19:35:51+09:00</lastmod>
+    <lastmod>2019-02-04T22:13:32+09:00</lastmod>
     <priority>0</priority>
   </url>
   
