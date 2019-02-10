@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/react_capybara_a_without_href/</loc>
+    <lastmod>2019-02-12T23:16:50+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/active_model_attributes/</loc>
     <lastmod>2019-02-04T22:13:32+09:00</lastmod>
   </url>
@@ -292,19 +297,19 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-02-04T22:13:32+09:00</lastmod>
+    <lastmod>2019-02-12T23:16:50+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/rails/</loc>
-    <lastmod>2019-02-04T22:13:32+09:00</lastmod>
+    <lastmod>2019-02-12T23:16:50+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mom0tomo.github.io/tags/react/</loc>
-    <lastmod>2019-01-18T10:10:37+09:00</lastmod>
+    <lastmod>2019-02-12T23:16:50+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -340,7 +345,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-02-04T22:13:32+09:00</lastmod>
+    <lastmod>2019-02-12T23:16:50+09:00</lastmod>
     <priority>0</priority>
   </url>
   
