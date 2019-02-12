@@ -6,7 +6,7 @@
     <description>Recent content on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 12 Feb 2019 23:16:50 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 10 Feb 2019 23:16:50 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>CapybaraでJSのテストをしようとしたらonClickのhref属性でハマった</title>
       <link>https://mom0tomo.github.io/post/react_capybara_a_without_href/</link>
-      <pubDate>Tue, 12 Feb 2019 23:16:50 +0900</pubDate>
+      <pubDate>Sun, 10 Feb 2019 23:16:50 +0900</pubDate>
       
       <guid>https://mom0tomo.github.io/post/react_capybara_a_without_href/</guid>
       <description>はじめに わたしの所属先のサービスはRails製で、フロントエンドの一部でReactを使っています。 Capybaraを使ってReact JSのテ</description>
