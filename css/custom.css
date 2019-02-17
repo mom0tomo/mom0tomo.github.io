@@ -41,9 +41,3 @@ a.symbol {
 ul > li {
   line-height: 1.7;
 }
-.hatena-star-star-container {
-  display: inline-flex;
-}
-.hatena-star-add-button {
-  width: 18px;
-}
