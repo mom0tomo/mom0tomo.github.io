@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/brew_cleanup_is_deprecated/</loc>
+    <lastmod>2019-02-17T17:00:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/react_capybara_a_without_href/</loc>
     <lastmod>2019-02-10T23:16:50+09:00</lastmod>
   </url>
@@ -272,6 +277,12 @@
   </url>
   
   <url>
+    <loc>https://mom0tomo.github.io/tags/homebrew/</loc>
+    <lastmod>2019-02-17T17:00:05+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/tags/hugo/</loc>
     <lastmod>2019-01-21T20:18:22+09:00</lastmod>
     <priority>0</priority>
@@ -297,7 +308,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-02-10T23:16:50+09:00</lastmod>
+    <lastmod>2019-02-17T17:00:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -345,7 +356,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-02-10T23:16:50+09:00</lastmod>
+    <lastmod>2019-02-17T17:00:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
