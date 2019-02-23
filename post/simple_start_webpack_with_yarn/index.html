@@ -1,0 +1,356 @@
+    <!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		
+		<meta name="description" content="Reactのモジュールバンドラwebpack入門です。yarnを使ったパッケージのインストール方法、webpackコマンドを使ったビルド方法、watch機能について、できるだけシンプルに書いています。">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>yarnでシンプルにはじめるwebpack &middot; mom0tomo</title>
+		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/style.css">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/monosocialiconsfont.css">
+		
+
+		
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/custom.css">
+		
+
+		<script type="text/javascript" src="http://s.hatena.ne.jp/js/HatenaStar.js"></script>
+		<script type="text/javascript">
+			Hatena.Star.Token = '439b2988ff9e3560541978cfebab857d59ac4047';
+			Hatena.Star.SiteConfig = {
+				entryNodes: {
+					'section#wrapper': {
+						uri: 'div.posted a',
+						title: 'h1',
+						container: 'span.hatena-star'
+					}
+				}
+			}
+		</script>
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://mom0tomo.github.io/'> <span class="arrow">← </span>Home</a>
+	
+	<a href='https://mom0tomo.github.io/post'>Archives</a>
+	<a href='https://mom0tomo.github.io/tags'>Tag</a>
+	<a href='https://mom0tomo.github.io/about'>About</a>
+	<a href='https://mom0tomo.github.io/index.xml' class="symbol" style="font-size:15px;">rss</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        yarnでシンプルにはじめるwebpack
+                    </h1>
+                    <div class="posted" style="display:none;">
+                      <a href="https://mom0tomo.github.io/post/simple_start_webpack_with_yarn/">yarnでシンプルにはじめるwebpack</a>
+                    </div>
+                    <h2 class="headline">
+                    Feb 24, 2019 00:23
+                    · 1987 words
+                    · 4 minutes read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://mom0tomo.github.io/tags/webpack">Webpack</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li><a href="#準備">準備</a></li>
+<li><a href="#バンドルしてみる">バンドルしてみる</a>
+<ul>
+<li><a href="#webpackをインストールしてパスを通す">webpackをインストールしてパスを通す</a></li>
+<li><a href="#エントリーポイントとモジュールを作ってバンドルする">エントリーポイントとモジュールを作ってバンドルする</a></li>
+</ul></li>
+<li><a href="#webpack-config-jsの導入">webpack.config.jsの導入</a>
+<ul>
+<li><a href="#modeを設定する">modeを設定する</a></li>
+<li><a href="#watch機能を使う">watch機能を使う</a></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                <section id="post-body">
+                    
+
+<p>Reactのモジュールバンドラ（複数のモジュールファイルを一つにまとめて出力するもの）としてwebpackを使っています。</p>
+
+<p>Reactには<code>create-react-app</code>という便利な公式のコマンドラインツールがあり、これを使うことでwebpackの設定に触れることなく簡単に練習環境が作れます。</p>
+
+<p>このため、今回はあえてツールに依存することなくシンプルにwebpackをはじめてみました。</p>
+
+<hr />
+
+<p>この記事に書いてあって<a href="https://webpack.js.org/guides/getting-started/" target="_blank">公式の Getting Started</a>には書いていないこと：</p>
+
+<ul>
+<li>yarnを使ったパッケージのインストール方法</li>
+<li>webpackコマンドを使ったビルド方法</li>
+<li>watch機能について</li>
+</ul>
+
+<hr />
+
+<p>参考：</p>
+
+<ul>
+<li><a href="https://ics.media/entry/12140" target="_blank">最新版で学ぶwebpack 4入門</a></li>
+<li><a href="https://qiita.com/soarflat/items/28bf799f7e0335b68186" target="_blank">Qiita: webpack 4 入門</a></li>
+</ul>
+
+<hr />
+
+<h1 id="準備">準備</h1>
+
+<p>サンプル用のディレクトリを作り、yarnでpackage.jsonを生成します。</p>
+
+<pre><code>$ mkdir webpack-example
+$ cd webpack-example
+
+$ yarn init -y
+</code></pre>
+
+<pre><code>$ cat package.json
+
+{
+  &quot;name&quot;: &quot;webpack-example&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;license&quot;: &quot;MIT&quot;
+}
+</code></pre>
+
+<p>ソースコードを配置するディレクトリを作ります。</p>
+
+<pre><code>$ mkdir src
+</code></pre>
+
+<h1 id="バンドルしてみる">バンドルしてみる</h1>
+
+<h2 id="webpackをインストールしてパスを通す">webpackをインストールしてパスを通す</h2>
+
+<p>yarnでwebpackとwebpack-cliをローカルインストールします。</p>
+
+<p>webpack4から、webpackコマンドを実行するためにwebpack-cliが必要になりました。</p>
+
+<pre><code>$ yarn add webpack webpack-cli --dev
+</code></pre>
+
+<pre><code class="language-diff">$ git diff
+
+-  &quot;license&quot;: &quot;MIT&quot;
++  &quot;license&quot;: &quot;MIT&quot;,
++  &quot;devDependencies&quot;: {
++    &quot;webpack&quot;: &quot;^4.29.5&quot;,
++    &quot;webpack-cli&quot;: &quot;^3.2.3&quot;
++  }
+</code></pre>
+
+<p><code>yarn.lock</code>が生成され、 <code>node_modules/</code>にソースコードがインストールされていることを確認します。</p>
+
+<p>ローカルインストールしたwebpackのパスを通し、 <code>webpack</code>コマンドが使えるようにします。</p>
+
+<p><code>.bashrc</code>にパスの設定を書きます。</p>
+
+<pre><code>// ローカルインストールしたwebpackのパスを通す
+export PATH=$PATH:./node_modules/.bin
+</code></pre>
+
+<p>sourceコマンドで設定を反映させます。</p>
+
+<pre><code>$ source ~/.bashrc
+</code></pre>
+
+<p>webpackコマンドを実行してパスが通ったかどうか試してみます。v4系になっていたらOKです。</p>
+
+<pre><code>$ webpack --version
+
+4.29.5
+</code></pre>
+
+<hr />
+
+<h2 id="エントリーポイントとモジュールを作ってバンドルする">エントリーポイントとモジュールを作ってバンドルする</h2>
+
+<p>モジュールのファイル <code>hello.js</code>をsrc/配下につくります。今回はただ &lsquo;Hello&rsquo;を出すだけのシンプルな関数を書きます。</p>
+
+<pre><code class="language-js">export function hello() {
+  alert(&quot;Hello&quot;)
+}
+</code></pre>
+
+<p>続いて、エントリーポイントとなるファイル <code>index.js</code>をsrc/配下につくります。</p>
+
+<pre><code class="language-js">// helloモジュールを読み込む
+import { hello } from &quot;./hello.js&quot;;
+
+// hello関数を呼び出す
+hello(); 
+</code></pre>
+
+<p><code>webpack</code>コマンドを実行して先ほどのファイル2つをバンドル（ファイルをまとめること）し、一つのファイルに結果を出力します。</p>
+
+<p>警告を防ぐために、いったん <code>--mode=development</code>というオプションをつけて実行します。</p>
+
+<pre><code>$ webpack --mode=development
+
+Hash: 686abf64329ef2a53cc1
+Version: webpack 4.29.5
+Time: 76ms
+Built at: 2019-02-23 20:58:53
+  Asset      Size  Chunks             Chunk Names
+main.js  4.53 KiB    main  [emitted]  main
+Entrypoint main = main.js
+[./src/hello.js] 52 bytes {main} [built]
+[./src/index.js] 47 bytes {main} [built]
+</code></pre>
+
+<p>何も設定をしない場合、<code>dist/main.js</code>に出力されます。</p>
+
+<pre><code>$ ls -la dist/
+
+total 16
+drwxr-xr-x  3 mom0tomo  staff    96  2 23 20:57 .
+drwxr-xr-x  9 mom0tomo  staff   288  2 23 20:57 ..
+-rw-r--r--  1 mom0tomo  staff  4640  2 23 20:58 main.js
+</code></pre>
+
+<p>ここまでで、エントリーポイントのファイルとモジュールのファイルからバンドルファイルを出力するところまでできました。</p>
+
+<p><br></p>
+
+<h1 id="webpack-config-jsの導入">webpack.config.jsの導入</h1>
+
+<h2 id="modeを設定する">modeを設定する</h2>
+
+<p>webpack.config.jsファイルを利用することで、細かな設定ができます。</p>
+
+<p>webpack.config.jsがなくてもモジュールをバンドルすることは可能ですが、実際は必ず使うので簡単な設定をしてみます。</p>
+
+<pre><code>$ touch webpack.config.js
+</code></pre>
+
+<p>まず、先ほどはコマンドのオプションとして指定していたmodeの設定を書きます。</p>
+
+<p>modeにdevelopmentを指定することでソースマップ（バンドルして出力されたコードをデバッグする際に使う）が有効になります。</p>
+
+<p>productionを指定することで、JavaSciptのコードからコメント等が取り除かれ圧縮されます。</p>
+
+<p>ここではdevelopmentを指定します。</p>
+
+<pre><code class="language-js">module.exports = {
+  mode: 'development'
+}; 
+</code></pre>
+
+<p>これで、 <code>webpack</code>コマンドをオプションなしで実行しても警告が出なくなりました。</p>
+
+<hr />
+
+<h2 id="watch機能を使う">watch機能を使う</h2>
+
+<p>ファイルの変更を検知しして自動でバンドルのコマンドを実行し、ブラウザをリロードするwatchという機能があります。
+この機能を使うことで、差分だけをビルドし、バンドルにかかる時間を短くすることができます。</p>
+
+<p><code>webpack --watch</code>というコマンドのオプションで実行できますが、webpack.config.jsに設定を書くことも可能です。</p>
+
+<pre><code class="language-diff">module.exports = {
+-   mode: 'development'
++   mode: 'development',
++   watch: true
+};
+</code></pre>
+
+<p><code>webpack</code>コマンドを実行してみると、<code>webpack is watching the files…</code>というメッセージが出て変更がリアルタイムで反映されるようになったことがわかります。</p>
+
+<pre><code>$ webpack
+
+webpack is watching the files…
+
+Hash: 686abf64329ef2a53cc1
+Version: webpack 4.29.5
+Time: 94ms
+Built at: 2019-02-23 21:44:56
+  Asset      Size  Chunks             Chunk Names
+main.js  4.53 KiB    main  [emitted]  main
+Entrypoint main = main.js
+[./src/hello.js] 52 bytes {main} [built]
+[./src/index.js] 47 bytes {main} [built]
+</code></pre>
+
+<hr />
+
+<p>この他にもwebpack.config.jsを使うことで、エントリーポイントと出力先を変更したり、コードを遅延読み込みしたり、いろいろな設定が可能になります。</p>
+
+<p>詳しくは<a href="https://webpack.js.org/concepts" target="_blank">公式のドキュメント</a>を。</p>
+
+                </section>
+            </article>
+            <div class="social">
+  <div class="social-inner">
+    
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="mom0tomo" data-count="horizontal" lang="en">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      
+      <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+      
+      <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a><script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+    
+    <span class="hatena-star"></span>
+  </div>
+</div>
+
+            
+
+        </section>
+        <script src="https://mom0tomo.github.io/js/jquery-2.2.4.min.js"></script>
+<script src="https://mom0tomo.github.io/js/main.js"></script>
+<script src="https://mom0tomo.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-104531981-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>
