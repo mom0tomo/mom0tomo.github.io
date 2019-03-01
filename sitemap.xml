@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/webpack_loader_test/</loc>
+    <lastmod>2019-03-01T00:08:28+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/simple_start_webpack_with_yarn/</loc>
     <lastmod>2019-02-24T00:23:00+09:00</lastmod>
   </url>
@@ -313,7 +318,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-02-24T00:23:00+09:00</lastmod>
+    <lastmod>2019-03-01T00:08:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -355,7 +360,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/webpack/</loc>
-    <lastmod>2019-02-24T00:23:00+09:00</lastmod>
+    <lastmod>2019-03-01T00:08:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -367,7 +372,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-02-24T00:23:00+09:00</lastmod>
+    <lastmod>2019-03-01T00:08:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
