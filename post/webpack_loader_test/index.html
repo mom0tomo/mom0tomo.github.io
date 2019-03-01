@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		
-		<meta name="description" content="webpack.config.jsで、loaderの対象とするファイル等を指定するプロパティの名前がtestなのがとてもきになるのですが、これは">
+		<meta name="description" content="webpack.config.jsで、loaderの対象とするファイル等を指定するプロパティの名前がtestなのがとても気になるのですが、これはJavaScriptの正規表現オブジェクトのtestメソッドに由来するという説があるようです。真相はわかりません。">
 		<meta name="generator" content="Hugo 0.53" />
 		<title>webpack.config.jsでloader対象を指定するプロパティ名が test なのはなぜ？ &middot; mom0tomo</title>
 		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
@@ -62,7 +62,7 @@
                     </div>
                     <h2 class="headline">
                     Mar 1, 2019 00:08
-                    · 469 words
+                    · 481 words
                     · 1 minute read
                       <span class="tags">
                       
@@ -87,6 +87,8 @@
 </code></pre>
 
 <p>なんでtestなんだ&hellip;と思って色々調べたところ、どうやらJavaScriptでは正規表現オブジェクトに <code>test()</code>というメソッドがあるらしいことを知りました。</p>
+
+<p><a href="https://github.com/webpack/webpack/issues/866" target="_blank">Github issue | What is a &ldquo;test&rdquo; &ndash; why is named &ldquo;test&rdquo;?</a></p>
 
 <p><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank">MDN web Docs | RegExp.prototype.test()</a></p>
 
