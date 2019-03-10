@@ -1,0 +1,268 @@
+    <!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		
+		<meta name="description" content="Go言語では、標準パッケージであるgoパッケージが字句解析や構文解析を行う機能を提供しています。go/astやgo/parserを使って構文解析のはじめの一歩を踏み出してみます。今回は用語や利用するパッケージの説明をして、静的解析をはじめる準備をします。">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Goの標準パッケージではじめる静的解析入門 ①準備編 &middot; mom0tomo</title>
+		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/style.css">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/monosocialiconsfont.css">
+		
+
+		
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/custom.css">
+		
+
+		<script type="text/javascript" src="http://s.hatena.ne.jp/js/HatenaStar.js"></script>
+		<script type="text/javascript">
+			Hatena.Star.Token = '439b2988ff9e3560541978cfebab857d59ac4047';
+			Hatena.Star.SiteConfig = {
+				entryNodes: {
+					'section#wrapper': {
+						uri: 'div.posted a',
+						title: 'h1',
+						container: 'span.hatena-star'
+					}
+				}
+			}
+		</script>
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://mom0tomo.github.io/'> <span class="arrow">← </span>Home</a>
+	
+	<a href='https://mom0tomo.github.io/post'>Archives</a>
+	<a href='https://mom0tomo.github.io/tags'>Tag</a>
+	<a href='https://mom0tomo.github.io/about'>About</a>
+	<a href='https://mom0tomo.github.io/index.xml' class="symbol" style="font-size:15px;">rss</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        Goの標準パッケージではじめる静的解析入門 ①準備編
+                    </h1>
+                    <div class="posted" style="display:none;">
+                      <a href="https://mom0tomo.github.io/post/go_ast_parser_static_analysis/">Goの標準パッケージではじめる静的解析入門 ①準備編</a>
+                    </div>
+                    <h2 class="headline">
+                    Mar 10, 2019 23:52
+                    · 836 words
+                    · 2 minutes read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://mom0tomo.github.io/tags/go">Go</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/%E6%A8%99%E6%BA%96%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8">標準パッケージ</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#はじめに">はじめに</a>
+<ul>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+<li><a href="#用語説明">用語説明</a>
+<ul>
+<li><a href="#静的解析とは">静的解析とは</a></li>
+<li><a href="#抽象構文木-ast-とは">抽象構文木(AST)とは</a></li>
+<li><a href="#トラバース-走査-とは">トラバース(走査)とは</a></li>
+</ul></li>
+<li><a href="#やること">やること</a></li>
+<li><a href="#やらないこと">やらないこと</a></li>
+<li><a href="#利用する標準パッケージ">利用する標準パッケージ</a>
+<ul>
+<li><a href="#go-parser">go/parser</a></li>
+<li><a href="#go-ast">go/ast</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                <section id="post-body">
+                    
+
+<h2 id="はじめに">はじめに</h2>
+
+<p>Go言語では、標準パッケージであるgoパッケージが字句解析や構文解析を行う機能を提供しています。</p>
+
+<p>go/astやgo/parserを使って構文解析のはじめの一歩を踏み出してみます。</p>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+<li><a href="https://qiita.com/tenntenn/items/868704380455c5090d4b" target="_blank">Qiita | goパッケージで簡単に静的解析して世界を広げよう #golang</a><br>
+静的解析を学ぶ際に参考になる記事のまとめ（tenntennさん筆）</li>
+</ul>
+
+<hr />
+
+<h2 id="用語説明">用語説明</h2>
+
+<h3 id="静的解析とは">静的解析とは</h3>
+
+<p>静的コード解析、静的プログラム解析とも言います。<br>
+ソースコードを実行することなく解析を行うことを指します。</p>
+
+<p>対義語は動的解析で、ソースコードを実行して解析を行うことを表します。<br>
+こちらはプログラマが普段行なっているような検証方法です。
+<br></p>
+
+<h3 id="抽象構文木-ast-とは">抽象構文木(AST)とは</h3>
+
+<p>abstract syntax tree.<br>
+構文解析の経過や結果から、言語の意味に関係ない情報を取り除き、意味に関係ある情報のみを取り出したツリー状（木）のデータ構造のことです。<br>
+<a href="https://ja.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E6%A7%8B%E6%96%87%E6%9C%A8" target="_blank">Wikipedia | 抽象構文木</a></p>
+
+<h3 id="トラバース-走査-とは">トラバース(走査)とは</h3>
+
+<p>抽象構文木のような木構造の各ノードを探索、調査することです。<br>
+ノードとは、下記の図でいうところのA,B,C&hellip;が書いてあるそれぞれの◯を指します。<br>
+<a href="https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%A7%8B%E9%80%A0_(%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0)#%E8%B5%B0%E6%9F%BB%E6%B3%95" target="_blank">Wikipedia | 木構造(データ構造)#走査法</a></p>
+
+<p><img src="https://mom0tomo.github.io/images/articles/tree.png" alt="木構造" /></p>
+
+<p><br></p>
+
+<h2 id="やること">やること</h2>
+
+<ul>
+<li>構文解析</li>
+<li>抽象構文木(AST)のトラバース</li>
+</ul>
+
+<h2 id="やらないこと">やらないこと</h2>
+
+<ul>
+<li>静的解析のモジュール化</li>
+<li>golang.org/x/tools/go/analysisパッケージの解説</li>
+</ul>
+
+<p>実用の視点に立ったモジュール化の手法については、tenntennさんの記事をご覧下さい。</p>
+
+<p><a href="https://tech.mercari.com/entry/2018/12/16/150000" target="_blank">Goにおける静的解析のモジュール化について</a></p>
+
+<hr />
+
+<h2 id="利用する標準パッケージ">利用する標準パッケージ</h2>
+
+<h3 id="go-parser">go/parser</h3>
+
+<p><a href="https://godoc.org/go/parser" target="_blank">go/parser</a></p>
+
+<p>構文解析を行うパッケージです。<br>
+ソースコードを字句解析し、構文解析を行い、抽象構文木(AST)まで作ってくれます。</p>
+
+<p>文字列をパースために、<code>parser.ParseExpr</code>関数を使います。</p>
+
+<pre><code class="language-go">func ParseExpr(x string) (ast.Expr, error)
+</code></pre>
+
+<ul>
+<li><a href="https://godoc.org/go/parser#ParseExpr" target="_blank">parser/ParseExpr</a></li>
+</ul>
+
+<h3 id="go-ast">go/ast</h3>
+
+<p><a href="https://godoc.org/go/ast" target="_blank">go/ast</a></p>
+
+<p>抽象構文木(AST)を定義したパッケージです。</p>
+
+<p>抽象構文木（AST）をトラバースするために、<code>ast.Inspect</code>関数を使います。</p>
+
+<pre><code class="language-go">func Inspect(node Node, f func(Node) bool)
+</code></pre>
+
+<ul>
+<li><a href="https://godoc.org/go/ast#Inspect" target="_blank">ast/Inspect</a></li>
+</ul>
+
+<hr />
+
+<p>次回は実際に字句解析と構文解析を行い、抽象構文木(AST)をつくります。</p>
+
+                </section>
+            </article>
+            <div class="social">
+  <div class="social-inner">
+    
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="mom0tomo" data-count="horizontal" lang="en">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      
+      <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+      
+      <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a><script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+    
+    <span class="hatena-star"></span>
+  </div>
+</div>
+
+            
+
+<div class="related-posts">
+  <h4>関連記事</h4>
+  <ul>
+    
+    <li><a href="https://mom0tomo.github.io/post/golang_tokyo_recruitment/">golang.tokyo#21「Goエンジニアの採用」レポート</a></li>
+    
+    <li><a href="https://mom0tomo.github.io/post/20180913/">GopherCon参加レポート</a></li>
+    
+    <li><a href="https://mom0tomo.github.io/post/20180829/">GopherConに行く人に向けた超具体的なアドバイス</a></li>
+    
+  </ul>
+</div>
+
+        </section>
+        <script src="https://mom0tomo.github.io/js/jquery-2.2.4.min.js"></script>
+<script src="https://mom0tomo.github.io/js/main.js"></script>
+<script src="https://mom0tomo.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-104531981-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>

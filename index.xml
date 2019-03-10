@@ -6,10 +6,19 @@
     <description>Recent content on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 01 Mar 2019 00:08:28 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 10 Mar 2019 23:52:21 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Goの標準パッケージではじめる静的解析入門 ①準備編</title>
+      <link>https://mom0tomo.github.io/post/go_ast_parser_static_analysis/</link>
+      <pubDate>Sun, 10 Mar 2019 23:52:21 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/go_ast_parser_static_analysis/</guid>
+      <description>はじめに Go言語では、標準パッケージであるgoパッケージが字句解析や構文解析を行う機能を提供しています。 go/astやgo/parserを使</description>
+    </item>
     
     <item>
       <title>webpack.config.jsでloader対象を指定するプロパティ名が test なのはなぜ？</title>

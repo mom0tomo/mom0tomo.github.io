@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/go_ast_parser_static_analysis/</loc>
+    <lastmod>2019-03-10T23:52:21+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/webpack_loader_test/</loc>
     <lastmod>2019-03-01T00:08:28+09:00</lastmod>
   </url>
@@ -282,7 +287,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/go/</loc>
-    <lastmod>2019-01-28T19:35:51+09:00</lastmod>
+    <lastmod>2019-03-10T23:52:21+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -318,7 +323,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-03-01T00:08:28+09:00</lastmod>
+    <lastmod>2019-03-10T23:52:21+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -372,7 +377,13 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-03-01T00:08:28+09:00</lastmod>
+    <lastmod>2019-03-10T23:52:21+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mom0tomo.github.io/tags/%E6%A8%99%E6%BA%96%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8/</loc>
+    <lastmod>2019-03-10T23:52:21+09:00</lastmod>
     <priority>0</priority>
   </url>
   
