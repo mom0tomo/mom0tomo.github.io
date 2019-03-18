@@ -62,8 +62,8 @@
                     </div>
                     <h2 class="headline">
                     Mar 17, 2019 20:32
-                    · 1408 words
-                    · 3 minutes read
+                    · 1848 words
+                    · 4 minutes read
                       <span class="tags">
                       
                       
@@ -90,7 +90,10 @@
 <li><a href="#静的解析の流れ">静的解析の流れ</a></li>
 <li><a href="#字句解析で使うパッケージ">字句解析で使うパッケージ</a>
 <ul>
-<li><a href="#ソースコードをトークンとして分割する">ソースコードをトークンとして分割する</a></li>
+<li><a href="#ソースコードをトークンとして分割する">ソースコードをトークンとして分割する</a>
+<ul>
+<li><a href="#補足-token-filesetについて">補足： token.FileSetについて</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#構文解析で使うパッケージ">構文解析で使うパッケージ</a>
 <ul>
@@ -170,12 +173,12 @@ func main() {
     // スキャナーの初期化を行う
     var s scanner.Scanner
 
-    // ファイルの位置や長さに関する情報を保持する構造体を用意する
+    // ファイルの位置や長さに関する情報を保持する構造体(token.FileSet型)を用意する ※ 補足参照
     fset := token.NewFileSet()
     // ファイルをつくり、必要な値を与える
     file := fset.AddFile(&quot;&quot;, fset.Base(), len(src))
 
-    // ソースコードをトークンにするための処理を行う（ここでファイルを使う）
+    // ソースコードをトークンにするための処理を行う（ここでファイルを使う）※ 補足参照
     s.Init(file, src, nil, scanner.ScanComments)
 
     for {
@@ -196,9 +199,6 @@ func main() {
 
 <p>文字列リテラルとは、ざっくりいうと、ソースコード内に値を直接表記されている0文字以上の連続した文字列の塊のことです。</p>
 
-<pre><code class="language-go">func (s *Scanner) Scan() (pos token.Pos, tok token.Token, lit string)
-</code></pre>
-
 <p>出力結果です。</p>
 
 <pre><code>1:1 IDENT   &quot;v&quot;
@@ -208,6 +208,31 @@ func main() {
 </code></pre>
 
 <p>行数、行の中の位置、トークン、文字列リテラルが出力されました。</p>
+
+<p><br></p>
+
+<h4 id="補足-token-filesetについて">補足： token.FileSetについて</h4>
+
+<p>ここで、<code>token.NewFileSet()</code>という処理を行っている部分について解説します。</p>
+
+<p>ソースコードの解析にファイルやファイルシステムは関係ないのではないか？と思うかもしれません。わたしも疑問に思いました。</p>
+
+<p>上の処理でファイルは、ソースコードの解析の中で必要となる<strong>トークンの位置</strong>を取得する目的でつくっています。</p>
+
+<p>トークンの位置は、<code>scanner/Scan</code>の処理部分で使っています。</p>
+
+<p><code>scanner/Scan</code>の戻り値は下記の３つです。</p>
+
+<pre><code class="language-go">func (s *Scanner) Scan() (pos token.Pos, tok token.Token, lit string)
+</code></pre>
+
+<p>このうち、 <code>pos</code>が位置に関係するものです。</p>
+
+<p>トークンの位置情報は絶対的なものではなく、<code>token.FileSet</code>を基準にして相対的に決まります。</p>
+
+<p>また、<code>token.FileSet</code>における「ファイル」というのは概念上のもので、ファイルシステム上に存在する必要はありません。</p>
+
+<p>トークンの位置を図るための元になる値を与えるために、便宜的に「ファイル」をつくっているのです。</p>
 
 <hr />
 
