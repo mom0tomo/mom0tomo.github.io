@@ -6,10 +6,19 @@
     <description>Recent content on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 17 Mar 2019 20:32:28 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 22 Mar 2019 16:42:20 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>リポジトリを削除するとGithubの草は禿げる</title>
+      <link>https://mom0tomo.github.io/post/github_glass_become_bald/</link>
+      <pubDate>Fri, 22 Mar 2019 16:42:20 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/github_glass_become_bald/</guid>
+      <description>フォルダ整理の感覚でいらなくなったGitHubからリポジトリを削除していたのですが、リポジトリを削除するとせっかく生やした草もまとめて禿げる</description>
+    </item>
     
     <item>
       <title>Goの標準パッケージではじめる静的解析入門②解析編</title>
