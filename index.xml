@@ -6,10 +6,19 @@
     <description>Recent content on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 22 Mar 2019 16:42:20 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 23 Mar 2019 20:32:28 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Goの標準パッケージではじめる静的解析入門③実用編</title>
+      <link>https://mom0tomo.github.io/post/go_ast_parser_static_analysis_3/</link>
+      <pubDate>Sat, 23 Mar 2019 20:32:28 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/go_ast_parser_static_analysis_3/</guid>
+      <description>はじめに 前回は字句解析と構文解析を実際にやってみました。 今回は取得した抽象構文木(AST)を使って実践的な処理を行ってみます。 ファイルを準備</description>
+    </item>
     
     <item>
       <title>リポジトリを削除するとGitHubの草は禿げる</title>
