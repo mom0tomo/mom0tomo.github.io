@@ -62,8 +62,8 @@
                     </div>
                     <h2 class="headline">
                     Mar 10, 2019 23:52
-                    · 927 words
-                    · 2 minutes read
+                    · 1179 words
+                    · 3 minutes read
                       <span class="tags">
                       
                       
@@ -95,10 +95,15 @@
 </ul></li>
 <li><a href="#やること">やること</a></li>
 <li><a href="#やらないこと">やらないこと</a></li>
-<li><a href="#利用する標準パッケージ">利用する標準パッケージ</a>
+<li><a href="#字句解析で利用するパッケージ">字句解析で利用するパッケージ</a>
 <ul>
-<li><a href="#go-parser">go/parser</a></li>
-<li><a href="#go-ast">go/ast</a></li>
+<li><a href="#go-scanner-https-godoc-org-go-scanner"><a href="https://godoc.org/go/scanner" target="_blank">go/scanner</a></a></li>
+<li><a href="#go-token-https-golang-org-pkg-go-token"><a href="https://golang.org/pkg/go/token/" target="_blank">go/token</a></a></li>
+</ul></li>
+<li><a href="#構文解析で利用するパッケージ">構文解析で利用するパッケージ</a>
+<ul>
+<li><a href="#go-parser-https-godoc-org-go-parser"><a href="https://godoc.org/go/parser" target="_blank">go/parser</a></a></li>
+<li><a href="#go-ast-https-godoc-org-go-ast"><a href="https://godoc.org/go/ast" target="_blank">go/ast</a></a></li>
 </ul></li>
 <li><a href="#おわりに">おわりに</a></li>
 </ul></li>
@@ -155,8 +160,12 @@
 
 <ul>
 <li>字句解析/構文解析</li>
-<li>抽象構文木(AST)のトラバース/ノードの変更</li>
+<li>抽象構文木(AST)のトラバース</li>
+<li>位置情報の取得</li>
+<li>型情報の取得</li>
 </ul>
+
+<p>静的解析を行うための機能が提供されている、<a href="https://golang.org/pkg/go/" target="_blank">goパッケージ配下のパッケージ</a>を使います。</p>
 
 <h2 id="やらないこと">やらないこと</h2>
 
@@ -171,41 +180,65 @@
 
 <hr />
 
-<h2 id="利用する標準パッケージ">利用する標準パッケージ</h2>
+<h2 id="字句解析で利用するパッケージ">字句解析で利用するパッケージ</h2>
 
-<p>静的解析を行うための機能が提供されている、goパッケージ下のパッケージを使います。<br>
-<a href="https://golang.org/pkg/go/" target="_blank">go配下のパッケージ一覧はこちら</a>です。</p>
+<h3 id="go-scanner-https-godoc-org-go-scanner"><a href="https://godoc.org/go/scanner" target="_blank">go/scanner</a></h3>
 
-<h3 id="go-parser">go/parser</h3>
+<p>字句解析を行う際に使うパッケージです。</p>
 
-<p><a href="https://godoc.org/go/parser" target="_blank">go/parser</a></p>
+<p><code>scanner/Scan</code>関数を使い、ソースコードを読み込み、トークンの位置、トークン、srcで与えた値の文字列リテラルを取得します。</p>
 
-<p>構文解析を行うパッケージです。<br>
-ソースコードを字句解析し、構文解析を行い、抽象構文木(AST)まで作ってくれます。</p>
+<p><a href="https://godoc.org/go/scanner#Scanner.Scan" target="_blank">scanner/Scan</a></p>
+
+<pre><code class="language-go">func (s *Scanner) Scan() (pos token.Pos, tok token.Token, lit string)
+</code></pre>
+
+<p><br></p>
+
+<h3 id="go-token-https-golang-org-pkg-go-token"><a href="https://golang.org/pkg/go/token/" target="_blank">go/token</a></h3>
+
+<p>字句解析を行う際に使うパッケージです。</p>
+
+<p>ファイルの位置や長さに関する情報を保持する構造体(token.FileSet型)です。</p>
+
+<p><a href="https://godoc.org/go/token#FileSet" target="_blank">token/FileSet</a></p>
+
+<pre><code class="language-go">type FileSet struct {
+    // contains filtered or unexported fields
+}
+</code></pre>
+
+<p><code>scanner/Scan</code>などを使って取得するトークンの位置情報は絶対的なものではなく、<code>token.FileSet</code>を基準として相対的に決められます。</p>
+
+<p><br></p>
+
+<h2 id="構文解析で利用するパッケージ">構文解析で利用するパッケージ</h2>
+
+<h3 id="go-parser-https-godoc-org-go-parser"><a href="https://godoc.org/go/parser" target="_blank">go/parser</a></h3>
+
+<p>構文解析を行う際に使うパッケージです。</p>
+
+<p>ソースコードを字句解析し、構文解析を行い、抽象構文木(AST)まで作ってくれます。</p>
 
 <p>文字列をパースするために、<code>parser.ParseExpr</code>関数を使います。</p>
+
+<p><a href="https://godoc.org/go/parser#ParseExpr" target="_blank">parser/ParseExpr</a></p>
 
 <pre><code class="language-go">func ParseExpr(x string) (ast.Expr, error)
 </code></pre>
 
-<ul>
-<li><a href="https://godoc.org/go/parser#ParseExpr" target="_blank">parser/ParseExpr</a></li>
-</ul>
+<p><br></p>
 
-<h3 id="go-ast">go/ast</h3>
-
-<p><a href="https://godoc.org/go/ast" target="_blank">go/ast</a></p>
+<h3 id="go-ast-https-godoc-org-go-ast"><a href="https://godoc.org/go/ast" target="_blank">go/ast</a></h3>
 
 <p>抽象構文木(AST)を定義したパッケージです。</p>
 
 <p>抽象構文木（AST）をトラバースするために、<code>ast.Inspect</code>関数を使います。</p>
 
+<p><a href="https://godoc.org/go/ast#Inspect" target="_blank">ast/Inspect</a></p>
+
 <pre><code class="language-go">func Inspect(node Node, f func(Node) bool)
 </code></pre>
-
-<ul>
-<li><a href="https://godoc.org/go/ast#Inspect" target="_blank">ast/Inspect</a></li>
-</ul>
 
 <hr />
 
