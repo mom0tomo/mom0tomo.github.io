@@ -8,7 +8,7 @@
 		
 		<meta name="description" content="Go言語では、標準パッケージであるgoパッケージが字句解析や構文解析を行う機能を提供しています。go/astやgo/parserを使って構文解析のはじめの一歩を踏み出してみます。今回は静的解析を使って実践的な処理を行ってみます。">
 		<meta name="generator" content="Hugo 0.53" />
-		<title>Goの標準パッケージではじめる静的解析入門③実用編 &middot; mom0tomo</title>
+		<title>Goの標準パッケージではじめる静的解析入門③実践編 &middot; mom0tomo</title>
 		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
 		<link rel="stylesheet" href="https://mom0tomo.github.io/css/style.css">
 		<link rel="stylesheet" href="https://mom0tomo.github.io/css/highlight.css">
@@ -55,14 +55,14 @@
             <article class="post">
                 <header>
                     <h1>
-                        Goの標準パッケージではじめる静的解析入門③実用編
+                        Goの標準パッケージではじめる静的解析入門③実践編
                     </h1>
                     <div class="posted" style="display:none;">
-                      <a href="https://mom0tomo.github.io/post/go_ast_parser_static_analysis_3/">Goの標準パッケージではじめる静的解析入門③実用編</a>
+                      <a href="https://mom0tomo.github.io/post/go_ast_parser_static_analysis_3/">Goの標準パッケージではじめる静的解析入門③実践編</a>
                     </div>
                     <h2 class="headline">
-                    Mar 23, 2019 20:32
-                    · 2019 words
+                    Mar 24, 2019 19:32
+                    · 2027 words
                     · 5 minutes read
                       <span class="tags">
                       
@@ -113,9 +113,11 @@
 
 <pre><code>$ mkdir example
 $ touch example/example.go 
+
+$ touch main.go
 </code></pre>
 
-<p>今回はexampleの内容を以下のようにします。</p>
+<p>今回はexample.goの内容を以下のようにします。</p>
 
 <pre><code>package example
 
@@ -129,7 +131,7 @@ func example() {
 }
 </code></pre>
 
-<p>main.goには、いったん抽象構文木(AST)を取得する処理まで書いておきます。</p>
+<p>またmain.goには、いったん抽象構文木(AST)を取得する処理まで書いておきます。</p>
 
 <pre><code class="language-go">package main
 
