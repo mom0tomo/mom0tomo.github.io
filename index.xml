@@ -6,10 +6,19 @@
     <description>Recent content on mom0tomo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 31 Mar 2019 20:31:10 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 02 Apr 2019 00:07:58 +0900</lastBuildDate>
     
 	<atom:link href="https://mom0tomo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ブログにtextlintを入れてgit commit時に走るようにした</title>
+      <link>https://mom0tomo.github.io/post/textlint_git_hooks/</link>
+      <pubDate>Tue, 02 Apr 2019 00:07:58 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/textlint_git_hooks/</guid>
+      <description>はじめに 静的サイトジェネレータhugoを使っているブログでtypoやスペルミスを繰り返してしまっていたのでtextlintを入れることにしま</description>
+    </item>
     
     <item>
       <title>GitHubのhubを使ってコマンドラインからリポジトリを作る</title>
