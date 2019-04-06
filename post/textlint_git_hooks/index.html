@@ -62,7 +62,7 @@
                     </div>
                     <h2 class="headline">
                     Apr 2, 2019 00:07
-                    · 892 words
+                    · 936 words
                     · 2 minutes read
                       <span class="tags">
                       
@@ -100,7 +100,10 @@
 
 <p>詳しい使い方についてはcommitterである@azuさんのブログが詳しいです。</p>
 
-<p><a href="https://efcl.info/2015/09/10/introduce-textlint/" target="_blank">textlintで日本語の文章をチェックする</a></p>
+<ul>
+<li><a href="https://efcl.info/2015/09/10/introduce-textlint/" target="_blank">textlintで日本語の文章をチェックする</a></li>
+<li><a href="https://efcl.info/2016/07/13/textlint-rule-preset-ja-technical-writing/" target="_blank">技術文書を書くためのtextlint校正ルールセット</a></li>
+</ul>
 
 <hr />
 
@@ -126,7 +129,12 @@ v11.2.3
 
 <p><br></p>
 
-<p><code>.textlintrc</code>にルールを追加します。技術ブログを書く際に便利な<code>preset-ja-technical-writing</code>を追加します。</p>
+<p>技術文書向けのtextlintルールプリセットである<a href="https://github.com/textlint-ja/textlint-rule-preset-ja-technical-writing" target="_blank">preset-ja-technical-writing</a>を導入します。</p>
+
+<pre><code class="language-shell">$ npm install textlint-rule-preset-ja-technical-writing --save-dev
+</code></pre>
+
+<p><code>.textlintrc</code>にルールを追加します。</p>
 
 <pre><code class="language-shell">{
   &quot;filters&quot;: {},
