@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/atcorder_begginer/</loc>
+    <lastmod>2019-04-28T12:57:25+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/blog_mentaling_by_kakakakakku/</loc>
     <lastmod>2019-04-11T19:30:40+09:00</lastmod>
   </url>
@@ -269,6 +274,12 @@
   </url>
   
   <url>
+    <loc>https://mom0tomo.github.io/tags/atcorder/</loc>
+    <lastmod>2019-04-28T12:57:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/tags/blog/</loc>
     <lastmod>2019-04-11T19:30:40+09:00</lastmod>
     <priority>0</priority>
@@ -371,7 +382,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-04-11T19:30:40+09:00</lastmod>
+    <lastmod>2019-04-28T12:57:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -431,7 +442,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-04-11T19:30:40+09:00</lastmod>
+    <lastmod>2019-04-28T12:57:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
