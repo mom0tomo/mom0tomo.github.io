@@ -62,8 +62,8 @@
                     </div>
                     <h2 class="headline">
                     May 10, 2019 19:36
-                    · 888 words
-                    · 2 minutes read
+                    · 1003 words
+                    · 3 minutes read
                       <span class="tags">
                       
                       
@@ -83,7 +83,13 @@
 <ul>
 <li><a href="#起こったこと">起こったこと</a></li>
 <li><a href="#原因と対処法">原因と対処法</a></li>
-<li><a href="#なぜこの仕様なのだろう">なぜこの仕様なのだろう</a></li>
+<li><a href="#なぜこの仕様なのだろう">なぜこの仕様なのだろう</a>
+<ul>
+<li>
+<ul>
+<li><a href="#追記">追記</a></li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -190,6 +196,23 @@ end
 <pre><code class="language-ruby">conn = Faraday.new(:url =&gt; 'http://www.example.com')
 response = conn.get '/users' # GET http://www.example.com/users'
 </code></pre>
+
+<h4 id="追記">追記</h4>
+
+<p>Faradayの面白い仕様（先頭スラッシュにするとバスを削除しちゃうやつ）、issueあげたらREADMEに挙動を追記してくれました！</p>
+
+<p><div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://github.com/lostisland/faraday/issues/976" data-iframely-url="//cdn.iframe.ly/TkSSFpA"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script></p>
+
+<p>README:</p>
+
+<pre><code class="language-ruby">conn = Faraday.new(:url =&gt; 'http://www.example.com/api')
+response = conn.get 'users'                 # GET http://www.example.com/api/users'
+
+# You can override the path from the connection initializer by using an absolute path
+response = conn.get '/users'                # GET http://www.example.com/users'
+</code></pre>
+
+<p>これでもう間違えない。</p>
 
                 </section>
             </article>
