@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/golang101/</loc>
+    <lastmod>2019-07-20T21:45:57+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/capybara_selenium_rspec_checkbox/</loc>
     <lastmod>2019-07-10T00:13:50+09:00</lastmod>
   </url>
@@ -337,7 +342,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/event/</loc>
-    <lastmod>2019-05-18T21:14:44+09:00</lastmod>
+    <lastmod>2019-07-20T21:45:57+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -361,7 +366,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/go/</loc>
-    <lastmod>2019-05-18T21:14:44+09:00</lastmod>
+    <lastmod>2019-07-20T21:45:57+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -397,7 +402,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-07-10T00:13:50+09:00</lastmod>
+    <lastmod>2019-07-20T21:45:57+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -457,7 +462,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-07-10T00:13:50+09:00</lastmod>
+    <lastmod>2019-07-20T21:45:57+09:00</lastmod>
     <priority>0</priority>
   </url>
   

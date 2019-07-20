@@ -1,0 +1,240 @@
+    <!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		
+		<meta name="description" content="@nasa9084氏が講師として開催したGolang101というイベントにTAとして参加してきました。ふだんWomenWhoGoTokyoのスタッフとして初心者向けの勉強会のスタッフをしていますが、それ以外のコミュニティでTAをするのは初めてだったので、勉強になりました。">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Golang 101 #1でTeaching Assistantをした &middot; mom0tomo</title>
+		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/style.css">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/monosocialiconsfont.css">
+		
+
+		
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/custom.css">
+		
+
+		<script type="text/javascript" src="http://s.hatena.ne.jp/js/HatenaStar.js"></script>
+		<script type="text/javascript">
+			Hatena.Star.Token = '439b2988ff9e3560541978cfebab857d59ac4047';
+			Hatena.Star.SiteConfig = {
+				entryNodes: {
+					'section#wrapper': {
+						uri: 'div.posted a',
+						title: 'h1',
+						container: 'span.hatena-star'
+					}
+				}
+			}
+		</script>
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://mom0tomo.github.io/'> <span class="arrow">← </span>Home</a>
+	
+	<a href='https://mom0tomo.github.io/post'>Archives</a>
+	<a href='https://mom0tomo.github.io/tags'>Tag</a>
+	<a href='https://mom0tomo.github.io/about'>About</a>
+	<a href='https://mom0tomo.github.io/index.xml' class="symbol" style="font-size:15px;">rss</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        Golang 101 #1でTeaching Assistantをした
+                    </h1>
+                    <div class="posted" style="display:none;">
+                      <a href="https://mom0tomo.github.io/post/golang101/">Golang 101 #1でTeaching Assistantをした</a>
+                    </div>
+                    <h2 class="headline">
+                    Jul 20, 2019 21:45
+                    · 1974 words
+                    · 4 minutes read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://mom0tomo.github.io/tags/go">Go</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/event">event</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#はじめに">はじめに</a></li>
+<li><a href="#会の様子">会の様子</a></li>
+<li><a href="#おわりに">おわりに</a></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                <section id="post-body">
+                    
+
+<h2 id="はじめに">はじめに</h2>
+
+<p><a href="https://twitter.com/nasa9084" target="_blank">@nasa9084</a>氏が講師として開催したGolang101というイベントの第1回に、TAとして参加してきました。</p>
+
+<p>ふだんわたしはWomenWhoGoTokyoのスタッフとして初心者向けの勉強会で教えたり教わったりする立場ですが、それ以外のコミュニティでTAをするのは初めてでした。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">スタバの看板があります <a href="https://twitter.com/hashtag/golang101?src=hash&amp;ref_src=twsrc%5Etfw">#golang101</a> <a href="https://t.co/nqdrV2H7DG">pic.twitter.com/nqdrV2H7DG</a></p>&mdash; nasa9084@某某某某(0x1a) (@nasa9084) <a href="https://twitter.com/nasa9084/status/1152416589146288128?ref_src=twsrc%5Etfw">2019年7月20日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">今日は久しぶりに自分以外男の人しかいない勉強会だ</p>&mdash; Momo Watanabe (@mom0tomo) <a href="https://twitter.com/mom0tomo/status/1152437873838137349?ref_src=twsrc%5Etfw">2019年7月20日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<h2 id="会の様子">会の様子</h2>
+
+<p>nasa9084氏による力作！の資料をもとに、Go言語の構文等が基礎から丁寧に説明されました。</p>
+
+<p>最初に書いたHello Worldを出力するプログラムのgo buildはみんな問題なく実行できて、開発環境構築で詰まった人もおらず順調な滑り出しでした。みんなちゃんと事前準備してきてえらい。</p>
+
+<p>型推論ができる <code>:=</code>演算子がよく利用されることについて「型を明示的に書いた方がよいのではないか？」という質問がありましたが、この演算子を用いた宣言と代入を行えるのは関数内だけなので、何もしなくてもスコープは限定的になるので問題ないと説明してもらいました。確かにそうだ。</p>
+
+<p>また講義前半の質問タイムでは、sliceについての質問が複数挙がりました。slice、言葉の説明だけで理解するのは難しいですよね&hellip;可変長の配列として使うことが多く、使ってみると意外と理解しやすいので、<a href="https://play.golang.org/" target="_blank">the go playground</a>でいろいろ試してみるのがおすすめです。</p>
+
+<p>ちなみにわたしも「sliceは参照渡しなので、sliceに新しく値を代入すると背後にある（Sliceの元になっている）配列の値も変わる」というのを理解するために、playgroundで実験しました。</p>
+
+<p><a href="https://play.golang.org/p/80k2ohNW7LT" target="_blank">https://play.golang.org/p/80k2ohNW7LT</a></p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+  var ns2 = []int{10, 20, 30, 40, 50}
+  fmt.Println(ns2) // [10 20 30 40 50]
+
+  ns3 := ns2[1:2]
+  fmt.Println(ns3) // [20]
+  
+  ns3[0] = 100
+  fmt.Println(ns3) // [100]
+  
+  fmt.Println(ns2) // [10 100 30 40 50]
+}
+</code></pre>
+
+<p>資料に添付されているplaygroundリンク内のプログラムを書き換えて実行しても元の内容は破棄されません。そしてシェアするときには新たにリンクが発行されるので、気楽に使ってみるのがオススメです。</p>
+
+<hr />
+
+<p>またポインタ型の話では、最初に理解しておくとつまずかないポイントとして「ポインタは定義するときも*を使用し、ポインタから値をとるときも*を使用する」ので混乱しがちだから気をつけようという解説がありました。</p>
+
+<p>そしてGoのゼロ値のお話。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">また出てきたゼロ値！コンポジット型（構造体とか）のゼロ値についてもここに書いてあるよ<a href="https://t.co/n2iOP1QM1G">https://t.co/n2iOP1QM1G</a><a href="https://twitter.com/hashtag/golang101?src=hash&amp;ref_src=twsrc%5Etfw">#golang101</a></p>&mdash; Momo Watanabe (@mom0tomo) <a href="https://twitter.com/mom0tomo/status/1152456089746591745?ref_src=twsrc%5Etfw">2019年7月20日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>さらにオブジェクト指向の言語などではおなじみのclassがGoにはなくて、代わりに構造体を使うというお話。</p>
+
+<p>このあたりから実際に自分で書いて振り返りしてみるとよさそうな内容になってきました。ポインタやslice、構造体などはthe go playgroundでいろいろ書き換えて実行してみると、一気に身近になると思います。</p>
+
+<hr />
+
+<p>続くハンズオンでは、コマンドライン引数から値を取得してFizzBuzzしてみようという課題をみんなでやってみました。</p>
+
+<p>コマンドライン引数の取得方法や、割り算して余りを出すための演算子、strconv.Atoiは戻り値が2つあること、switchはデフォルトでbreakすること、forの書き方など、初心者がハマるポイントがたくさん詰まっていてTAとして張り切ってヘルプできるとても良い課題でした。</p>
+
+<p>早く終わった人は追加実装もしていました。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">課題1のポイント：<br>- 割り算してあまりを返すには%を使う<br>- flag.Arg()を取得する前にはflag.Parse()するのを忘れずに<br>- strconv.Atoiは戻り値が二つある（文字列からコンバートした数値と、err）<br>- 戻り値が複数ある場合はnum, err := strconv.Atoiみたいに書ける<br>  <a href="https://twitter.com/hashtag/golang101?src=hash&amp;ref_src=twsrc%5Etfw">#golang101</a></p>&mdash; Momo Watanabe (@mom0tomo) <a href="https://twitter.com/mom0tomo/status/1152486283605762048?ref_src=twsrc%5Etfw">2019年7月20日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>ほんとうはこの後もアプリケーションをつくってみるハンズオン課題があったのですが、やはり４時間では尺が足りない、ということで各自持ち帰ってやってみることになりました。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">課題を解いてみて質問があったら<a href="https://twitter.com/nasa9084?ref_src=twsrc%5Etfw">@nasa9084</a> 氏にDM・メンションしてみよう！<a href="https://twitter.com/hashtag/golang101?src=hash&amp;ref_src=twsrc%5Etfw">#golang101</a></p>&mdash; Momo Watanabe (@mom0tomo) <a href="https://twitter.com/mom0tomo/status/1152494188442734592?ref_src=twsrc%5Etfw">2019年7月20日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<h2 id="おわりに">おわりに</h2>
+
+<p>すごく楽しかったです！</p>
+
+<p>公務員からプログラマになるまで寄り道しながらよちよち歩いてきた自分が、イベントでTAをやることになるとは感慨深いです。</p>
+
+<p>そして今回のイベントはnasa9084氏のていねいな説明のおかげで改めてGoの理解が進みました。すばらしい資料と課題をありがとうございました。</p>
+
+<p>フィードバック次第で次回も開催してくれるかもしれないので、参加者のみなさんはぜひイベント後アンケートにもお答えくださいね！</p>
+
+                </section>
+            </article>
+            <div class="social">
+  <div class="social-inner">
+    
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="mom0tomo" data-count="horizontal" lang="en">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      
+      <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+      
+      <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a><script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+    
+    <span class="hatena-star"></span>
+  </div>
+</div>
+
+            
+
+<div class="related-posts">
+  <h4>関連記事</h4>
+  <ul>
+    
+    <li><a href="https://mom0tomo.github.io/post/gocon_2019_spring/">Gocon 2019 spring 発表資料まとめ</a></li>
+    
+    <li><a href="https://mom0tomo.github.io/post/golang_tokyo_recruitment/">golang.tokyo#21「Goエンジニアの採用」レポート</a></li>
+    
+    <li><a href="https://mom0tomo.github.io/post/20180913/">GopherCon参加レポート</a></li>
+    
+  </ul>
+</div>
+
+        </section>
+        <script src="https://mom0tomo.github.io/js/jquery-2.2.4.min.js"></script>
+<script src="https://mom0tomo.github.io/js/main.js"></script>
+<script src="https://mom0tomo.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-104531981-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>
