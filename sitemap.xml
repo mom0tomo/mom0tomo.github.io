@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mom0tomo.github.io/post/go-mecab-install/</loc>
+    <lastmod>2019-08-07T15:28:48+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/gophercon2019/</loc>
     <lastmod>2019-08-02T17:51:08+09:00</lastmod>
   </url>
@@ -371,7 +376,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/tags/go/</loc>
-    <lastmod>2019-08-02T17:51:08+09:00</lastmod>
+    <lastmod>2019-08-07T15:28:48+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -406,8 +411,14 @@
   </url>
   
   <url>
+    <loc>https://mom0tomo.github.io/tags/mecab/</loc>
+    <lastmod>2019-08-07T15:28:48+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mom0tomo.github.io/post/</loc>
-    <lastmod>2019-08-02T17:51:08+09:00</lastmod>
+    <lastmod>2019-08-07T15:28:48+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -467,7 +478,7 @@
   
   <url>
     <loc>https://mom0tomo.github.io/</loc>
-    <lastmod>2019-08-02T17:51:08+09:00</lastmod>
+    <lastmod>2019-08-07T15:28:48+09:00</lastmod>
     <priority>0</priority>
   </url>
   
