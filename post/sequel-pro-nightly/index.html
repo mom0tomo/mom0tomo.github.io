@@ -1,0 +1,225 @@
+    <!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Sequel Pro Nightly buildをbrewでインストールできない（IPv6関連のエラー） &middot; mom0tomo</title>
+		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/style.css">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/monosocialiconsfont.css">
+		
+
+		
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/custom.css">
+		
+
+		<script type="text/javascript" src="http://s.hatena.ne.jp/js/HatenaStar.js"></script>
+		<script type="text/javascript">
+			Hatena.Star.Token = '439b2988ff9e3560541978cfebab857d59ac4047';
+			Hatena.Star.SiteConfig = {
+				entryNodes: {
+					'section#wrapper': {
+						uri: 'div.posted a',
+						title: 'h1',
+						container: 'span.hatena-star'
+					}
+				}
+			}
+		</script>
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://mom0tomo.github.io/'> <span class="arrow">← </span>Home</a>
+	
+	<a href='https://mom0tomo.github.io/post'>Archives</a>
+	<a href='https://mom0tomo.github.io/tags'>Tag</a>
+	<a href='https://mom0tomo.github.io/about'>About</a>
+	<a href='https://mom0tomo.github.io/index.xml' class="symbol" style="font-size:15px;">rss</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        Sequel Pro Nightly buildをbrewでインストールできない（IPv6関連のエラー）
+                    </h1>
+                    <div class="posted" style="display:none;">
+                      <a href="https://mom0tomo.github.io/post/sequel-pro-nightly/">Sequel Pro Nightly buildをbrewでインストールできない（IPv6関連のエラー）</a>
+                    </div>
+                    <h2 class="headline">
+                    Dec 31, 2019 23:01
+                    · 651 words
+                    · 2 minutes read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://mom0tomo.github.io/tags/go">Go</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/ruby">Ruby</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/career">career</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/event">event</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/english">English</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/rails">Rails</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/js">JS</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/react">React</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#公式の最新版ではmysql8-0-を使えない">公式の最新版ではMySQL8.0 を使えない</a></li>
+<li><a href="#macでipv6-を無効化する">MacでIPv6 を無効化する</a></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                <section id="post-body">
+                    
+
+<h2 id="公式の最新版ではmysql8-0-を使えない">公式の最新版ではMySQL8.0 を使えない</h2>
+
+<p>Sequel Pro 公式の最新版 v1.1.2 で MySQL8.0 が使えない。データベースに接続できなかったり、接続できるようになってもテーブルの情報が表示されなかったりする問題がある。</p>
+
+<p><a href="https://qiita.com/ucan-lab/items/b68db1db931c954da921" target="_blank">Qiita | MySQL8.0.x に Sequel Pro で接続する</a></p>
+
+<p>この問題を解決するためにはナイトリービルド版をインストールする必要がある。Macでのナイトリービルド版のインストール方法はふたつある。</p>
+
+<ul>
+<li><p>公式サイトからインストールする
+<a href="https://sequelpro.com/test-builds" target="_blank">https://sequelpro.com/test-builds</a></p></li>
+
+<li><p>Homebrewからインストールする</p>
+
+<pre><code>$ brew cask install homebrew/cask-versions/sequel-pro-nightly
+</code></pre></li>
+</ul>
+
+<p>brewでインストールする方法を試したところエラーになった。</p>
+
+<pre><code>$ brew cask install homebrew/cask-versions/sequel-pro-nightly
+
+Updating Homebrew...
+Error: Download failed on Cask 'sequel-pro-nightly' with message: Failed to open TCP connection to sequelpro.com:443 (Hostname not known: sequelpro.com)
+</code></pre>
+
+<p>関連するissueが上がっている。</p>
+
+<p><a href="https://github.com/Homebrew/homebrew-cask/issues/52773" target="_blank">Error when installing <code>sequel-pro-nightly</code> #52773</a></p>
+
+<p>IPv6を介したダウンロードができないためこのエラーが発生するそうだ。RubyのURIライブラリでIPv6がサポートされていないことが原因とのこと。</p>
+
+<p>FixしたというPRが2018/12/4にマージされているが（<code>require 'resolv-replace'</code>している）、2019年末現在もエラーが発生している。</p>
+
+<p><a href="https://github.com/Homebrew/homebrew-cask-versions/pull/6626" target="_blank">fixed ipv6 download issue sequel-pro-nightly #6626</a></p>
+
+<p>IPv6のアドレスを指定する場合はブラケット <code>[]</code> でアドレスの文字列を囲む必要があり、こちらに対応してもらわないといけないようだ。</p>
+
+<p><a href="https://ruby-doc.org/stdlib-2.6.1/libdoc/uri/rdoc/URI/Generic.html" target="_blank">ruby-doc.org | URI::Generic</a></p>
+
+<h2 id="macでipv6-を無効化する">MacでIPv6 を無効化する</h2>
+
+<p>とりあえずの対応として、Githubのissueに書いてあった方法を使ってMacでIPv6 を無効化した。</p>
+
+<pre><code>$ networksetup -setv6off Wi-Fi
+</code></pre>
+
+<p>有効化する場合のオプションはちょっとトリッキー。<code>on</code> ではなく <code>automatic</code> 。</p>
+
+<pre><code>$ networksetup -setv6automatic Wi-Fi
+</code></pre>
+
+<pre><code>$ brew cask audit sequel-pro-nightly
+
+audit for sequel-pro-nightly: passed
+</code></pre>
+
+<p>これでとりあえずダウンロードできるようになる。</p>
+
+                </section>
+            </article>
+            <div class="social">
+  <div class="social-inner">
+    
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="mom0tomo" data-count="horizontal" lang="en">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      
+      <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+      
+      <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a><script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+    
+    <span class="hatena-star"></span>
+  </div>
+</div>
+
+            
+
+<div class="related-posts">
+  <h4>関連記事</h4>
+  <ul>
+    
+    <li><a href="https://mom0tomo.github.io/post/20180913/">GopherCon参加レポート</a></li>
+    
+    <li><a href="https://mom0tomo.github.io/post/gophercon2019/">Gophercon2019に行ってきました</a></li>
+    
+    <li><a href="https://mom0tomo.github.io/post/golang101/">Golang 101 #1でTeaching Assistantをした</a></li>
+    
+  </ul>
+</div>
+
+        </section>
+        <script src="https://mom0tomo.github.io/js/jquery-2.2.4.min.js"></script>
+<script src="https://mom0tomo.github.io/js/main.js"></script>
+<script src="https://mom0tomo.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-104531981-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>
