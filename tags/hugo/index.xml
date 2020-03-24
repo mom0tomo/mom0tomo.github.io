@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on mom0tomo</title>
+    <link>https://mom0tomo.github.io/tags/hugo/</link>
+    <description>Recent content in Hugo on mom0tomo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 21 Jan 2019 20:18:22 +0900</lastBuildDate>
+    
+	<atom:link href="https://mom0tomo.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HugoでRelated Content(関連記事)を表示する</title>
+      <link>https://mom0tomo.github.io/post/hugo_related_posts/</link>
+      <pubDate>Mon, 21 Jan 2019 20:18:22 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/hugo_related_posts/</guid>
+      <description>はじめに このブログはGo製のブログジェネレータHugoを使って運用しています。 ブログによくある「See Also」的なものが表示できないかと思</description>
+    </item>
+    
+    <item>
+      <title>ブログをHugo&#43;wrecker&#43;GitHub Pagesに移行しました</title>
+      <link>https://mom0tomo.github.io/post/20170826/</link>
+      <pubDate>Sat, 26 Aug 2017 18:29:10 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170826/</guid>
+      <description>Go製のジェネレーターhugoでブログをつくり、werckerでCIデプロイしたかったため、GitHub Pagesでサイトをつくりました。 技</description>
+    </item>
+    
+  </channel>
+</rss>

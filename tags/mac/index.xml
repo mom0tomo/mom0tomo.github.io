@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on mom0tomo</title>
+    <link>https://mom0tomo.github.io/tags/mac/</link>
+    <description>Recent content in Mac on mom0tomo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 26 Dec 2017 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://mom0tomo.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【2017年末】新しいMacのセットアップと入れたアプリ</title>
+      <link>https://mom0tomo.github.io/post/20171226/</link>
+      <pubDate>Tue, 26 Dec 2017 00:00:00 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20171226/</guid>
+      <description>dotfiles gitで管理しており、install.shでシンボリックリンクを貼るだけ。簡単便利でおすすめです。 $ git clone https://github.com/mom0tomo/dotfiles.git homebrew なにはなくともhomebrew</description>
+    </item>
+    
+  </channel>
+</rss>

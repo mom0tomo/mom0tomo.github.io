@@ -1,0 +1,381 @@
+    <!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="mom0tomo">
+		
+		<meta name="generator" content="Hugo 0.26" />
+		<title>eureka Meetup #06 -Go! Go! Go!- &middot; mom0tomo</title>
+		<link rel="shortcut icon" href="https://mom0tomo.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/style.css">
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/highlight.css">
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/custom.css">
+		
+
+		
+		<link rel="stylesheet" href="https://mom0tomo.github.io/css/font-awesome.min.css">
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://mom0tomo.github.io/' style="color: #b5bcc1;">Home</a>
+	
+	<a href='https://mom0tomo.github.io/post'>Archive</a>
+	<a href='https://mom0tomo.github.io/tags'>Tags</a>
+
+	
+</nav>
+
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>
+                        eureka Meetup #06 -Go! Go! Go!-
+                    </h1>
+                    <h2 class="headline">
+                    Aug 12, 2017 14:57
+                    · 2754 words
+                    · 6 minutes read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://mom0tomo.github.io/tags/go">Go</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/golang">golang</a>
+                          
+                              <a href="https://mom0tomo.github.io/tags/meetup">meetup</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                <section id="post-body">
+                    
+
+<p><a href="https://eure.connpass.com/event/61778/">eurekaさんのGoエンジニアによるミートアップ</a>に参加しました。
+懇親会には参加できませんでしたが、熱々のpizzaとお酒をご用意いただきました。</p>
+
+<p>3人のサーバーサイドエンジニアの方によるセッションの内容をまとめました。</p>
+
+<hr />
+
+<h2 id="goのパッケージ構成について">Goのパッケージ構成について</h2>
+
+<p><a href="https://speakerdeck.com/kaneshin/go-package-guidelines">Sildeはこちら</a>
+<a href="https://twitter.com/kaneshin0120">@kaneshin0120</a>さん</p>
+
+<h3 id="goはパッケージ構成悩みがち">Goはパッケージ構成悩みがち</h3>
+
+<ul>
+<li>経験言語に引っ張られる</li>
+<li>Goはシンプル故に言語化して説明するのが難しい</li>
+<li>パッケージの命名規則は <a href="https://blog.golang.org/package-names">The Go Blog</a>に書いてある</li>
+</ul>
+
+<h3 id="抽象レイヤーはインターフェースの定義のみを書いて軽く薄くするの-がいい">抽象レイヤーはインターフェースの定義のみを書いて軽く薄くするの    がいい</h3>
+
+<ul>
+<li>具象レイヤはインターフェースを満たしていくように書くといい</li>
+<li>ioパッケージはインターフェースの定義の仕方がきれいなので、参考になる</li>
+</ul>
+
+<h3 id="上位に抽象レイヤ-下位に具象レイヤを配置する場合が多い">上位に抽象レイヤ、下位に具象レイヤを配置する場合が多い</h3>
+
+<ul>
+<li>上位に具象レイヤ、下位に抽象レイヤというパターンも稀にある
+
+<ul>
+<li>ストラテジーパターンみたいな感じ</li>
+<li>外部に公開するライブラリなど。個人の開発ではあまりない</li>
+<li>具象レイヤの振る舞いを変えたい時に便利</li>
+</ul></li>
+<li>凝ったデザインパターンはGoでは好まれない</li>
+</ul>
+
+<h3 id="一個のパッケージで作っておいて何処かのタイミングで細分化するのがやりやすい">一個のパッケージで作っておいて何処かのタイミングで細分化するのがやりやすい</h3>
+
+<ul>
+<li>著名なパッケージであるgolag/dep(ベンダリングツール)も、バージョンアップ時に一気にパッケージ構成を変えた</li>
+</ul>
+
+<h3 id="野良パッケージではなく-標準パッケージを参考にすること">野良パッケージではなく、標準パッケージを参考にすること！！</h3>
+
+<h3 id="感想">感想</h3>
+
+<p>いままで聞いたことのなかったパッケージ構成のパターンを実例を交えながら見せていただき、勉強になりました。</p>
+
+<p>会場からの質問で、ioパッケージの他に参考になる標準パッケージは？というものがありました。cryptパッケージがよいとのお話でした。</p>
+
+<hr />
+
+<h2 id="標準ライブラリのコードリーディングで学ぶgo">標準ライブラリのコードリーディングで学ぶGo</h2>
+
+<p><a href="http://yu81.github.io/">Yusuku Usui</a>さん
+いま話題の<a href="https://www.oreilly.co.jp/books/9784873117911/">SRE</a>のチームでGoをたくさん書いていらっしゃる。</p>
+
+<h3 id="goは標準ライブラリの可読性が高い">Goは標準ライブラリの可読性が高い</h3>
+
+<ul>
+<li>可読性とパフォーマンスのバランスに優れている</li>
+<li>言語仕様が小さくシンプルなため
+compressパッケージを例に、実装例を追いながらコードリーディングの方法を紹介していく</li>
+</ul>
+
+<h3 id="構文解析をしてくれるプラグインがあると良い">構文解析をしてくれるプラグインがあると良い</h3>
+
+<ul>
+<li>Goglandか、InteliJ + プラグインがいい</li>
+<li>ブラウザベースだと<a href="https://about.sourcegraph.com/">Sourcegraph</a>も良い</li>
+</ul>
+
+<h3 id="コードリーディングで得られるもの">コードリーディングで得られるもの</h3>
+
+<ul>
+<li>Goの考え方やイディオムが学べる</li>
+<li>基本的なアルゴリズムをアプリケーションコードのように(軽めに)読める</li>
+</ul>
+
+<h3 id="感想-1">感想</h3>
+
+<p>Goは標準パッケージや有名どころのパッケージが初心者でも大変読みやすいのが素晴らしいと思います。
+コードリーディングを行うタイミングや、続けるモチベーションの保ち方について懇親会でお聞きしたかったのですが、聞きそびれてしまったのが残念でした。</p>
+
+<p>またcompressパッケージの他に、API Clientだったらaws-sdk-goが良いお手本になるのでリーディングするのに良いと紹介いただきました。</p>
+
+<hr />
+
+<h2 id="goぽいんとれっすん">Goぽいんとれっすん</h2>
+
+<p><a href="https://twitter.com/evalphobia">@evalphobia</a>さん
+いつもWomen Who Go Tokyoの先生としてお世話になっている森川さん。SREチーム。</p>
+
+<h3 id="推奨エディタを決めておく">推奨エディタを決めておく</h3>
+
+<ul>
+<li>セットアップ手順書が共有できて、共通設定ができる</li>
+</ul>
+
+<h3 id="コメントはちゃんと書く">コメントはちゃんと書く</h3>
+
+<ul>
+<li>ちゃんと書いておけば関数内部のコメントはなくても良い</li>
+<li>日本語話者の多い会社では、英語のコメントは読めない&amp;書き間違いの原因になりがちなのでやめたほうがいい</li>
+</ul>
+
+<h3 id="golintを使う">golintを使う</h3>
+
+<ul>
+<li>しっかり対応するなら英語コメントの下に日本語コメントを書くと良い</li>
+</ul>
+
+<h3 id="テストをちゃんと書く">テストをちゃんと書く</h3>
+
+<ul>
+<li>書く文化を作る。テストコードがなかったらPRで指摘する</li>
+<li>CIの設定をしておく</li>
+<li>実行方法を統一しておく
+
+<ul>
+<li>make, gulp, bazel</li>
+<li>CIを変更する時にも簡単になるのでよい</li>
+</ul></li>
+<li>tips
+
+<ul>
+<li>テーブルドリブンテスト</li>
+<li>サブテスト</li>
+<li>ゴールデンファイル</li>
+</ul></li>
+<li>標準パッケージのテストとwebサービスのテストは形式が異なるので、そのまま参考になるとは限らない</li>
+<li>外部パッケージを参考にするなら、メンテナンスされていて、大きすぎたり歴史が古すぎないものがよい</li>
+<li>BDDは不要
+
+<ul>
+<li>遅くなる</li>
+<li>テーブルドリブンテストの可読性が高いので不要</li>
+</ul></li>
+<li>テストの目的はあくまでバグ検知・高品質リリース</li>
+<li>可読性とメンテナンス性は気にする必要がある</li>
+</ul>
+
+<h3 id="ciはなんでもいい">CIはなんでもいい</h3>
+
+<ul>
+<li>go fmt, go vet, golintは必ず入れる
+
+<ul>
+<li><a href="https://twitter.com/haya14busa">@haya14busa</a>さん作の<a href="http://haya14busa.com/reviewdog/">reviewdog</a>を入れると良い</li>
+</ul></li>
+</ul>
+
+<h3 id="並行処理-concurrensyについて">並行処理 Concurrensyについて</h3>
+
+<ul>
+<li>あまり使っていない</li>
+<li>-raceオプションをつけるとレースディテクションができる</li>
+<li>ボトルネックがあるときに使う</li>
+<li>ネットワーク処理周りと相性がいい</li>
+<li>ベンチマークをとって検証すること</li>
+<li>バックグランドデーモンでたまに使う</li>
+<li>バグ混入の可能性が高くなるのでむやみには使わない</li>
+</ul>
+
+<h3 id="ベンダリングについて">ベンダリングについて</h3>
+
+<ul>
+<li>早めに入れる</li>
+<li>新しくやるならdepかなあ</li>
+<li>何を使っても年２回くらいベンダリングでつらいときはある、仕方ない</li>
+<li>大きめのライブラリは内部用アダプタを作りましょう</li>
+</ul>
+
+<h3 id="情報共有の方法">情報共有の方法</h3>
+
+<ul>
+<li>キャッチアップと共有は難しい
+
+<ul>
+<li>更新が早い</li>
+<li>英語の情報が多い</li>
+<li>本は古い</li>
+<li>日本語の情報インフルエンサー</li>
+</ul></li>
+<li>ビジネスナレッジの共有方法
+
+<ul>
+<li>Qiita, Confulence, Git book&hellip;なんでもいい</li>
+<li>OWNERSファイルを活用する
+
+<ul>
+<li>「この人に聞いたらいい」をまとめるファイル</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="パッケージ構成">パッケージ構成</h3>
+
+<ul>
+<li>プロジェクトの規模や性質によってまちまち</li>
+<li>細分化しすぎない。テストが遅くなる
+
+<ul>
+<li><a href="https://github.com/olivere/elastic">olivere/elastic</a>は細分化されている例。サービスでここまで細分化すると大変</li>
+</ul></li>
+<li>統一しすぎるのもだめ。あんばいが大事
+
+<ul>
+<li>機能ベース、ライブラリベースで分けるといい</li>
+</ul></li>
+<li>パッケージ名は簡潔にする。呼び出す時に大変にならないように</li>
+<li>ファイル名は多少冗長でも良い。IDEで検索する時に便利
+
+<ul>
+<li>Goはパッケージベースなのでファイル名に自由さがある</li>
+</ul></li>
+</ul>
+
+<h3 id="pprof-trace">pprof/trace</h3>
+
+<ul>
+<li><a href="https://golang.org/pkg/net/http/pprof/">pprof</a>は全員が使えるようになるべき！
+
+<ul>
+<li>CPUやメモリの使用率が見られる。デバッグがしやすい</li>
+<li>goroutineを追加したときのメモリリークの検知に使える</li>
+</ul></li>
+<li><a href="https://golang.org/cmd/trace/">trace機構</a>は早い段階で入れて追いたほうがいい</li>
+<li>デバッグはあまり使わない。traceの方がいい</li>
+</ul>
+
+<h3 id="正しさよりも統一性が重要">正しさよりも統一性が重要</h3>
+
+<ul>
+<li>Goの正しさよりも、多少不器用でもサービスの統一性があった方がいい</li>
+</ul>
+
+<h3 id="感想-2">感想</h3>
+
+<p>eurekaさんSREチームの開発体制や、チーム開発で大事にしていることのあらましがわかる、ボリューミーかつ濃厚な内容でした。
+明日からすぐに活かせそうな知見を惜しげも無く発表していただき感謝ばかりです。</p>
+
+<p>発表全体のまとめとして、チーム開発のベストプラクティスに従うこと、特有の癖のある部分はきちんと理解してルールを決めておくことの重要性を改めて強調されていたのが印象的でした。
+Goに限ったことではなく、チームでコードの品質を良いものにしていくために、あらゆる場面でていねいなアプローチをとっていらっしゃるんだなということを感じることができました。</p>
+
+                </section>
+            </article>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.facebook.com/mom0tomo">
+        <i class="fa fa-facebook-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://github.com/mom0tomo">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://twitter.com/mom0tomo">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2017 mom0tomo
+    
+    </p>
+</footer>
+
+        </section>
+
+        <script src="https://mom0tomo.github.io/js/jquery-2.2.4.min.js"></script>
+<script src="https://mom0tomo.github.io/js/main.js"></script>
+<script src="https://mom0tomo.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '$GA_ID', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+    </body>
+</html>

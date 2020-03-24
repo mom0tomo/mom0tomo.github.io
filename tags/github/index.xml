@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on mom0tomo</title>
+    <link>https://mom0tomo.github.io/tags/github/</link>
+    <description>Recent content in Github on mom0tomo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 31 Mar 2019 20:31:10 +0900</lastBuildDate>
+    
+	<atom:link href="https://mom0tomo.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GitHubのhubを使ってコマンドラインからリポジトリを作る</title>
+      <link>https://mom0tomo.github.io/post/github_hub/</link>
+      <pubDate>Sun, 31 Mar 2019 20:31:10 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/github_hub/</guid>
+      <description>Githubのコマンドラインツール、hubがとても便利です。 勉強用のコードなど、ちょっと書いてからGitHubに保存することがよくあります。</description>
+    </item>
+    
+    <item>
+      <title>リポジトリを削除するとGitHubの草は禿げる</title>
+      <link>https://mom0tomo.github.io/post/github_glass_become_bald/</link>
+      <pubDate>Fri, 22 Mar 2019 16:42:20 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/github_glass_become_bald/</guid>
+      <description>フォルダ整理の感覚でいらなくなったリポジトリをGitHubから削除していたのですが、リポジトリを削除するとせっかく生やした草もまとめて禿げる</description>
+    </item>
+    
+  </channel>
+</rss>

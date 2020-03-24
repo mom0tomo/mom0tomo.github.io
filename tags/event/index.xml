@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Event on mom0tomo</title>
+    <link>https://mom0tomo.github.io/tags/event/</link>
+    <description>Recent content in Event on mom0tomo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 02 Aug 2019 17:51:08 +0900</lastBuildDate>
+    
+	<atom:link href="https://mom0tomo.github.io/tags/event/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gophercon2019に行ってきました</title>
+      <link>https://mom0tomo.github.io/post/gophercon2019/</link>
+      <pubDate>Fri, 02 Aug 2019 17:51:08 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/gophercon2019/</guid>
+      <description>カリフォルニア州サンディエゴで開催されたGopherCon2019に行ってきました。 サンディエゴはとても過ごしやすい街で、気候は日本の秋のよ</description>
+    </item>
+    
+    <item>
+      <title>Golang 101 #1でTeaching Assistantをした</title>
+      <link>https://mom0tomo.github.io/post/golang101/</link>
+      <pubDate>Sat, 20 Jul 2019 21:45:57 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/golang101/</guid>
+      <description>はじめに @nasa9084氏が講師として開催したGolang101というイベントの第1回に、TAとして参加してきました。 ふだんわたしはWom</description>
+    </item>
+    
+    <item>
+      <title>Gocon 2019 spring 発表資料まとめ</title>
+      <link>https://mom0tomo.github.io/post/gocon_2019_spring/</link>
+      <pubDate>Sat, 18 May 2019 21:14:44 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/gocon_2019_spring/</guid>
+      <description>はじめに GoCon2019 springでスタッフをしてきました。最大４ルームにて発表が行われた大規模な開催でした。 全ての発表を見ることができないのが残念でし</description>
+    </item>
+    
+    <item>
+      <title>golang.tokyo#21「Goエンジニアの採用」レポート</title>
+      <link>https://mom0tomo.github.io/post/golang_tokyo_recruitment/</link>
+      <pubDate>Mon, 28 Jan 2019 19:35:51 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/golang_tokyo_recruitment/</guid>
+      <description>golang.tokyoも21回目！ 今回のgolang.tokyoは「Goエンジニアの採用」がテーマでした。 公開が確認できたスライドについて</description>
+    </item>
+    
+    <item>
+      <title>GopherCon参加レポート</title>
+      <link>https://mom0tomo.github.io/post/20180913/</link>
+      <pubDate>Thu, 13 Sep 2018 16:15:58 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20180913/</guid>
+      <description>会社のエンジニアブログに、GopherConの参加レポートを寄稿しました。 https://made.livesense.co.jp/entry/2018/09/13/115705</description>
+    </item>
+    
+    <item>
+      <title>明日から日常会話で使おうと思った英語の相槌</title>
+      <link>https://mom0tomo.github.io/post/20180830/</link>
+      <pubDate>Wed, 29 Aug 2018 17:43:43 -0600</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20180830/</guid>
+      <description>GopherConで英語でたくさん会話して、いますぐ覚えて使いたいと思ったイディオムがいくつかあったのでメモします。 ふだん自分がSlackの</description>
+    </item>
+    
+    <item>
+      <title>golang.tokyo #17 -テストの話- 参加レポート</title>
+      <link>https://mom0tomo.github.io/post/20180821/</link>
+      <pubDate>Tue, 21 Aug 2018 22:57:01 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20180821/</guid>
+      <description>freeeさんで開催されたgolang.tokyoに参加しました。 久しぶりのgolang.tokyo！ freeeさんは最近マイクロサービス化</description>
+    </item>
+    
+    <item>
+      <title>Wedding Park TECH TALK #2 GolangでLTをしました</title>
+      <link>https://mom0tomo.github.io/post/20180226/</link>
+      <pubDate>Mon, 26 Feb 2018 13:26:34 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20180226/</guid>
+      <description>#weddingpark_tt Women Who Go Tokyoの@akane_256さんのお誘いでLTをしてきました。 Connpassイベント 後ほどTechブログにも会の様子がアップさ</description>
+    </item>
+    
+    <item>
+      <title>DevFestTokyo2017で登壇しました</title>
+      <link>https://mom0tomo.github.io/post/20171009/</link>
+      <pubDate>Mon, 09 Oct 2017 15:50:36 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20171009/</guid>
+      <description>10/9に青海の国際交流館で開催されたDevFestTokyo2017で、Women Who Go Tokyoコミュニティの代表として登壇しました。 14</description>
+    </item>
+    
+    <item>
+      <title>Eureka English Evening 参加レポート</title>
+      <link>https://mom0tomo.github.io/post/20170828/</link>
+      <pubDate>Mon, 28 Aug 2017 11:22:35 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170828/</guid>
+      <description>#eureka_eee eurekaさんの技術英語のワークショップに参加しました！ 今月はGoの勉強会と合わせて3回もeurekaさんにお邪魔してしまいました&amp;he</description>
+    </item>
+    
+    <item>
+      <title>eureka Meetup #06 -Go! Go! Go!-</title>
+      <link>https://mom0tomo.github.io/post/20170810/</link>
+      <pubDate>Sat, 12 Aug 2017 14:57:16 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170810/</guid>
+      <description>eurekaさんのGoエンジニアによるミートアップに参加しました。 懇親会には参加できませんでしたが、熱々のpizzaとお酒をご用意いただきま</description>
+    </item>
+    
+    <item>
+      <title>golang.tokyo #7 参加レポート</title>
+      <link>https://mom0tomo.github.io/post/20170703/</link>
+      <pubDate>Mon, 03 Jul 2017 22:57:01 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170703/</guid>
+      <description>@インテリジェンスさんのコワーキングスペース Tech play(旧dots) で開催された勉強会の参加メモです。 当日の様子(動画) https://crash.academy/class/105/ 登壇#1 from インテリ</description>
+    </item>
+    
+    <item>
+      <title>「恥ずかしいGo言語」ハンズオン</title>
+      <link>https://mom0tomo.github.io/post/20170606/</link>
+      <pubDate>Tue, 06 Jun 2017 23:58:09 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170606/</guid>
+      <description>『恥ずかしい勉強会』とは 「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」という</description>
+    </item>
+    
+    <item>
+      <title>「最近、Go言語始めました」の会 参加レポート</title>
+      <link>https://mom0tomo.github.io/post/20170605/</link>
+      <pubDate>Mon, 05 Jun 2017 01:07:33 +0900</pubDate>
+      
+      <guid>https://mom0tomo.github.io/post/20170605/</guid>
+      <description>Go言語初心者LT大会といえば、「Goは初心者です(C言語は10年選手)」みたいな猛者ばっかりというイメージで怯えていましたが、今回は人数も</description>
+    </item>
+    
+  </channel>
+</rss>
