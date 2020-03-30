@@ -1,0 +1,46 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="ActiveRecordの代わりにActiveModelを使うモデル設計のパターンがあります。ActiveModelはActiveRecordと違い、attributeのような機能を持っていないので、attr_readerの外でインスタンス変数を定義して対処する必要があります。"><meta name=generator content="Hugo 0.64.0"><title>ActiveModelにおけるattributeの扱い &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico><link rel=stylesheet href=https://mom0tomo.github.io/css/style.css><link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css><link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css><link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css><script type=text/javascript src=http://s.hatena.ne.jp/js/HatenaStar.js></script><script type=text/javascript>Hatena.Star.Token='439b2988ff9e3560541978cfebab857d59ac4047';Hatena.Star.SiteConfig={entryNodes:{'section#wrapper':{uri:'div.posted a',title:'h1',container:'span.hatena-star'}}}</script></head><body><nav class=main-nav><a href=https://mom0tomo.github.io/><span class=arrow>← </span>Home</a>
+<a href=https://mom0tomo.github.io/post>Archives</a>
+<a href=https://mom0tomo.github.io/tags>Tag</a>
+<a href=https://mom0tomo.github.io/about>About</a>
+<a href=https://mom0tomo.github.io/index.xml class=symbol style=font-size:15px>rss</a></nav><section id=wrapper><article class=post><header><h1>ActiveModelにおけるattributeの扱い</h1><div class=posted style=display:none><a href=https://mom0tomo.github.io/post/active_model_attributes/>ActiveModelにおけるattributeの扱い</a></div><h2 class=headline>Feb 4, 2019 22:13
+· 1609 words
+· 4 minutes read
+<span class=tags><a href=https://mom0tomo.github.io/tags/ruby>Ruby</a>
+<a href=https://mom0tomo.github.io/tags/rails>Rails</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#attr_readerのはたらき>attr_readerのはたらき</a><ul><li><a href=#キャストを行う理由>キャストを行う理由</a></li></ul></li><li><a href=#activemodelについて>ActiveModelについて</a></li><li><a href=#activerecordのattribute機能>ActiveRecordのattribute機能</a></li><li><a href=#まとめ>まとめ</a></li></ul></nav></div><section id=post-body><p>※ この記事はRails5.2から導入された<code>ActiveModel::Attributes</code>については記述していません。</p><h2 id=はじめに>はじめに</h2><p>よくあるフォームの実装です。</p><pre><code>class UserForm &lt; ActiveModel::Model
+  WITH_KIDS_OPTIONS = [['こどもの同席あり', true], ['こどもの同席なし', false]].freeze
+
+  attr_reader :name, email
+
+  validates :name, presence: true
+  validates :email, presence: true, email: true
+  validates :with_kids, presence: true, inclusion: { in: [true, false] }
+
+  def save
+    user = User.new(
+      name: name,
+      email: email,
+      with_kids: with_kids
+    )
+    user.save
+  end
+
+  def with_kids
+    ActiveRecord::Type::Boolean.new.cast(@with_kids)
+  end
+end
+</code></pre><p>ActiveModel::ModelをincludeしてFormオブジェクトを定義しています。</p><p>このコードを見たとき、<code>with_kids</code>メソッドを使って<code>@with_kids</code>というインスタンス変数をキャストしている部分が何をやっているのか引っかかったので、丁寧に読んでみました。</p><hr><h2 id=attr_readerのはたらき>attr_readerのはたらき</h2><p><code>attr_reader</code>は、Rubyのメソッドです。</p><p>内部的にインスタンス変数を定義し、クラスやモジュールにインスタンス変数を読み出すことを可能にします。</p><p>下記のコードは <code>attr_reader :name, email</code>と同じ挙動になります。</p><pre><code>Class UserFrom
+  def name
+    @name
+  end
+  def email
+    @email
+  end
+end
+</code></pre><p>はじめに出てきたコードでは、<code>attr_reader</code>でwith_kids属性だけ指定していません。</p><p>その代わり、自分で<code>with_kids</code>メソッドを定義しています。</p><p>つまり、with_kids属性のみ、<code>attr_reader</code>を使わずに独自のメソッドを使ってインスタンス変数を定義しているのです。</p><h3 id=キャストを行う理由>キャストを行う理由</h3><p>では、なぜwith_kidsメソッドでキャストを行なっているのでしょうか？</p><p>キャストしている理由は、UserFormオブジェクトのwith_kids属性がString型に変換されてしまうのを防ぐことが目的です。</p><p>定数 <code>WITH_KIDS_OPTIONS</code>ではvalueをBoolean型で指定しており、それを守りたいのです。</p><p>この処理の背景には、ActiveModelの存在があります。</p><hr><h2 id=activemodelについて>ActiveModelについて</h2><p>今回のコードでは、UserFormというクラスを定義しています。</p><p>これはRailsの<a href=https://railsguides.jp/active_model_basics.html#model%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB>ActiveModel::Model</a>をincludeしています。</p><p>このように、FormなどのオブジェクトをActiveModelを使って切り出し、<a href=https://railsguides.jp/active_record_basics.html>ActiveRecord</a>を使ったモデルが大きくなりすぎないようにする、というリファクタリングのパターンがあります。</p><p><a href=https://codeclimate.com/blog/7-ways-to-decompose-fat-activerecord-models>7 Patterns to Refactor Fat ActiveRecord Models</a></p><p>翻訳版は<a href=https://techracho.bpsinc.jp/hachi8833/2013_11_19/14738>こちら</a></p><hr><h2 id=activerecordのattribute機能>ActiveRecordのattribute機能</h2><p>ActiveRecordにあってActiveModelにないものが、<code>attribute</code>の機能です。</p><p>ActiveRecordでは、<code>attribute</code>機能を使って属性の型の指定が簡単にできます。</p><pre><code>class User &lt; ApplicationRecord
+  attribute :with_kids, :boolean, default: false
+end
+
+user = User.new
+user.with_kids == false  
+</code></pre><p>上のコードでは、<code>with_kids</code>属性に対し型とデフォルトの値を指定しています。</p><p>ActiveModelの場合は自分でこれをやってあげなければなりません。</p><p>そこで、with_kidsメソッド内でキャストしているのです。</p><hr><h2 id=まとめ>まとめ</h2><ul><li>Rubyのattr_readerは内部的にインスタンス変数を定義する</li><li>ActiveRecordの代わりにActiveModelを使うモデル設計のパターンがある</li><li>ActiveModelはActiveRecordと違い、attributeのような機能を持っていない（※）</li><li>ActiveModelでattributeのようなことをしたいときは、attr_readerの外でインスタンス変数を定義して対処する（※）</li></ul><p>※ 補足： Rails5.2から導入されたActiveModel::Attributesについて</p><p>Rails5.2からは<code>ActiveModel::Attributes</code>という大変便利なものが使えるようになりました。</p><p>これをincludeして使うことで、ActiveRecodeのattributeと同じような機能を使えるようになりました。</p><p><code>ActiveModel::Attributes</code>の導入についての<a href=https://qiita.com/alpaca_taichou/items/bebace92f06af3f32898>わかりやすい記事はこちら</a>です。</p></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-via=mom0tomo data-count=horizontal lang=en>Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a><script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
+<a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a><script type=text/javascript>!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script><span class=hatena-star></span></div></div><div class=related-posts><h4>関連記事</h4><ul><li><a href=https://mom0tomo.github.io/post/20181223/>Railsのtravel_toの実装を読む</a></li><li><a href=https://mom0tomo.github.io/post/20181106/>『プロを目指す人のためのruby入門』を読んだ</a></li></ul></div></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script><script src=https://mom0tomo.github.io/js/main.js></script><script src=https://mom0tomo.github.io/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad();</script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-104531981-1','auto');ga('send','pageview');}</script></body></html>
