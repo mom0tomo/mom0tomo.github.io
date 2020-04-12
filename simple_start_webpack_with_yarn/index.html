@@ -1,11 +1,11 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="モジュールバンドラwebpack入門です。yarnを使ったパッケージのインストール方法、webpackコマンドを使ったビルド方法、watch機能について、できるだけシンプルに書いています。"><meta name=generator content="Hugo 0.60.0"><title>yarnでシンプルにはじめるwebpack &middot; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico><link rel=stylesheet href=https://mom0tomo.github.io/css/style.css><link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css><link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css><link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css><script type=text/javascript src=http://s.hatena.ne.jp/js/HatenaStar.js></script><script type=text/javascript>Hatena.Star.Token='439b2988ff9e3560541978cfebab857d59ac4047';Hatena.Star.SiteConfig={entryNodes:{'section#wrapper':{uri:'div.posted a',title:'h1',container:'span.hatena-star'}}}</script></head><body><nav class=main-nav><a href=https://mom0tomo.github.io/><span class=arrow>← </span>Home</a>
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="モジュールバンドラwebpack入門です。yarnを使ったパッケージのインストール方法、webpackコマンドを使ったビルド方法、watch機能について、できるだけシンプルに書いています。"><meta name=generator content="Hugo 0.69.0"><title>yarnでシンプルにはじめるwebpack &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico><link rel=stylesheet href=https://mom0tomo.github.io/css/style.css><link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css><link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css><link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css><script type=text/javascript src=http://s.hatena.ne.jp/js/HatenaStar.js></script><script type=text/javascript>Hatena.Star.Token='439b2988ff9e3560541978cfebab857d59ac4047';Hatena.Star.SiteConfig={entryNodes:{'section#wrapper':{uri:'div.posted a',title:'h1',container:'span.hatena-star'}}}</script></head><body><nav class=main-nav><a href=https://mom0tomo.github.io/><span class=arrow>← </span>Home</a>
 <a href=https://mom0tomo.github.io/post>Archives</a>
 <a href=https://mom0tomo.github.io/tags>Tag</a>
 <a href=https://mom0tomo.github.io/about>About</a>
 <a href=https://mom0tomo.github.io/index.xml class=symbol style=font-size:15px>rss</a></nav><section id=wrapper><article class=post><header><h1>yarnでシンプルにはじめるwebpack</h1><div class=posted style=display:none><a href=https://mom0tomo.github.io/post/simple_start_webpack_with_yarn/>yarnでシンプルにはじめるwebpack</a></div><h2 class=headline>Feb 24, 2019 00:23
 · 1982 words
 · 4 minutes read
-<span class=tags><a href=https://mom0tomo.github.io/tags/webpack>Webpack</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#webpack>webpackをインストールしてパスを通す</a></li><li><a href=#heading2>エントリーポイントとモジュールを作ってバンドルする</a></li></ul><ul><li><a href=#mode>modeを設定する</a></li><li><a href=#watch>watch機能を使う</a></li></ul></nav></div><section id=post-body><p>Reactのモジュールバンドラ（複数のモジュールファイルを一つにまとめて出力するもの）としてwebpackを使っています。</p><p>Reactには<code>create-react-app</code>という便利な公式のコマンドラインツールがあり、これを使うことでwebpackの設定に触れることなく簡単に練習環境が作れます。</p><p>このため、今回はあえてツールに依存することなくシンプルにwebpackをはじめてみました。</p><hr><p>この記事に書いてあって<a href=https://webpack.js.org/guides/getting-started/>公式の Getting Started</a>には書いていないこと：</p><ul><li>yarnを使ったパッケージのインストール方法</li><li>webpackコマンドを使ったビルド方法</li><li>watch機能について</li></ul><hr><p>参考：</p><ul><li><a href=https://ics.media/entry/12140>最新版で学ぶwebpack 4入門</a></li><li><a href=https://qiita.com/soarflat/items/28bf799f7e0335b68186>Qiita: webpack 4 入門</a></li></ul><hr><h1 id=heading>準備</h1><p>サンプル用のディレクトリを作り、yarnでpackage.jsonを生成します。</p><pre><code>$ mkdir webpack-example
+<span class=tags><a href=https://mom0tomo.github.io/tags/webpack>Webpack</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#webpackをインストールしてパスを通す>webpackをインストールしてパスを通す</a></li><li><a href=#エントリーポイントとモジュールを作ってバンドルする>エントリーポイントとモジュールを作ってバンドルする</a></li></ul><ul><li><a href=#modeを設定する>modeを設定する</a></li><li><a href=#watch機能を使う>watch機能を使う</a></li></ul></nav></div><section id=post-body><p>Reactのモジュールバンドラ（複数のモジュールファイルを一つにまとめて出力するもの）としてwebpackを使っています。</p><p>Reactには<code>create-react-app</code>という便利な公式のコマンドラインツールがあり、これを使うことでwebpackの設定に触れることなく簡単に練習環境が作れます。</p><p>このため、今回はあえてツールに依存することなくシンプルにwebpackをはじめてみました。</p><hr><p>この記事に書いてあって<a href=https://webpack.js.org/guides/getting-started/>公式の Getting Started</a>には書いていないこと：</p><ul><li>yarnを使ったパッケージのインストール方法</li><li>webpackコマンドを使ったビルド方法</li><li>watch機能について</li></ul><hr><p>参考：</p><ul><li><a href=https://ics.media/entry/12140>最新版で学ぶwebpack 4入門</a></li><li><a href=https://qiita.com/soarflat/items/28bf799f7e0335b68186>Qiita: webpack 4 入門</a></li></ul><hr><h1 id=準備>準備</h1><p>サンプル用のディレクトリを作り、yarnでpackage.jsonを生成します。</p><pre><code>$ mkdir webpack-example
 $ cd webpack-example
 
 $ yarn init -y
@@ -18,22 +18,22 @@ $ yarn init -y
   &quot;license&quot;: &quot;MIT&quot;
 }
 </code></pre><p>ソースコードを配置するディレクトリを作ります。</p><pre><code>$ mkdir src
-</code></pre><h1 id=heading1>バンドルしてみる</h1><h2 id=webpack>webpackをインストールしてパスを通す</h2><p>yarnでwebpackとwebpack-cliをローカルインストールします。</p><p>webpack4から、webpackコマンドを実行するためにwebpack-cliが必要になりました。</p><pre><code>$ yarn add webpack webpack-cli --dev
+</code></pre><h1 id=バンドルしてみる>バンドルしてみる</h1><h2 id=webpackをインストールしてパスを通す>webpackをインストールしてパスを通す</h2><p>yarnでwebpackとwebpack-cliをローカルインストールします。</p><p>webpack4から、webpackコマンドを実行するためにwebpack-cliが必要になりました。</p><pre><code>$ yarn add webpack webpack-cli --dev
 </code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff>$ git diff
 
 <span style=color:#f92672>-  &#34;license&#34;: &#34;MIT&#34;
 </span><span style=color:#f92672></span><span style=color:#a6e22e>+  &#34;license&#34;: &#34;MIT&#34;,
-</span><span style=color:#a6e22e></span><span style=color:#a6e22e>+  &#34;devDependencies&#34;: {
-</span><span style=color:#a6e22e></span><span style=color:#a6e22e>+    &#34;webpack&#34;: &#34;^4.29.5&#34;,
-</span><span style=color:#a6e22e></span><span style=color:#a6e22e>+    &#34;webpack-cli&#34;: &#34;^3.2.3&#34;
-</span><span style=color:#a6e22e></span><span style=color:#a6e22e>+  }
+</span><span style=color:#a6e22e>+  &#34;devDependencies&#34;: {
+</span><span style=color:#a6e22e>+    &#34;webpack&#34;: &#34;^4.29.5&#34;,
+</span><span style=color:#a6e22e>+    &#34;webpack-cli&#34;: &#34;^3.2.3&#34;
+</span><span style=color:#a6e22e>+  }
 </span></code></pre></div><p><code>yarn.lock</code>が生成され、 <code>node_modules/</code>にソースコードがインストールされていることを確認します。</p><p>ローカルインストールしたwebpackのパスを通し、 <code>webpack</code>コマンドが使えるようにします。</p><p><code>.bashrc</code>にパスの設定を書きます。</p><pre><code>// ローカルインストールしたwebpackのパスを通す
 export PATH=$PATH:./node_modules/.bin
 </code></pre><p>sourceコマンドで設定を反映させます。</p><pre><code>$ source ~/.bashrc
 </code></pre><p>webpackコマンドを実行してパスが通ったかどうか試してみます。v4系になっていたらOKです。</p><pre><code>$ webpack --version
 
 4.29.5
-</code></pre><hr><h2 id=heading2>エントリーポイントとモジュールを作ってバンドルする</h2><p>モジュールのファイル <code>hello.js</code>をsrc/配下につくります。今回はただ &lsquo;Hello'を出すだけのシンプルな関数を書きます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>hello</span>() {
+</code></pre><hr><h2 id=エントリーポイントとモジュールを作ってバンドルする>エントリーポイントとモジュールを作ってバンドルする</h2><p>モジュールのファイル <code>hello.js</code>をsrc/配下につくります。今回はただ &lsquo;Hello'を出すだけのシンプルな関数を書きます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>hello</span>() {
   <span style=color:#a6e22e>alert</span>(<span style=color:#e6db74>&#34;Hello&#34;</span>)
 }
 </code></pre></div><p>続いて、エントリーポイントとなるファイル <code>index.js</code>をsrc/配下につくります。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// helloモジュールを読み込む
@@ -58,15 +58,15 @@ total 16
 drwxr-xr-x  3 mom0tomo  staff    96  2 23 20:57 .
 drwxr-xr-x  9 mom0tomo  staff   288  2 23 20:57 ..
 -rw-r--r--  1 mom0tomo  staff  4640  2 23 20:58 main.js
-</code></pre><p>ここまでで、エントリーポイントのファイルとモジュールのファイルからバンドルファイルを出力するところまでできました。</p><h1 id=webpackconfigjs>webpack.config.jsの導入</h1><h2 id=mode>modeを設定する</h2><p>webpack.config.jsファイルを利用することで、細かな設定ができます。</p><p>webpack.config.jsがなくてもモジュールをバンドルすることは可能ですが、実用の際は必ず使うので簡単な設定をしてみます。</p><pre><code>$ touch webpack.config.js
+</code></pre><p>ここまでで、エントリーポイントのファイルとモジュールのファイルからバンドルファイルを出力するところまでできました。</p><h1 id=webpackconfigjsの導入>webpack.config.jsの導入</h1><h2 id=modeを設定する>modeを設定する</h2><p>webpack.config.jsファイルを利用することで、細かな設定ができます。</p><p>webpack.config.jsがなくてもモジュールをバンドルすることは可能ですが、実用の際は必ず使うので簡単な設定をしてみます。</p><pre><code>$ touch webpack.config.js
 </code></pre><p>まず、先ほどはコマンドのオプションとして指定していたmodeの設定を書きます。</p><p>modeにdevelopmentを指定することでソースマップ（バンドルして出力されたコードをデバッグする際に使う）が有効になります。</p><p>productionを指定することで、JavaSciptのコードからコメント等が取り除かれ圧縮されます。</p><p>ここではdevelopmentを指定します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
   <span style=color:#a6e22e>mode</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;development&#39;</span>
 }; 
-</code></pre></div><p>これで、 <code>webpack</code>コマンドをオプションなしで実行しても警告が出なくなりました。</p><hr><h2 id=watch>watch機能を使う</h2><p>ファイルの変更を検知して自動でバンドルのコマンドを実行し、ブラウザをリロードするwatchという機能があります。
+</code></pre></div><p>これで、 <code>webpack</code>コマンドをオプションなしで実行しても警告が出なくなりました。</p><hr><h2 id=watch機能を使う>watch機能を使う</h2><p>ファイルの変更を検知して自動でバンドルのコマンドを実行し、ブラウザをリロードするwatchという機能があります。
 この機能を使うことで、差分だけをビルドし、バンドルにかかる時間を短くすることができます。</p><p><code>webpack --watch</code>というコマンドのオプションで実行できますが、webpack.config.jsに設定を書くことも可能です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff>module.exports = {
 <span style=color:#f92672>-   mode: &#39;development&#39;
 </span><span style=color:#f92672></span><span style=color:#a6e22e>+   mode: &#39;development&#39;,
-</span><span style=color:#a6e22e></span><span style=color:#a6e22e>+   watch: true
+</span><span style=color:#a6e22e>+   watch: true
 </span><span style=color:#a6e22e></span>};
 </code></pre></div><p><code>webpack</code>コマンドを実行してみると、<code>webpack is watching the files…</code>というメッセージが出て変更がリアルタイムで反映されるようになったことがわかります。</p><pre><code>$ webpack
 
