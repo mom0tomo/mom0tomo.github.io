@@ -1,0 +1,117 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Go言語では、標準パッケージであるgoパッケージが字句解析や構文解析を行う機能を提供しています。go/astやgo/parserを使って構文解析のはじめの一歩を踏み出してみます。今回は静的解析を使って実践的な処理を行ってみます。"><meta name=generator content="Hugo 0.81.0"><title>Goの標準パッケージではじめる静的解析入門③実践編 &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico><link rel=stylesheet href=https://mom0tomo.github.io/css/style.css><link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css><link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css><link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css><script type=text/javascript src=http://s.hatena.ne.jp/js/HatenaStar.js></script><script type=text/javascript>Hatena.Star.Token='439b2988ff9e3560541978cfebab857d59ac4047',Hatena.Star.SiteConfig={entryNodes:{'section#wrapper':{uri:'div.posted a',title:'h1',container:'span.hatena-star'}}}</script></head><body><nav class=main-nav><a href=https://mom0tomo.github.io/><span class=arrow>← </span>Home</a>
+<a href=https://mom0tomo.github.io/post>Archives</a>
+<a href=https://mom0tomo.github.io/tags>Tag</a>
+<a href=https://mom0tomo.github.io/about>About</a>
+<a href=https://mom0tomo.github.io/index.xml class=symbol style=font-size:15px>rss</a></nav><section id=wrapper><article class=post><header><h1>Goの標準パッケージではじめる静的解析入門③実践編</h1><div class=posted style=display:none><a href=https://mom0tomo.github.io/post/go_ast_parser_static_analysis_3/>Goの標準パッケージではじめる静的解析入門③実践編</a></div><h2 class=headline>Mar 24, 2019 19:32
+· 2027 words
+· 5 minutes read
+<span class=tags><a href=https://mom0tomo.github.io/tags/go>Go</a>
+<a href=https://mom0tomo.github.io/tags/%E9%9D%99%E7%9A%84%E8%A7%A3%E6%9E%90>静的解析</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#ファイルを準備する>ファイルを準備する</a></li><li><a href=#抽象構文木astを探索して結果を出力する>抽象構文木(AST)を探索して結果を出力する</a></li><li><a href=#抽象構文木astのソースコード内の位置情報を取得する>抽象構文木(AST)のソースコード内の位置情報を取得する</a></li><li><a href=#抽象構文木astを再帰的にトラバースする>抽象構文木(AST)を再帰的にトラバースする</a></li><li><a href=#おわりに>おわりに</a></li></ul></nav></div><section id=post-body><h2 id=はじめに>はじめに</h2><p><a href=https://mom0tomo.github.io/post/go_ast_parser_static_analysis_2>前回</a>は字句解析と構文解析を実際にやってみました。</p><p>今回は取得した抽象構文木(AST)を使って実践的な処理を行ってみます。</p><hr><h2 id=ファイルを準備する>ファイルを準備する</h2><p>解析するためのサンプルファイル(example.go)と、解析処理を書くファイル(main.go)を準備します。</p><p>なお、処理を見やすくするためにエラーを潰しているところがあります。</p><pre><code>$ mkdir example
+$ touch example/example.go 
+
+$ touch main.go
+</code></pre><p>今回はexample.goの内容を以下のようにします。</p><pre><code>package example
+
+import (
+  &quot;fmt&quot;
+  &quot;time&quot;
+)
+
+func example() {
+  fmt.Println(&quot;Now :&quot;, time.Now())
+}
+</code></pre><p>またmain.goには、いったん抽象構文木(AST)を取得する処理まで書いておきます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+
+<span style=color:#f92672>import</span> (
+  <span style=color:#e6db74>&#34;fmt&#34;</span>
+  <span style=color:#e6db74>&#34;go/parser&#34;</span>
+  <span style=color:#e6db74>&#34;go/token&#34;</span>
+)
+
+<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+  <span style=color:#a6e22e>fset</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>token</span>.<span style=color:#a6e22e>NewFileSet</span>()
+  <span style=color:#75715e>// ファイルをパースしてを抽象構文木(AST)に変換する
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>f</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>ParseFile</span>(<span style=color:#a6e22e>fset</span>, <span style=color:#e6db74>&#34;./example/example.go&#34;</span>, <span style=color:#66d9ef>nil</span>, <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>Mode</span>(<span style=color:#ae81ff>0</span>)))
+}
+</code></pre></div><p><a href=https://godoc.org/go/parser#example-ParseFile>parser.Mode</a>というのはソースコードのパースしたい部分を指定したり、エラーを報告するかどうか選択するするためのものです。</p><p>必要な処理だけあらかじめ指定しておけば、パース処理が無駄なくなりますね。</p><p>下記の値が指定できます。</p><pre><code>const (
+    PackageClauseOnly Mode             = 1 &lt;&lt; iota // stop parsing after package clause
+    ImportsOnly                                    // stop parsing after import declarations
+    ParseComments                                  // parse comments and add them to AST
+    Trace                                          // print a trace of parsed productions
+    DeclarationErrors                              // report declaration errors
+    SpuriousErrors                                 // same as AllErrors, for backward-compatibility
+    AllErrors         = SpuriousErrors             // report all errors (not just the first 10 on different lines)
+)
+</code></pre><p>今回のように、とりあえず何も指定せず全てパースしたいときは<code>parser.Mode(0))</code>またはただの 0としておきます。</p><h2 id=抽象構文木astを探索して結果を出力する>抽象構文木(AST)を探索して結果を出力する</h2><p>前回の構文解析で取得した抽象構文木(AST)を使い、ノードを探索して結果を出力してみます。</p><p>ファイル内のコメントだけ抜き出したり、関数名だけ調べたりできるのは便利でうれしいですよね！</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+  <span style=color:#a6e22e>fset</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>token</span>.<span style=color:#a6e22e>NewFileSet</span>()
+  <span style=color:#75715e>// package名とimportされているパッケージが取得できれば良いのでImportsOnlyモードにする
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>f</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>ParseFile</span>(<span style=color:#a6e22e>fset</span>, <span style=color:#e6db74>&#34;./example/example.go&#34;</span>, <span style=color:#66d9ef>nil</span>, <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>ImportsOnly</span>)
+
+  <span style=color:#75715e>// package名を出力する
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>f</span>.<span style=color:#a6e22e>Name</span>)
+
+  <span style=color:#75715e>// importされているパッケージを出力する
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>s</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>f</span>.<span style=color:#a6e22e>Imports</span> {
+    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>s</span>.<span style=color:#a6e22e>Path</span>.<span style=color:#a6e22e>Value</span>)
+  }
+}
+</code></pre></div><p>出力結果は以下のようになります。</p><pre><code>&quot;fmt&quot;
+&quot;time&quot;
+</code></pre><p>ほかにもCommentなどいろいろ取得できます。</p><p>取得できるものの一覧は、<a href=https://godoc.org/go/ast#File>ast/File</a>に書いてあります。</p><pre><code>type File struct {
+    Doc        *CommentGroup   // associated documentation; or nil
+    Package    token.Pos       // position of &quot;package&quot; keyword
+    Name       *Ident          // package name
+    Decls      []Decl          // top-level declarations; or nil
+    Scope      *Scope          // package scope (this file only)
+    Imports    []*ImportSpec   // imports in this file
+    Unresolved []*Ident        // unresolved identifiers in this file
+    Comments   []*CommentGroup // list of all comments in the source file
+}
+</code></pre><hr><h2 id=抽象構文木astのソースコード内の位置情報を取得する>抽象構文木(AST)のソースコード内の位置情報を取得する</h2><p>ファイル名や行番号など、ソースコード内の位置情報を取得して使いたいことがあります。</p><p>先ほどの解析結果に行番号の情報を追加して出力してみます。</p><p>ソースコード内のノードの位置情報を取得するには、<a href=https://godoc.org/go/token#Pos>token/Pos</a>を使います。</p><p>また今回はノードの位置情報だけでなくファイルとその行数なども出力したいので、より詳細な情報を出力できる<a href=https://godoc.org/go/token#Position>token/Position</a>を使います。</p><p><code>token.Position</code>構造体はファイル名、行番号、カラム位置の情報を持っています。</p><pre><code>type Position struct {
+    Filename string // filename, if any
+    Offset   int    // offset, starting at 0
+    Line     int    // line number, starting at 1
+    Column   int    // column number, starting at 1 (byte count)
+}
+</code></pre><p>なお前回も補足しましたが、ノードの位置情報は<code>token.FileSet</code>を元に相対的に決まります。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+  <span style=color:#a6e22e>fset</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>token</span>.<span style=color:#a6e22e>NewFileSet</span>()
+  <span style=color:#a6e22e>f</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>ParseFile</span>(<span style=color:#a6e22e>fset</span>, <span style=color:#e6db74>&#34;./example/example.go&#34;</span>, <span style=color:#66d9ef>nil</span>, <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>ImportsOnly</span>)
+
+  <span style=color:#75715e>// importされているパッケージのファイル名/行数/カラム数と、パッケージ名を出力する
+</span><span style=color:#75715e></span>  <span style=color:#75715e>// token.Pos()はノードがソースコード上に占める位置を指す
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>s</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>f</span>.<span style=color:#a6e22e>Imports</span> {
+    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>fset</span>.<span style=color:#a6e22e>Position</span>(<span style=color:#a6e22e>s</span>.<span style=color:#a6e22e>Pos</span>()), <span style=color:#a6e22e>s</span>.<span style=color:#a6e22e>Path</span>.<span style=color:#a6e22e>Value</span>)
+  }
+}
+</code></pre></div><p>出力結果です。</p><pre><code>./example/example.go:4:2 &quot;fmt&quot;
+./example/example.go:5:2 &quot;time&quot;
+</code></pre><p>ファイル名と行数などの情報を付与したことで、出力結果がよりわかりやすくなりました。</p><hr><h2 id=抽象構文木astを再帰的にトラバースする>抽象構文木(AST)を再帰的にトラバースする</h2><p>今度は、取得した抽象構文木(AST)のすべてのノードを探索（トラバース）して、再帰的に処理してみます。</p><p>トラバースには<a href=https://godoc.org/go/ast#example-Inspect>ast/Inspect</a>を使います。<code>ast/Inspect</code>は抽象構文木（AST)のノードに対する（深さ優先）探索を行います。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+  <span style=color:#a6e22e>fset</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>token</span>.<span style=color:#a6e22e>NewFileSet</span>()
+  <span style=color:#a6e22e>f</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>ParseFile</span>(<span style=color:#a6e22e>fset</span>, <span style=color:#e6db74>&#34;./example/example.go&#34;</span>, <span style=color:#66d9ef>nil</span>, <span style=color:#ae81ff>0</span>)
+
+  <span style=color:#a6e22e>ast</span>.<span style=color:#a6e22e>Inspect</span>(<span style=color:#a6e22e>f</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>n</span> <span style=color:#a6e22e>ast</span>.<span style=color:#a6e22e>Node</span>) <span style=color:#66d9ef>bool</span> {
+    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>s</span> <span style=color:#66d9ef>string</span>
+    <span style=color:#75715e>// 型によって処理を分岐する
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>switch</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>n</span>.(<span style=color:#66d9ef>type</span>) {
+    <span style=color:#66d9ef>case</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>ast</span>.<span style=color:#a6e22e>BasicLit</span>: <span style=color:#75715e>// リテラル
+</span><span style=color:#75715e></span>      <span style=color:#a6e22e>s</span> = <span style=color:#a6e22e>x</span>.<span style=color:#a6e22e>Value</span>
+    <span style=color:#66d9ef>case</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>ast</span>.<span style=color:#a6e22e>Ident</span>: <span style=color:#75715e>// 識別子名
+</span><span style=color:#75715e></span>      <span style=color:#a6e22e>s</span> = <span style=color:#a6e22e>x</span>.<span style=color:#a6e22e>Name</span> 
+    }
+    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>s</span> <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> {
+      <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>fset</span>.<span style=color:#a6e22e>Position</span>(<span style=color:#a6e22e>n</span>.<span style=color:#a6e22e>Pos</span>()), <span style=color:#a6e22e>s</span>)
+    }
+    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>
+  })
+}
+</code></pre></div><p>次のような結果が得られます。</p><pre><code>./example/example.go:1:9 example
+./example/example.go:4:2 &quot;fmt&quot;
+./example/example.go:5:2 &quot;time&quot;
+./example/example.go:8:6 example
+./example/example.go:9:2 fmt
+./example/example.go:9:6 Println
+./example/example.go:9:14 &quot;Now :&quot;
+./example/example.go:9:23 time
+./example/example.go:9:28 Now
+</code></pre><p>example.goのソースコードにおける抽象構文木(AST)のすべてのノードを探索し、リテラルと識別子（パッケージ、関数、フィールドや変数など）の名前のみを取得して、一つずつ位置情報とともに出力しています。</p><hr><h2 id=おわりに>おわりに</h2><p>抽象構文木(AST)を使って、静的解析の実践的な処理を行ってみました。</p><p>なお、この記事は<a href=https://golangtokyo.connpass.com/event/122263/>golang.tokyo #22+Okayama.go/Sendai.go</a>のイベントに参加して書きました。</p><p>イベント当日の講義資料はこちらです。</p><ul><li><a href="https://docs.google.com/presentation/d/13FcaQiFnUBk6xb1cNyNUmEIhqTXYMJAs3oUpxXP5_dM/edit#slide=id.g5475518c10_0_0">A Tour of Static Analysis | by tenntennさん</a></li></ul><p>ハンズオンの時間では、golang.tokyoのコードラボ上の教材を進めている方もたくさんいらっしゃいました。</p><p>これから静的解析を始めてみたい方は、こちらのコードラボから始めてみるのもおすすめです。</p><ul><li><a href=https://golangtokyo.github.io/codelab/find-gophers/>golang.tokyo コードラボ | 静的解析をはじめよう - Gopherをさがせ！</a></li><li><a href=https://golangtokyo.github.io/codelab/first-step-type-check/>型チェックでインターフェースを実装しているか調べよう</a></li></ul></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-via=mom0tomo data-count=horizontal lang=en>Tweet</a> <script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a><script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
+<a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a><script type=text/javascript>!function(a,c){var b,d;a.getElementById(c)||(b=a.createElement("script"),b.id=c,b.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",d=a.getElementById(c),a.body.appendChild(b))}(document,"pocket-btn-js")</script><span class=hatena-star></span></div></div><div class=related-posts><h4>関連記事</h4><ul><li><a href=https://mom0tomo.github.io/post/go_ast_parser_static_analysis_2/>Goの標準パッケージではじめる静的解析入門②解析編</a></li><li><a href=https://mom0tomo.github.io/post/go_ast_parser_static_analysis/>Goの標準パッケージではじめる静的解析入門①準備編</a></li><li><a href=https://mom0tomo.github.io/post/golang_tokyo_recruitment/>golang.tokyo#21「Goエンジニアの採用」レポート</a></li></ul></div></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script><script src=https://mom0tomo.github.io/js/main.js></script><script src=https://mom0tomo.github.io/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-104531981-1','auto'),ga('send','pageview'))</script></body></html>
