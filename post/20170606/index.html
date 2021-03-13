@@ -8,37 +8,37 @@
 <span class=tags><a href=https://mom0tomo.github.io/tags/go>Go</a>
 <a href=https://mom0tomo.github.io/tags/event>event</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#お品書き>お品書き</a><ul><li><a href=#資料>資料</a></li></ul></li><li><a href=#学んだこと>学んだこと</a><ul><li><a href=#go言語のインストール>Go言語のインストール</a></li><li><a href=#hello-世界>Hello, 世界!</a></li><li><a href=#goの基本的な書き方>Goの基本的な書き方</a></li><li><a href=#goでfizzbuzz>GoでFizzBuzz</a></li><li><a href=#自作パッケージをつくる>自作パッケージをつくる</a></li><li><a href=#githubを使った自作パッケージの公開>GitHubを使った自作パッケージの公開</a></li><li><a href=#いろいろ試してみる>いろいろ試してみる</a></li></ul></li></ul></nav></div><section id=post-body><p>『恥ずかしい勉強会』とは</p><blockquote><p>「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」というコンセプトの勉強会です。
 ノーマサカリ！「ググレカス」禁止！</p></blockquote><p>建物にはたどり着いたけど、建物内で迷子になりました(恥ずかしい&mldr;)</p><hr><h2 id=お品書き>お品書き</h2><ul><li>Go言語とは</li><li>Go言語のインストール</li><li>Hello, 世界!</li><li>自作パッケージの開発・置き方 // ここをバッチリ聞きたい</li><li>GitHubを使った自作パッケージの公開</li><li>(時間が余りまくったら)自作HTTPサーバを書く</li></ul><h3 id=資料>資料</h3><p><a href=https://gist.github.com/otiai10/c2a1cfefdfb7f5798865a30d12ade4c1>https://gist.github.com/otiai10/c2a1cfefdfb7f5798865a30d12ade4c1</a></p><hr><h2 id=学んだこと>学んだこと</h2><h3 id=go言語のインストール>Go言語のインストール</h3><p>わたしはGoのバージョン管理ツール<a href=https://github.com/moovweb/gvm>gvm</a>を利用しているので、以下のコマンドでインストールする。
-<a href=http://qiita.com/isaoshimizu/items/1a5d51aed98a57a9bcd4>gvmの導入方法</a></p><pre><code>$ gvm install go1.8
+<a href=http://qiita.com/isaoshimizu/items/1a5d51aed98a57a9bcd4>gvmの導入方法</a></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ gvm install go1.8
 
 $ gvm use go1.8 --default
-</code></pre><p>GOPATHの設定が重要。<code>$GOPATH/src</code>以下にすべてのパッケージが格納されるため。<code>go get</code>コマンドでパッケージを取得することができる。
-GOROOTについては、現在では設定する必要はない。</p><p>gvmを使わない場合は、以下のを参考にシェルの設定に書いておくとよい。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-:~/.bashrc data-lang=:~/.bashrc>export GOPATH<span style=color:#f92672>=</span>$HOME/go
+</code></pre></div><p>GOPATHの設定が重要。<code>$GOPATH/src</code>以下にすべてのパッケージが格納されるため。<code>go get</code>コマンドでパッケージを取得することができる。
+GOROOTについては、現在では設定する必要はない。</p><p>gvmを使わない場合は、以下のを参考にシェルの設定に書いておくとよい。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-:~/.bashrc data-lang=:~/.bashrc>export GOPATH<span style=color:#f92672>=</span>$HOME/go
 export PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$GOPATH<span style=color:#e6db74>/bin:</span>$PATH<span style=color:#e6db74>&#34;</span>
-</code></pre></div><p><code>go env</code>コマンドでgoの環境変数を確認する。下記のようになっているはず。</p><pre><code>$ go env
+</code></pre></div><p><code>go env</code>コマンドでgoの環境変数を確認する。下記のようになっているはず。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ go env
 
-GOARCH=&quot;amd64&quot;
-GOBIN=&quot;&quot;
-GOEXE=&quot;&quot;
-GOHOSTARCH=&quot;amd64&quot;
-GOHOSTOS=&quot;darwin&quot;
-GOOS=&quot;darwin&quot;
-GOPATH=&quot;/Users/mom0tomo/.gvm/pkgsets/go1.8/global&quot;
-GORACE=&quot;&quot;
-GOROOT=&quot;/Users/mom0tomo/.gvm/gos/go1.8&quot;
-GOTOOLDIR=&quot;/Users/mom0tomo/.gvm/gos/go1.8/pkg/tool/darwin_amd64&quot;
-GCCGO=&quot;gccgo&quot;
-CC=&quot;clang&quot;
-GOGCCFLAGS=&quot;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/kh/6_bmx1pn6rggyfv6c3l2r6ch0000gp/T/go-build863603804=/tmp/go-build -gno-record-gcc-switches -fno-common&quot;
-CXX=&quot;clang++&quot;
-CGO_ENABLED=&quot;1&quot;
-PKG_CONFIG=&quot;pkg-config&quot;
-CGO_CFLAGS=&quot;-g -O2&quot;
-CGO_CPPFLAGS=&quot;&quot;
-CGO_CXXFLAGS=&quot;-g -O2&quot;
-CGO_FFLAGS=&quot;-g -O2&quot;
-CGO_LDFLAGS=&quot;-g -O2&quot;
-</code></pre><hr><h3 id=hello-世界>Hello, 世界!</h3><p>※Goでは<code>Hello, World</code>ではなく<code>Hello, 世界</code>！
-GoはUnicodeに対応しているため、漢字も使える。<code>Hello, عالم</code>とかも行ける。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-:main.go data-lang=:main.go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span> <span style=color:#75715e>// Goを実行するにはmainパッケージが必須
+GOARCH=&#34;amd64&#34;
+GOBIN=&#34;&#34;
+GOEXE=&#34;&#34;
+GOHOSTARCH=&#34;amd64&#34;
+GOHOSTOS=&#34;darwin&#34;
+GOOS=&#34;darwin&#34;
+GOPATH=&#34;/Users/mom0tomo/.gvm/pkgsets/go1.8/global&#34;
+GORACE=&#34;&#34;
+GOROOT=&#34;/Users/mom0tomo/.gvm/gos/go1.8&#34;
+GOTOOLDIR=&#34;/Users/mom0tomo/.gvm/gos/go1.8/pkg/tool/darwin_amd64&#34;
+GCCGO=&#34;gccgo&#34;
+CC=&#34;clang&#34;
+GOGCCFLAGS=&#34;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/kh/6_bmx1pn6rggyfv6c3l2r6ch0000gp/T/go-build863603804=/tmp/go-build -gno-record-gcc-switches -fno-common&#34;
+CXX=&#34;clang++&#34;
+CGO_ENABLED=&#34;1&#34;
+PKG_CONFIG=&#34;pkg-config&#34;
+CGO_CFLAGS=&#34;-g -O2&#34;
+CGO_CPPFLAGS=&#34;&#34;
+CGO_CXXFLAGS=&#34;-g -O2&#34;
+CGO_FFLAGS=&#34;-g -O2&#34;
+CGO_LDFLAGS=&#34;-g -O2&#34;
+</code></pre></div><hr><h3 id=hello-世界>Hello, 世界!</h3><p>※Goでは<code>Hello, World</code>ではなく<code>Hello, 世界</code>！
+GoはUnicodeに対応しているため、漢字も使える。<code>Hello, عالم</code>とかも行ける。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-:main.go data-lang=:main.go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span> <span style=color:#75715e>// Goを実行するにはmainパッケージが必須
 </span><span style=color:#75715e></span>
 <span style=color:#f92672>import</span> <span style=color:#e6db74>&#34;fmt&#34;</span> <span style=color:#75715e>// 標準パッケージのfmt(フォーマットするやつ)をインポートする
 </span><span style=color:#75715e></span>
@@ -46,24 +46,24 @@ GoはUnicodeに対応しているため、漢字も使える。<code>Hello, عا
 </span><span style=color:#75715e></span>    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Hello, 世界！&#34;</span>)
 }
 
-</code></pre></div><p>実行する。</p><pre><code>$ go run main.go
+</code></pre></div><p>実行する。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ go run main.go
 
   Hello, 世界！
-</code></pre><hr><h3 id=goの基本的な書き方>Goの基本的な書き方</h3><p><code>main.go</code></p><pre><code>package main 
+</code></pre></div><hr><h3 id=goの基本的な書き方>Goの基本的な書き方</h3><p><code>main.go</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span> 
 
-import (// 複数パッケージをインポートするときは()でくくる
-    &quot;fmt&quot; // Goの標準・準標準パッケージは上にまとめて書く
-    &quot;net/http&quot;
+<span style=color:#f92672>import</span> (<span style=color:#75715e>// 複数パッケージをインポートするときは()でくくる
+</span><span style=color:#75715e></span>    <span style=color:#e6db74>&#34;fmt&#34;</span> <span style=color:#75715e>// Goの標準・準標準パッケージは上にまとめて書く
+</span><span style=color:#75715e></span>    <span style=color:#e6db74>&#34;net/http&#34;</span>
 
-    &quot;github.com/mom0tomo/fizzbuzz&quot; // OSSのパッケージは下にまとめて書く
-)
+    <span style=color:#e6db74>&#34;github.com/mom0tomo/fizzbuzz&#34;</span> <span style=color:#75715e>// OSSのパッケージは下にまとめて書く
+</span><span style=color:#75715e></span>)
 
-func main() {
-    fmt.Println(&quot;hogehoge&quot;) 
-    // インポートしたのに使っていないパッケージがあるとコンパイル時に怒られる
-}
-</code></pre><hr><h3 id=goでfizzbuzz>GoでFizzBuzz</h3><p>Goにはwhile文がない。for文はある。
-if文はネストが深くなりがちなので、switch文を使うことが多い。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-:main.go data-lang=:main.go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;hogehoge&#34;</span>) 
+    <span style=color:#75715e>// インポートしたのに使っていないパッケージがあるとコンパイル時に怒られる
+</span><span style=color:#75715e></span>}
+</code></pre></div><hr><h3 id=goでfizzbuzz>GoでFizzBuzz</h3><p>Goにはwhile文がない。for文はある。
+if文はネストが深くなりがちなので、switch文を使うことが多い。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-:main.go data-lang=:main.go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
 
 <span style=color:#f92672>import</span> <span style=color:#e6db74>&#34;fmt&#34;</span>
 
@@ -93,7 +93,7 @@ if文はネストが深くなりがちなので、switch文を使うことが多
         <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>output</span>)
     }
 }
-</code></pre></div><p>go run してみる。</p><pre><code>$ go run main.go
+</code></pre></div><p>go run してみる。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ go run main.go
 
 FizzBuzz
 1
@@ -115,7 +115,7 @@ FizzBuzz
 17
 fizz
 19
-</code></pre><hr><h3 id=自作パッケージをつくる>自作パッケージをつくる</h3><p>mainパッケージに全て書いてしまっていたので、GetOutputメソッドを切り出してfizzbuzzパッケージとする。</p><p><code>$GOPATH/src</code>配下にパッケージつくることで、標準パッケージのようにインポートして使うことができる。</p><pre><code>$ cd $GOPATH/src
+</code></pre></div><hr><h3 id=自作パッケージをつくる>自作パッケージをつくる</h3><p>mainパッケージに全て書いてしまっていたので、GetOutputメソッドを切り出してfizzbuzzパッケージとする。</p><p><code>$GOPATH/src</code>配下にパッケージつくることで、標準パッケージのようにインポートして使うことができる。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ cd $GOPATH/src
 $ mkdir fizzbuzz
 $ touch fizzbuzz/fizzbuzz.go
 
@@ -123,41 +123,41 @@ $ ls -la
 drwxr-xr-x   3 mom0tomo  staff   102  6  8 21:08 fizzbuzz
 drwxr-xr-x  21 mom0tomo  staff   714  6  8 20:27 github.com
 drwxr-xr-x   3 mom0tomo  staff   102  4  3 20:54 golang.org
-</code></pre><p><code>$GOAPTH/src/fizzbuzz.go</code></p><pre><code>package fizzbuzz
+</code></pre></div><p><code>$GOAPTH/src/fizzbuzz.go</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>fizzbuzz</span>
 
-import &quot;fmt&quot;
+<span style=color:#f92672>import</span> <span style=color:#e6db74>&#34;fmt&#34;</span>
 
-func GetOutput(i int) string {
+<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>GetOutput</span>(<span style=color:#a6e22e>i</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>string</span> {
 
-    fizz := i % 3
-    buzz := i % 5
+    <span style=color:#a6e22e>fizz</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>%</span> <span style=color:#ae81ff>3</span>
+    <span style=color:#a6e22e>buzz</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>%</span> <span style=color:#ae81ff>5</span>
 
-    switch {
-        case fizz == 0 &amp;&amp; buzz == 0:
-            return &quot;FizzBuzz&quot;
-        case fizz == 0:
-            return &quot;Fizz&quot;
-        case buzz == 0:
-            return &quot;Buzz&quot;
-        default:
-            return fmt.Sprintf(&quot;%v&quot;, i)
+    <span style=color:#66d9ef>switch</span> {
+        <span style=color:#66d9ef>case</span> <span style=color:#a6e22e>fizz</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>buzz</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+            <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;FizzBuzz&#34;</span>
+        <span style=color:#66d9ef>case</span> <span style=color:#a6e22e>fizz</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+            <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;Fizz&#34;</span>
+        <span style=color:#66d9ef>case</span> <span style=color:#a6e22e>buzz</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+            <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;Buzz&#34;</span>
+        <span style=color:#66d9ef>default</span>:
+            <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Sprintf</span>(<span style=color:#e6db74>&#34;%v&#34;</span>, <span style=color:#a6e22e>i</span>)
     }
 }
-</code></pre><p><code>main.go</code></p><pre><code>package main
+</code></pre></div><p><code>main.go</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
 
-import (
-    &quot;fmt&quot;
-    &quot;fizzbuzz&quot; // 標準パッケージのようにインポートできる
-)
+<span style=color:#f92672>import</span> (
+    <span style=color:#e6db74>&#34;fmt&#34;</span>
+    <span style=color:#e6db74>&#34;fizzbuzz&#34;</span> <span style=color:#75715e>// 標準パッケージのようにインポートできる
+</span><span style=color:#75715e></span>)
 
-func main() {
+<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
 
-    for i := 0; i &lt; 20; i++ {
-        output := fizzbuzz.GetOutput(i)
-        fmt.Println(output)
+    <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> &lt; <span style=color:#ae81ff>20</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span> {
+        <span style=color:#a6e22e>output</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fizzbuzz</span>.<span style=color:#a6e22e>GetOutput</span>(<span style=color:#a6e22e>i</span>)
+        <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>output</span>)
     }
 }
-</code></pre><hr><h3 id=githubを使った自作パッケージの公開>GitHubを使った自作パッケージの公開</h3><p>githubに公開してみる。</p><p>標準パッケージのような形式でインポートして開発してきたが、ここでgithubに公開したパッケージを使うことにする。</p><p>import部分の記述を以下のように変更する。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-:main.go data-lang=:main.go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+</code></pre></div><hr><h3 id=githubを使った自作パッケージの公開>GitHubを使った自作パッケージの公開</h3><p>githubに公開してみる。</p><p>標準パッケージのような形式でインポートして開発してきたが、ここでgithubに公開したパッケージを使うことにする。</p><p>import部分の記述を以下のように変更する。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-:main.go data-lang=:main.go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
 
 <span style=color:#f92672>import</span> (
     <span style=color:#e6db74>&#34;fmt&#34;</span>
@@ -173,8 +173,8 @@ func main() {
     }
 }
 </code></pre></div><p>この状態で実行すると、以下のようなエラーが出る。
-<code>cannot find package "github.com/{user name}/fizzbuzz"</code></p><p>これは$GOPATH/src配下にインポートしようとしているパッケージがない、というエラー。</p><p>エラーを解消するために、<code>go get</code>というコマンドでパッケージを取得する。</p><pre><code>$ go get gihub.com/{user name}/fizzbuzz
-</code></pre><p>ここで<code>go run</code>して、パッケージを分割する前と同じ結果になることを確認する。</p><pre><code>$ go run main.go
+<code>cannot find package "github.com/{user name}/fizzbuzz"</code></p><p>これは$GOPATH/src配下にインポートしようとしているパッケージがない、というエラー。</p><p>エラーを解消するために、<code>go get</code>というコマンドでパッケージを取得する。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ go get gihub.com/{user name}/fizzbuzz
+</code></pre></div><p>ここで<code>go run</code>して、パッケージを分割する前と同じ結果になることを確認する。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ go run main.go
 
 FizzBuzz
 1
@@ -196,8 +196,8 @@ FizzBuzz
 17
 fizz
 19
-</code></pre><p>OK！</p><hr><h3 id=いろいろ試してみる>いろいろ試してみる</h3><h4 id=パッケージの名前と関数の名前を変えてみる>パッケージの名前と関数の名前を変えてみる</h4><p><code>fizzbuzz.go</code></p><pre><code>package test // fizzbuzzじゃないのにしてみる
-
-...
-</code></pre><p>-> 動く！</p><h4 id=maingoの名前を変えてみる>main.goの名前を変えてみる</h4><p>-> mom0tomo.goとかでにしても動く！</p></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-via=mom0tomo data-count=horizontal lang=en>Tweet</a> <script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a><script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
+</code></pre></div><p>OK！</p><hr><h3 id=いろいろ試してみる>いろいろ試してみる</h3><h4 id=パッケージの名前と関数の名前を変えてみる>パッケージの名前と関数の名前を変えてみる</h4><p><code>fizzbuzz.go</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>test</span> <span style=color:#75715e>// fizzbuzzじゃないのにしてみる
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>...</span>
+</code></pre></div><p>-> 動く！</p><h4 id=maingoの名前を変えてみる>main.goの名前を変えてみる</h4><p>-> mom0tomo.goとかでにしても動く！</p></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-via=mom0tomo data-count=horizontal lang=en>Tweet</a> <script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a><script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
 <a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a><script type=text/javascript>!function(a,c){var b,d;a.getElementById(c)||(b=a.createElement("script"),b.id=c,b.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",d=a.getElementById(c),a.body.appendChild(b))}(document,"pocket-btn-js")</script><span class=hatena-star></span></div></div><div class=related-posts><h4>関連記事</h4><ul><li><a href=/post/20170605/>「最近、Go言語始めました」の会 参加レポート</a></li><li><a href=/post/20170601/>golang.tokyo #6 参加レポート</a></li></ul></div></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script><script src=https://mom0tomo.github.io/js/main.js></script><script src=https://mom0tomo.github.io/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-104531981-1','auto'),ga('send','pageview'))</script></body></html>

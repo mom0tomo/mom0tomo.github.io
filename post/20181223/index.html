@@ -3,18 +3,18 @@
 <a href=https://mom0tomo.github.io/tags>Tag</a>
 <a href=https://mom0tomo.github.io/about>About</a>
 <a href=https://mom0tomo.github.io/index.xml class=symbol style=font-size:15px>rss</a></nav><section id=wrapper><article class=post><header><h1>Railsのtravel_toの実装を読む</h1><div class=posted style=display:none><a href=https://mom0tomo.github.io/post/20181223/>Railsのtravel_toの実装を読む</a></div><h2 class=headline>Dec 23, 2018 22:10
-· 1064 words
+· 1088 words
 · 3 minutes read
 <span class=tags><a href=https://mom0tomo.github.io/tags/ruby>Ruby</a>
-<a href=https://mom0tomo.github.io/tags/rails>Rails</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#処理の流れ>処理の流れ</a></li></ul></nav></div><section id=post-body><h1 id=travel_toを使ったテスト>travel_toを使ったテスト</h1><p>もうすぐ今年も終わりますね。</p><p>年末年始は会社も休業するので、仕事で関わっているサービスでも休業期間のご案内を表示しています。</p><p><code>"年末年始休業のお知らせ　12月26日(水)～翌1月3日(木)は年末年始休業となります。"</code></p><p>この「一定期間だけ表示する文言」のテストを書くときに、travel_toというRailsのメソッドを使うといいというアドバイスをもらいました。</p><hr><pre><code>  context '表示期間内の場合' do
-    it '休業情報を表示すること' do
+<a href=https://mom0tomo.github.io/tags/rails>Rails</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#処理の流れ>処理の流れ</a></li></ul></nav></div><section id=post-body><h1 id=travel_toを使ったテスト>travel_toを使ったテスト</h1><p>もうすぐ今年も終わりますね。</p><p>年末年始は会社も休業するので、仕事で関わっているサービスでも休業期間のご案内を表示しています。</p><p><code>"年末年始休業のお知らせ　12月26日(水)～翌1月3日(木)は年末年始休業となります。"</code></p><p>この「一定期間だけ表示する文言」のテストを書くときに、travel_toというRailsのメソッドを使うといいというアドバイスをもらいました。</p><hr><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>  context &#39;表示期間内の場合&#39; do
+    it &#39;休業情報を表示すること&#39; do
       travel_to Time.zone.local(2018, 12, 26) do
         # Time.current =&gt; Wed, 26 Dec 2018 00:00:00 JST +09:00
         visit path
-        expect(page).to have_content '年末年始休業のご案内'
+        expect(page).to have_content &#39;年末年始休業のご案内&#39;
       end
     end
-</code></pre><p>こんな風に書くことで、テストの中の<code>Time.current</code> の値をブロック内で擬似的に <code>Wed, 26 Dec 2018 00:00:00 JST +09:00</code> として扱うことができます。</p><p>初めてみたときはRailsらしい魔法のような簡潔で便利なメソッドだと思いました。</p><h1 id=travel_toの実装を読む>travel_toの実装を読む</h1><p>どうやってこのような挙動をしているのか、Rails本体の実装を見てみます。</p><p><a href=https://api.rubyonrails.org/classes/ActiveSupport/Testing/TimeHelpers.html#method-i-travel_to>api.rubyonrails.org/classes/ActiveSupport/Testing/TimeHelpers</a></p><p>ActiveSupportのTestingのTimeHelpers内で実装されていますね。</p><p>値をスタブ（テスト用の代用品）にして <code>Time.now</code>と <code>Date.today</code>と <code>DateTime.now</code>の形で返すことができるそうです。</p><hr><pre><code># File activesupport/lib/active_support/testing/time_helpers.rb, line 113
+</code></pre></div><p>こんな風に書くことで、テストの中の<code>Time.current</code> の値をブロック内で擬似的に <code>Wed, 26 Dec 2018 00:00:00 JST +09:00</code> として扱うことができます。</p><p>初めてみたときはRailsらしい魔法のような簡潔で便利なメソッドだと思いました。</p><h1 id=travel_toの実装を読む>travel_toの実装を読む</h1><p>どうやってこのような挙動をしているのか、Rails本体の実装を見てみます。</p><p><a href=https://api.rubyonrails.org/classes/ActiveSupport/Testing/TimeHelpers.html#method-i-travel_to>api.rubyonrails.org/classes/ActiveSupport/Testing/TimeHelpers</a></p><p>ActiveSupportのTestingのTimeHelpers内で実装されていますね。</p><p>値をスタブ（テスト用の代用品）にして <code>Time.now</code>と <code>Date.today</code>と <code>DateTime.now</code>の形で返すことができるそうです。</p><hr><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback># File activesupport/lib/active_support/testing/time_helpers.rb, line 113
 
 def travel_to(date_or_time)
   if block_given? &amp;&amp; simple_stubs.stubbing(Time, :now)
@@ -63,7 +63,7 @@ preferred way to achieve above is:
     end
   end
 end
-</code></pre><hr><h2 id=処理の流れ>処理の流れ</h2><p><strong>1. 引数をTimeクラスに変換する</strong>
+</code></pre></div><hr><h2 id=処理の流れ>処理の流れ</h2><p><strong>1. 引数をTimeクラスに変換する</strong>
 引数が <code>Date型(YYYY-MM-DD)</code>で渡されたときは時刻を00:00:00にして与えてあげて、
 <code>Datetime型(YYYY-MM-DD HH:MM:SS)</code>で渡されたときはそのまま、
 <code>Timeクラス(YYYY-MM-DD HH:MM:SS +0900)</code>に変換してあげています。</p><p><strong>2. スタブに入れる</strong>

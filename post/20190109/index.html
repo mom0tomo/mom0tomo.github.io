@@ -3,13 +3,13 @@
 <a href=https://mom0tomo.github.io/tags>Tag</a>
 <a href=https://mom0tomo.github.io/about>About</a>
 <a href=https://mom0tomo.github.io/index.xml class=symbol style=font-size:15px>rss</a></nav><section id=wrapper><article class=post><header><h1>JavaScriptのthisをわかりやすく整理する（Arrow Function編）</h1><div class=posted style=display:none><a href=https://mom0tomo.github.io/post/20190109/>JavaScriptのthisをわかりやすく整理する（Arrow Function編）</a></div><h2 class=headline>Jan 9, 2019 15:03
-· 743 words
+· 751 words
 · 2 minutes read
 <span class=tags><a href=https://mom0tomo.github.io/tags/js>JS</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#読んだもの>読んだもの</a></li><li><a href=#arrow-functionにおけるthis>Arrow Functionにおけるthis</a></li><li><a href=#arrow-functionとコールバック関数>Arrow Functionとコールバック関数</a></li><li><a href=#おわりに>おわりに</a></li></ul></nav></div><section id=post-body><h2 id=はじめに>はじめに</h2><p><a href=https://mom0tomo.github.io/post/20190106/>前回</a>は関数とメソッド編でした。</p><p>Arrow Function自体についての説明は<a href=https://mom0tomo.github.io/post/20190113/>次回の記事</a>で行います。</p><hr><h2 id=読んだもの>読んだもの</h2><p><a href=https://jsprimer.net/basic/function-this/>JavaScriptの入門書 - 関数とthis</a>
-<a href=https://www.slideshare.net/yuka2py/javascript-23768378>最強オブジェクト指向言語 JavaScript 再入門！</a></p><hr><h2 id=arrow-functionにおけるthis>Arrow Functionにおけるthis</h2><p>関数/メソッドにおけるthisの値は呼び出されたときに決まるのに対し、Arrow Functionにおけるthisの値は定義時に静的に決まります。</p><p>これが大きな違いです。</p><hr><h2 id=arrow-functionとコールバック関数>Arrow Functionとコールバック関数</h2><p>thisの値が定義時に決まるというArrow Funcgtionの特徴は、コールバック関数を呼び出すときに活用できます。</p><p>メソッドの場合は、コールバック関数の中でthisを定義すると、<a href=https://mom0tomo.github.io/post/20190106/#2-%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E9%96%A2%E6%95%B0%E3%81%AE%E4%B8%AD%E3%81%A7this%E3%82%92%E5%8F%82%E7%85%A7%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88>呼び出し時に予期せぬオブジェクトを指して問題になる</a>ことがありました。</p><pre><code>&quot;use strict&quot;;
+<a href=https://www.slideshare.net/yuka2py/javascript-23768378>最強オブジェクト指向言語 JavaScript 再入門！</a></p><hr><h2 id=arrow-functionにおけるthis>Arrow Functionにおけるthis</h2><p>関数/メソッドにおけるthisの値は呼び出されたときに決まるのに対し、Arrow Functionにおけるthisの値は定義時に静的に決まります。</p><p>これが大きな違いです。</p><hr><h2 id=arrow-functionとコールバック関数>Arrow Functionとコールバック関数</h2><p>thisの値が定義時に決まるというArrow Funcgtionの特徴は、コールバック関数を呼び出すときに活用できます。</p><p>メソッドの場合は、コールバック関数の中でthisを定義すると、<a href=https://mom0tomo.github.io/post/20190106/#2-%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E9%96%A2%E6%95%B0%E3%81%AE%E4%B8%AD%E3%81%A7this%E3%82%92%E5%8F%82%E7%85%A7%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88>呼び出し時に予期せぬオブジェクトを指して問題になる</a>ことがありました。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>&#34;use strict&#34;;
 
 const person = {
-    suffix: &quot;さん&quot;,
+    suffix: &#34;さん&#34;,
 
     printName(names) {
         return names.map(function(name) {
@@ -18,13 +18,13 @@ const person = {
     }
 };
 
-person.printName([&quot;太郎&quot;, &quot;二郎&quot;, &quot;三郎&quot;]);
-// =&gt; TypeError: Cannot read property 'suffix' of undefined
+person.printName([&#34;太郎&#34;, &#34;二郎&#34;, &#34;三郎&#34;]);
+// =&gt; TypeError: Cannot read property &#39;suffix&#39; of undefined
 // thisに匿名関数が渡っているため、thisはundefindとなる
-</code></pre><p>一方、Arrow Functionの場合は、thisは常に一つ外側のオブジェクトを指しています。</p><p>このため、呼び出す時のことは気にせずコールバック関数を使うことができます。</p><pre><code>&quot;use strict&quot;;
+</code></pre></div><p>一方、Arrow Functionの場合は、thisは常に一つ外側のオブジェクトを指しています。</p><p>このため、呼び出す時のことは気にせずコールバック関数を使うことができます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>&#34;use strict&#34;;
 
 const person = {
-    suffix: &quot;さん&quot;,
+    suffix: &#34;さん&#34;,
 
      printName(names) {
         return names.map((name) =&gt; {
@@ -33,8 +33,8 @@ const person = {
     }
 };
 
-person.printName([&quot;太郎&quot;, &quot;二郎&quot;, &quot;三郎&quot;]);
-// =&gt; [ '太郎さん', '二郎さん', '三郎さん' ]
+person.printName([&#34;太郎&#34;, &#34;二郎&#34;, &#34;三郎&#34;]);
+// =&gt; [ &#39;太郎さん&#39;, &#39;二郎さん&#39;, &#39;三郎さん&#39; ]
 // thisは常にpersonを指している
-</code></pre><hr><h2 id=おわりに>おわりに</h2><p><a href=https://mom0tomo.github.io/post/20190113/>次回</a>はArrow Functionを使った関数式について説明します。</p></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-via=mom0tomo data-count=horizontal lang=en>Tweet</a> <script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a><script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
+</code></pre></div><hr><h2 id=おわりに>おわりに</h2><p><a href=https://mom0tomo.github.io/post/20190113/>次回</a>はArrow Functionを使った関数式について説明します。</p></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-via=mom0tomo data-count=horizontal lang=en>Tweet</a> <script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a><script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
 <a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a><script type=text/javascript>!function(a,c){var b,d;a.getElementById(c)||(b=a.createElement("script"),b.id=c,b.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",d=a.getElementById(c),a.body.appendChild(b))}(document,"pocket-btn-js")</script><span class=hatena-star></span></div></div><div class=related-posts><h4>関連記事</h4><ul><li><a href=/post/20190106/>JavaScriptのthisをわかりやすく整理する（関数とメソッド編）</a></li></ul></div></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script><script src=https://mom0tomo.github.io/js/main.js></script><script src=https://mom0tomo.github.io/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-104531981-1','auto'),ga('send','pageview'))</script></body></html>

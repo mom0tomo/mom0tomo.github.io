@@ -5,22 +5,22 @@
 <a href=https://mom0tomo.github.io/index.xml class=symbol style=font-size:15px>rss</a></nav><section id=wrapper><article class=post><header><h1>ブログにtextlintを入れてgit commit時に走るようにした</h1><div class=posted style=display:none><a href=https://mom0tomo.github.io/post/textlint_git_hooks/>ブログにtextlintを入れてgit commit時に走るようにした</a></div><h2 class=headline>Apr 2, 2019 00:07
 · 943 words
 · 2 minutes read
-<span class=tags><a href=https://mom0tomo.github.io/tags/git-textlint>Git, textlint</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#textlintの導入>textlintの導入</a></li><li><a href=#git-hookを利用してcommit時にリンターをかける>git hookを利用してcommit時にリンターをかける</a></li></ul></nav></div><section id=post-body><h2 id=はじめに>はじめに</h2><p>静的サイトジェネレータhugoを使っているブログでtypoやスペルミスを繰り返してしまっていたので<a href=https://github.com/textlint/textlint>textlint</a>を入れることにしました。</p><p>textlintは日本語の文章校正ツールで、Markdownなどテキストのリンターとして使います。</p><p>詳しい使い方についてはcommitterである@azuさんのブログが詳しいです。</p><ul><li><a href=https://efcl.info/2015/09/10/introduce-textlint/>textlintで日本語の文章をチェックする</a></li><li><a href=https://efcl.info/2016/07/13/textlint-rule-preset-ja-technical-writing/>技術文書を書くためのtextlint校正ルールセット</a></li></ul><hr><h2 id=textlintの導入>textlintの導入</h2><p>textlintの初期設定はシンプルです。</p><pre><code>$ npm init
+<span class=tags><a href=https://mom0tomo.github.io/tags/git-textlint>Git, textlint</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#textlintの導入>textlintの導入</a></li><li><a href=#git-hookを利用してcommit時にリンターをかける>git hookを利用してcommit時にリンターをかける</a></li></ul></nav></div><section id=post-body><h2 id=はじめに>はじめに</h2><p>静的サイトジェネレータhugoを使っているブログでtypoやスペルミスを繰り返してしまっていたので<a href=https://github.com/textlint/textlint>textlint</a>を入れることにしました。</p><p>textlintは日本語の文章校正ツールで、Markdownなどテキストのリンターとして使います。</p><p>詳しい使い方についてはcommitterである@azuさんのブログが詳しいです。</p><ul><li><a href=https://efcl.info/2015/09/10/introduce-textlint/>textlintで日本語の文章をチェックする</a></li><li><a href=https://efcl.info/2016/07/13/textlint-rule-preset-ja-technical-writing/>技術文書を書くためのtextlint校正ルールセット</a></li></ul><hr><h2 id=textlintの導入>textlintの導入</h2><p>textlintの初期設定はシンプルです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ npm init
 $ npm install --save-dev textlint
 
 $ ./node_modules/.bin/textlint --init
-</code></pre><p>これで初期設定は完了です。</p><p>動作確認のためにtextlintコマンドを実行してバージョンを確認してみます。</p><pre><code>$ textlint -v
+</code></pre></div><p>これで初期設定は完了です。</p><p>動作確認のためにtextlintコマンドを実行してバージョンを確認してみます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ textlint -v
 v11.2.3
-</code></pre><p>インストールされたことが確認できました。</p><p>技術文書向けのtextlintルールプリセットである<a href=https://github.com/textlint-ja/textlint-rule-preset-ja-technical-writing>preset-ja-technical-writing</a>を導入します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ npm install textlint-rule-preset-ja-technical-writing --save-dev
-</code></pre></div><p><code>.textlintrc</code>にルールを追加します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>{</span>
+</code></pre></div><p>インストールされたことが確認できました。</p><p>技術文書向けのtextlintルールプリセットである<a href=https://github.com/textlint-ja/textlint-rule-preset-ja-technical-writing>preset-ja-technical-writing</a>を導入します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>$ npm install textlint-rule-preset-ja-technical-writing --save-dev
+</code></pre></div><p><code>.textlintrc</code>にルールを追加します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=color:#f92672>{</span>
   <span style=color:#e6db74>&#34;filters&#34;</span>: <span style=color:#f92672>{}</span>,
   <span style=color:#e6db74>&#34;rules&#34;</span>: <span style=color:#f92672>{</span>
     <span style=color:#e6db74>&#34;preset-ja-technical-writing&#34;</span>: true
   <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
-</code></pre></div><hr><h2 id=git-hookを利用してcommit時にリンターをかける>git hookを利用してcommit時にリンターをかける</h2><p><a href=https://git-scm.com/book/ja/v1/Git-%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA-Git-%E3%83%95%E3%83%83%E3%82%AF>git hooks</a>とはgit操作をフックとして他のコマンドやタスクを実行する機能です。</p><p>今回はcommit時にtextlintをかけるようにしてみます。</p><p><code>git init</code>したときに<code>.git/hooks/pre-commit.sample</code>というファイルが自動的に作られているので、それをコピーして<code>.git/hooks/pre-commit</code>というファイルをつくります。</p><pre><code>$ cp .git/hooks/pre-commit.sample .git/hooks/pre-commit
-</code></pre><p>pushするときにlintを実行したい場合は同様の方法で<code>.git/hooks/pre-push</code>をつくります。</p><p>git hooksのアクションはシェルスクリプトで書きます。
-また<code>#!/usr/bin/env ruby</code>のように宣言することでrubyなど任意の言語で書くこともできます。</p><p>私の場合は以下のようなスクリプトを書きました。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e>#!/bin/sh
+</code></pre></div><hr><h2 id=git-hookを利用してcommit時にリンターをかける>git hookを利用してcommit時にリンターをかける</h2><p><a href=https://git-scm.com/book/ja/v1/Git-%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA-Git-%E3%83%95%E3%83%83%E3%82%AF>git hooks</a>とはgit操作をフックとして他のコマンドやタスクを実行する機能です。</p><p>今回はcommit時にtextlintをかけるようにしてみます。</p><p><code>git init</code>したときに<code>.git/hooks/pre-commit.sample</code>というファイルが自動的に作られているので、それをコピーして<code>.git/hooks/pre-commit</code>というファイルをつくります。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ cp .git/hooks/pre-commit.sample .git/hooks/pre-commit
+</code></pre></div><p>pushするときにlintを実行したい場合は同様の方法で<code>.git/hooks/pre-push</code>をつくります。</p><p>git hooksのアクションはシェルスクリプトで書きます。
+また<code>#!/usr/bin/env ruby</code>のように宣言することでrubyなど任意の言語で書くこともできます。</p><p>私の場合は以下のようなスクリプトを書きました。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=color:#75715e>#!/bin/sh
 </span><span style=color:#75715e></span>echo run textlint
 
 git diff --diff-filter<span style=color:#f92672>=</span>ACM --cached --name-only <span style=color:#ae81ff>\
@@ -28,7 +28,7 @@ git diff --diff-filter<span style=color:#f92672>=</span>ACM --cached --name-only
 </span><span style=color:#ae81ff></span>| xargs -n <span style=color:#ae81ff>1</span> -I<span style=color:#f92672>{}</span> textlint <span style=color:#f92672>{}</span> --fix
 
 echo finish textlint
-</code></pre></div><p>試してみます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ git commmit -m <span style=color:#e6db74>&#34;published &#39;ブログにtextlintを入れてgit commit時に走るようにした&#39;&#34;</span>
+</code></pre></div><p>試してみます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>$ git commmit -m <span style=color:#e6db74>&#34;published &#39;ブログにtextlintを入れてgit commit時に走るようにした&#39;&#34;</span>
 
 run textlint
 finish textlint

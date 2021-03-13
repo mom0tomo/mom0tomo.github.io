@@ -6,32 +6,32 @@
 · 611 words
 · 2 minutes read
 <span class=tags><a href=https://mom0tomo.github.io/tags/python>Python</a>
-<a href=https://mom0tomo.github.io/tags/ansible>Ansible</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#環境>環境</a></li><li><a href=#python2713のインストール>Python2.7.13のインストール</a></li><li><a href=#ansible27系のインストール>Ansible2.7系のインストール</a></li></ul></nav></div><section id=post-body><p>新しいPC上でEOLを迎えたPython2系との古いバージョンのAnsibleを操作する必要があったので備忘録にまとめました。</p><h2 id=環境>環境</h2><ul><li>MacOS Catalina 10.5.3</li><li>Python2.7.13</li><li>Ansible2.7&lt;=>2.8</li></ul><h2 id=python2713のインストール>Python2.7.13のインストール</h2><p>pyenvでインストールします。</p><p>pyenv自体はbrewからインストールできます。公式のREADMEに詳しく書いてあるのでこれを読めばうまく設定できるはずです。</p><p>PATHを通し、 <code>pyenv</code> コマンドを使えるようにします。</p><pre><code>$ set -Ux PYENV_ROOT $HOME/.pyenv
+<a href=https://mom0tomo.github.io/tags/ansible>Ansible</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#環境>環境</a></li><li><a href=#python2713のインストール>Python2.7.13のインストール</a></li><li><a href=#ansible27系のインストール>Ansible2.7系のインストール</a></li></ul></nav></div><section id=post-body><p>新しいPC上でEOLを迎えたPython2系との古いバージョンのAnsibleを操作する必要があったので備忘録にまとめました。</p><h2 id=環境>環境</h2><ul><li>MacOS Catalina 10.5.3</li><li>Python2.7.13</li><li>Ansible2.7&lt;=>2.8</li></ul><h2 id=python2713のインストール>Python2.7.13のインストール</h2><p>pyenvでインストールします。</p><p>pyenv自体はbrewからインストールできます。公式のREADMEに詳しく書いてあるのでこれを読めばうまく設定できるはずです。</p><p>PATHを通し、 <code>pyenv</code> コマンドを使えるようにします。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ set -Ux PYENV_ROOT $HOME/.pyenv
 $ set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-</code></pre><p><code>pyenv init</code> 設定をshellのconfigに追加します。わたしはfishを使っているので <code>~/.config/fish/config.fish</code> です。</p><pre><code>$ echo -e 'if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  pyenv init - | source \nfi' &gt;&gt; ~/.config/fish/config.fish
-</code></pre><p>その他のshellでの設定はREADMEの <code>Basic GitHub Checkout</code> の章に書いてあります。</p><hr><p>pyenvでPython2.7.13をインストールします。</p><pre><code>$ pyenv install 2.7.13
-</code></pre><p>インストールしたPythonがきちんと反映されているか <code>pyenv versions</code> コマンドで確認します。</p><pre><code>$ pyenv versions
+</code></pre></div><p><code>pyenv init</code> 設定をshellのconfigに追加します。わたしはfishを使っているので <code>~/.config/fish/config.fish</code> です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ echo -e &#39;if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  pyenv init - | source \nfi&#39; &gt;&gt; ~/.config/fish/config.fish
+</code></pre></div><p>その他のshellでの設定はREADMEの <code>Basic GitHub Checkout</code> の章に書いてあります。</p><hr><p>pyenvでPython2.7.13をインストールします。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ pyenv install 2.7.13
+</code></pre></div><p>インストールしたPythonがきちんと反映されているか <code>pyenv versions</code> コマンドで確認します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ pyenv versions
 * system
   2.7.13
-</code></pre><p>カレントディレクトリで使うPythonのバージョンを2.7.13に固定します。グローバルにバージョンを固定したい時は <code>local</code> を <code>global</code> に変えます。</p><pre><code>$ pyenv local 2.7.13
+</code></pre></div><p>カレントディレクトリで使うPythonのバージョンを2.7.13に固定します。グローバルにバージョンを固定したい時は <code>local</code> を <code>global</code> に変えます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ pyenv local 2.7.13
 pyenv versions
   system
 * 2.7.13 (set by /Users/mom0tomo/dev/hoge/.python-version)
-</code></pre><p>Pythonのバージョンを確認します。</p><pre><code>$ python --version
+</code></pre></div><p>Pythonのバージョンを確認します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ python --version
 Python 2.7.13
-</code></pre><h2 id=ansible27系のインストール>Ansible2.7系のインストール</h2><p>pipでインストールします。</p><p>まず、pipのPATHが通っていることを確認します。</p><pre><code>$ which pip
+</code></pre></div><h2 id=ansible27系のインストール>Ansible2.7系のインストール</h2><p>pipでインストールします。</p><p>まず、pipのPATHが通っていることを確認します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ which pip
 /Users/mom0tomo/.pyenv/shims/pip
-</code></pre><pre><code>$ pip install --upgrade pip
-$ pip install --upgrade 'ansible&gt;=2.7.0,&lt;2.8.0'
-</code></pre><p>ansibleのコマンドが実行できることを確認します。</p><pre><code>$ ansible --help
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ pip install --upgrade pip
+$ pip install --upgrade &#39;ansible&gt;=2.7.0,&lt;2.8.0&#39;
+</code></pre></div><p>ansibleのコマンドが実行できることを確認します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ ansible --help
 
 Usage: ansible &lt;host-pattern&gt; [options]
 
-Define and run a single task 'playbook' against a set of hosts
+Define and run a single task &#39;playbook&#39; against a set of hosts
 
 Options:
 
 ...
 
-</code></pre><p>これで完了です。</p></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-via=mom0tomo data-count=horizontal lang=en>Tweet</a> <script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a><script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
+</code></pre></div><p>これで完了です。</p></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-via=mom0tomo data-count=horizontal lang=en>Tweet</a> <script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a><script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
 <a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a><script type=text/javascript>!function(a,c){var b,d;a.getElementById(c)||(b=a.createElement("script"),b.id=c,b.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",d=a.getElementById(c),a.body.appendChild(b))}(document,"pocket-btn-js")</script><span class=hatena-star></span></div></div></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script><script src=https://mom0tomo.github.io/js/main.js></script><script src=https://mom0tomo.github.io/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-104531981-1','auto'),ga('send','pageview'))</script></body></html>
