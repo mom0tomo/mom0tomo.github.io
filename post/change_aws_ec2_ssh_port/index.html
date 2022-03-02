@@ -14,35 +14,30 @@
 <meta name=twitter:title content="AWS EC2でSSHするポートを変更する">
 <meta name=twitter:description content="SSHのデフォルトポートは22番です。セキュリティ対策のため、踏み台サーバーなどアクセス元IPによる制限を加えないサーバーを立てる場合、SSHポート番号をwell known portの22から変更したいときがあります。EC2の場合、セキュリティグループ上の変更も忘れずに行います。">
 <meta name=twitter:site content="@https://twitter.com/mom0tomo">
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-104531981-1','auto'),ga('send','pageview'))</script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-104531981-1","auto"),ga("send","pageview"))</script>
 <meta name=description content="SSHのデフォルトポートは22番です。セキュリティ対策のため、踏み台サーバーなどアクセス元IPによる制限を加えないサーバーを立てる場合、SSHポート番号をwell known portの22から変更したいときがあります。EC2の場合、セキュリティグループ上の変更も忘れずに行います。">
-<meta name=generator content="Hugo 0.92.0">
-<title>AWS EC2でSSHするポートを変更する &#183; mom0tomo</title>
-<link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
+<meta name=generator content="Hugo 0.93.0">
+<title>AWS EC2でSSHするポートを変更する &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/style.css>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css>
 <link href=https://mom0tomo.github.io/index.xml rel=alternate type=application/rss+xml title=mom0tomo>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css>
-</head>
-<body>
+</head><body>
 <nav class=main-nav>
 <a href=https://mom0tomo.github.io/> <span class=arrow>← </span>Home</a>
 <a href=https://mom0tomo.github.io/about>About</a>
 <a href=https://mom0tomo.github.io/post>Archive</a>
 <a href=https://mom0tomo.github.io/tags>Tags</a>
 <a href=https://mom0tomo.github.io//index.xml class=symbol style=font-size:15px>rss</a>
-</nav>
-<section id=wrapper>
+</nav><section id=wrapper>
 <article class=post>
 <header>
 <h1>
 AWS EC2でSSHするポートを変更する
-</h1>
-<div class=posted style=display:none>
+</h1><div class=posted style=display:none>
 <a href=https://mom0tomo.github.io/post/change_aws_ec2_ssh_port/>AWS EC2でSSHするポートを変更する</a>
-</div>
-<h2 class=headline>
+</div><h2 class=headline>
 Apr 15, 2021 19:23
 · 648 words
 · 2 minutes read
@@ -50,70 +45,43 @@ Apr 15, 2021 19:23
 <a href=https://mom0tomo.github.io/tags/aws>AWS</a>
 <a href=https://mom0tomo.github.io/tags/ec2>EC2</a>
 </span>
-</h2>
-</header>
-<div id=toc>
+</h2></header><div id=toc>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#設定ファイルを変更する>設定ファイルを変更する</a></li>
-<li><a href=#セキュリティグループを更新する>セキュリティグループを更新する</a></li>
-</ul>
-</nav>
-</div>
-<section id=post-body>
-<p>SSHのデフォルトポートは22番です。セキュリティ対策のため、踏み台サーバーなどアクセス元IPによる制限を加えないサーバーを立てる場合、SSHポート番号をwell known portsの22番から変更したいときがあります。</p>
-<p>今回はポートを2222に変更してみます。</p>
-<h2 id=設定ファイルを変更する>設定ファイルを変更する</h2>
-<p>まず、EC2インスタンスにデフォルトポートでSSH接続します。接続方法とコマンドはAWSコンソールで見ることができるので省略します。</p>
-<p>次に、設定ファイルを更新します。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=color:#999;font-style:italic># 設定ファイルのバックアップを取る</span>
-$ cp /etc/ssh/ssh_config /tmp
-
-<span style=color:#999;font-style:italic># 設定ファイルでポートを変更する</span>
-$ sudo vi /etc/ssh/ssh_config
-
-<span style=color:#999;font-style:italic># バックアップしたファイルと編集後のファイルを比較する</span>
-$ diff -u /tmp/ssh_config /etc/ssh/ssh_config
-- Port <span style=color:#3677a9>22</span>
-+ Port <span style=color:#3677a9>2222</span>
-</code></pre></div><p>sshdを再起動して設定を反映します。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash>$ sudo systemctl reload sshd
-</code></pre></div><p>サービス再起動後、起動状態を確認します。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ sudo systemctl status sshd
-● sshd.service - OpenSSH server daemon
-   Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled)
-   Active: active (running) since Sun 2021-04-15 19:48:43 UTC; 1 days ago
-     Docs: man:sshd(8)
-           man:sshd_config(5)
-  Process: 3763 ExecReload=/bin/kill -HUP $MAINPID (code=exited, status=0/SUCCESS)
- Main PID: 3239 (sshd)
-   CGroup: /system.slice/sshd.service
-           └─3239 /usr/sbin/sshd -D
-...
-</code></pre></div><p>念のため、設定が完了し動作確認できるまでこのSSHコネクションは切断せずにおきます。もし設定にミスがあってサーバーに接続できなくなった場合、この接続から修正を行います。</p>
-<h2 id=セキュリティグループを更新する>セキュリティグループを更新する</h2>
-<p>EC2インスタンスに接続して上記の変更を行った後、AWSコンソールから「セキュリティグループ」にアクセスして、「インバウンドルール」のポートを2222に変更します。</p>
-<p><img src=/images/articles/aws_ec2_ssh.png alt=ポートを22から2222に変更する></p>
-<p>ここまで終わったら、ターミナルの新規ウィンドウを開き新しいセッションを張って、対象サーバーにポート2222でSSH接続できることを確認します。</p>
-</section>
-</article>
-<div class=social>
+<li><a href=#設定ファイルを変更する>設定ファイルを変更する</a></li><li><a href=#セキュリティグループを更新する>セキュリティグループを更新する</a></li></ul></nav></div><section id=post-body>
+<p>SSHのデフォルトポートは22番です。セキュリティ対策のため、踏み台サーバーなどアクセス元IPによる制限を加えないサーバーを立てる場合、SSHポート番号をwell known portsの22番から変更したいときがあります。</p><p>今回はポートを2222に変更してみます。</p><h2 id=設定ファイルを変更する>設定ファイルを変更する</h2><p>まず、EC2インスタンスにデフォルトポートでSSH接続します。接続方法とコマンドはAWSコンソールで見ることができるので省略します。</p><p>次に、設定ファイルを更新します。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#999;font-style:italic># 設定ファイルのバックアップを取る</span>
+</span></span><span style=display:flex><span>$ cp /etc/ssh/ssh_config /tmp
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#999;font-style:italic># 設定ファイルでポートを変更する</span>
+</span></span><span style=display:flex><span>$ sudo vi /etc/ssh/ssh_config
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#999;font-style:italic># バックアップしたファイルと編集後のファイルを比較する</span>
+</span></span><span style=display:flex><span>$ diff -u /tmp/ssh_config /etc/ssh/ssh_config
+</span></span><span style=display:flex><span>- Port <span style=color:#3677a9>22</span>
+</span></span><span style=display:flex><span>+ Port <span style=color:#3677a9>2222</span>
+</span></span></code></pre></div><p>sshdを再起動して設定を反映します。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo systemctl reload sshd
+</span></span></code></pre></div><p>サービス再起動後、起動状態を確認します。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ sudo systemctl status sshd
+</span></span><span style=display:flex><span>● sshd.service - OpenSSH server daemon
+</span></span><span style=display:flex><span>   Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled)
+</span></span><span style=display:flex><span>   Active: active (running) since Sun 2021-04-15 19:48:43 UTC; 1 days ago
+</span></span><span style=display:flex><span>     Docs: man:sshd(8)
+</span></span><span style=display:flex><span>           man:sshd_config(5)
+</span></span><span style=display:flex><span>  Process: 3763 ExecReload=/bin/kill -HUP $MAINPID (code=exited, status=0/SUCCESS)
+</span></span><span style=display:flex><span> Main PID: 3239 (sshd)
+</span></span><span style=display:flex><span>   CGroup: /system.slice/sshd.service
+</span></span><span style=display:flex><span>           └─3239 /usr/sbin/sshd -D
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><p>念のため、設定が完了し動作確認できるまでこのSSHコネクションは切断せずにおきます。もし設定にミスがあってサーバーに接続できなくなった場合、この接続から修正を行います。</p><h2 id=セキュリティグループを更新する>セキュリティグループを更新する</h2><p>EC2インスタンスに接続して上記の変更を行った後、AWSコンソールから「セキュリティグループ」にアクセスして、「インバウンドルール」のポートを2222に変更します。</p><p><img src=/images/articles/aws_ec2_ssh.png alt=ポートを22から2222に変更する></p><p>ここまで終わったら、ターミナルの新規ウィンドウを開き新しいセッションを張って、対象サーバーにポート2222でSSH接続できることを確認します。</p></section></article><div class=social>
 <div class=social-inner>
 <a href=https://twitter.com/share class=twitter-share-button data-count=horizontal lang=hja>Tweet</a>
-<script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script>
+<script>!function(e,n,s){var t,o=e.getElementsByTagName(n)[0],i=/^http:/.test(e.location)?"http":"https";e.getElementById(s)||(t=e.createElement(n),t.id=s,t.src=i+"://platform.twitter.com/widgets.js",o.parentNode.insertBefore(t,o))}(document,"script","twitter-wjs")</script>
 <a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a>
 <script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
 <a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a>
-<script type=text/javascript>!function(a,c){var b,d;a.getElementById(c)||(b=a.createElement("script"),b.id=c,b.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",d=a.getElementById(c),a.body.appendChild(b))}(document,"pocket-btn-js")</script>
-</div>
-</div>
-<div class=related-posts>
-<h4>関連記事</h4>
-<ul>
-<li><a href=/post/aws_ec2_install_postgres_client/>Amazon Linux2にPostgreSQLのクライアントモジュールをインストールする</a></li>
-</ul>
-</div>
-<footer id=footer>
+<script type=text/javascript>!function(e,t){if(!e.getElementById(t)){var n=e.createElement("script"),s;n.id=t,n.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",s=e.getElementById(t),e.body.appendChild(n)}}(document,"pocket-btn-js")</script>
+</div></div><div class=related-posts>
+<h4>関連記事</h4><ul>
+<li><a href=/post/aws_ec2_install_postgres_client/>Amazon Linux2にPostgreSQLのクライアントモジュールをインストールする</a></li></ul></div><footer id=footer>
 <div id=social>
 <a class=symbol href=https://www.facebook.com/mom0tomo>
 circlefacebook
@@ -124,15 +92,10 @@ circlegithub
 <a class=symbol href=https://twitter.com/mom0tomo>
 circletwitterbird
 </a>
-</div>
-<p class=small>
+</div><p class=small>
 © Copyright 2022 mom0tomo
-</p>
-</footer>
-</section>
-<script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
+</p></footer></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
 <script src=https://mom0tomo.github.io/js/main.js></script>
 <script src=https://mom0tomo.github.io/js/highlight.min.js></script>
 <script>hljs.initHighlightingOnLoad()</script>
-</body>
-</html>
+</body></html>

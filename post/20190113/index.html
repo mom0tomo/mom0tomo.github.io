@@ -14,131 +14,81 @@
 <meta name=twitter:title content="JavaScriptの関数式とArrow Functionについて整理する">
 <meta name=twitter:description content="JavaScriptのthisについて、難しくつまづきがちなポイントの解説です。今回は前回までの補足として関数式とArrow Functionついて説明します。">
 <meta name=twitter:site content="@https://twitter.com/mom0tomo">
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-104531981-1','auto'),ga('send','pageview'))</script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-104531981-1","auto"),ga("send","pageview"))</script>
 <meta name=description content="JavaScriptのthisについて、難しくつまづきがちなポイントの解説です。今回は前回までの補足として関数式とArrow Functionついて説明します。">
-<meta name=generator content="Hugo 0.92.0">
-<title>JavaScriptの関数式とArrow Functionについて整理する &#183; mom0tomo</title>
-<link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
+<meta name=generator content="Hugo 0.93.0">
+<title>JavaScriptの関数式とArrow Functionについて整理する &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/style.css>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css>
 <link href=https://mom0tomo.github.io/index.xml rel=alternate type=application/rss+xml title=mom0tomo>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css>
-</head>
-<body>
+</head><body>
 <nav class=main-nav>
 <a href=https://mom0tomo.github.io/> <span class=arrow>← </span>Home</a>
 <a href=https://mom0tomo.github.io/about>About</a>
 <a href=https://mom0tomo.github.io/post>Archive</a>
 <a href=https://mom0tomo.github.io/tags>Tags</a>
 <a href=https://mom0tomo.github.io//index.xml class=symbol style=font-size:15px>rss</a>
-</nav>
-<section id=wrapper>
+</nav><section id=wrapper>
 <article class=post>
 <header>
 <h1>
 JavaScriptの関数式とArrow Functionについて整理する
-</h1>
-<div class=posted style=display:none>
+</h1><div class=posted style=display:none>
 <a href=https://mom0tomo.github.io/post/20190113/>JavaScriptの関数式とArrow Functionについて整理する</a>
-</div>
-<h2 class=headline>
+</div><h2 class=headline>
 Jan 13, 2019 09:01
 · 652 words
 · 2 minutes read
 <span class=tags>
 <a href=https://mom0tomo.github.io/tags/js>JS</a>
 </span>
-</h2>
-</header>
-<div id=toc>
+</h2></header><div id=toc>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#はじめに>はじめに</a></li>
-<li><a href=#読んだもの>読んだもの</a></li>
-<li><a href=#関数式とはなにか>関数式とはなにか</a>
+<li><a href=#はじめに>はじめに</a></li><li><a href=#読んだもの>読んだもの</a></li><li><a href=#関数式とはなにか>関数式とはなにか</a>
 <ul>
-<li><a href=#シンプルな関数式>シンプルな関数式</a></li>
-<li><a href=#arrow-functionを使った関数式>Arrow Functionを使った関数式</a></li>
-</ul>
-</li>
-<li><a href=#おわりに>おわりに</a></li>
-</ul>
-</nav>
-</div>
-<section id=post-body>
-<h2 id=はじめに>はじめに</h2>
-<p>ReactでES2015を使ってJSを書いていると、Arrow Functionがよく出てきます。</p>
-<p><a href=https://mom0tomo.github.io/post/20190109/>前回の記事</a>ではArrow Functionにおけるthisの挙動について整理しましたが、今回はArrow Function自体について整理します。</p>
-<hr>
-<h2 id=読んだもの>読んだもの</h2>
-<ul>
-<li><a href=https://jsprimer.net/basic/function-declaration/#function-and-declaration>関数と宣言 · JavaScriptの入門書 #jsprimer</a></li>
-<li><a href=https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions>アロー関数 | MDN</a></li>
-</ul>
-<hr>
-<h2 id=関数式とはなにか>関数式とはなにか</h2>
-<p>関数式とは、関数を値として変数へ代入している式のことです。</p>
-<p>関数式を使う場合、関数の名前は省略することができます。
-このような名前を持たない関数を匿名関数（または無名関数）と呼びます。</p>
-<hr>
-<h3 id=シンプルな関数式>シンプルな関数式</h3>
-<p>無名関数を使ったシンプルな例です。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>const 変数名 = function() {
-
-  return hoge;
-};
-</code></pre></div><p>関数式では引数を使うこともできます。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>const 変数名 = function(n, m) {
-
-  return n + m;
-};
-</code></pre></div><hr>
-<h3 id=arrow-functionを使った関数式>Arrow Functionを使った関数式</h3>
-<p>Arrow Functionは関数式の書き方のひとつです。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>const 変数名 = () =&gt; {
-
-  return hoge;
-};
-</code></pre></div><p>Arrow Functionを使う場合、関数の処理が一つの式であれば、returnは省略できます。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>const 変数名 = (n, m) =&gt; {
-
-  n + m;
-};
-</code></pre></div><p>また、引数が一つであれば <code>()</code>を省略できます。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>const 変数名 = n =&gt; {
-
-  return n;
-};
-</code></pre></div><hr>
-<h2 id=おわりに>おわりに</h2>
-<p>他にも、Arrow Functionを使った関数式には次のような特徴があります。</p>
-<ul>
-<li>関数に名前を付けることができないので、常に匿名関数である</li>
-<li>thisを静的に決定する (<a href=https://mom0tomo.github.io/post/20190109/>前回の記事で詳しく書きました</a>)</li>
-</ul>
-<p>省略形を使うことができ、thisの値を静的に決定することができるArrow Functionにはメリットが多く、メソッドでない関数式を扱う場合は、優先して利用することが推奨されています。</p>
-</section>
-</article>
-<div class=social>
+<li><a href=#シンプルな関数式>シンプルな関数式</a></li><li><a href=#arrow-functionを使った関数式>Arrow Functionを使った関数式</a></li></ul></li><li><a href=#おわりに>おわりに</a></li></ul></nav></div><section id=post-body>
+<h2 id=はじめに>はじめに</h2><p>ReactでES2015を使ってJSを書いていると、Arrow Functionがよく出てきます。</p><p><a href=https://mom0tomo.github.io/post/20190109/>前回の記事</a>ではArrow Functionにおけるthisの挙動について整理しましたが、今回はArrow Function自体について整理します。</p><hr>
+<h2 id=読んだもの>読んだもの</h2><ul>
+<li><a href=https://jsprimer.net/basic/function-declaration/#function-and-declaration>関数と宣言 · JavaScriptの入門書 #jsprimer</a></li><li><a href=https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions>アロー関数 | MDN</a></li></ul><hr>
+<h2 id=関数式とはなにか>関数式とはなにか</h2><p>関数式とは、関数を値として変数へ代入している式のことです。</p><p>関数式を使う場合、関数の名前は省略することができます。
+このような名前を持たない関数を匿名関数（または無名関数）と呼びます。</p><hr>
+<h3 id=シンプルな関数式>シンプルな関数式</h3><p>無名関数を使ったシンプルな例です。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>const 変数名 = function() {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  return hoge;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>関数式では引数を使うこともできます。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>const 変数名 = function(n, m) {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  return n + m;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><hr>
+<h3 id=arrow-functionを使った関数式>Arrow Functionを使った関数式</h3><p>Arrow Functionは関数式の書き方のひとつです。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>const 変数名 = () =&gt; {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  return hoge;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>Arrow Functionを使う場合、関数の処理が一つの式であれば、returnは省略できます。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>const 変数名 = (n, m) =&gt; {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  n + m;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>また、引数が一つであれば <code>()</code>を省略できます。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>const 変数名 = n =&gt; {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  return n;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><hr>
+<h2 id=おわりに>おわりに</h2><p>他にも、Arrow Functionを使った関数式には次のような特徴があります。</p><ul>
+<li>関数に名前を付けることができないので、常に匿名関数である</li><li>thisを静的に決定する (<a href=https://mom0tomo.github.io/post/20190109/>前回の記事で詳しく書きました</a>)</li></ul><p>省略形を使うことができ、thisの値を静的に決定することができるArrow Functionにはメリットが多く、メソッドでない関数式を扱う場合は、優先して利用することが推奨されています。</p></section></article><div class=social>
 <div class=social-inner>
 <a href=https://twitter.com/share class=twitter-share-button data-count=horizontal lang=hja>Tweet</a>
-<script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script>
+<script>!function(e,n,s){var t,o=e.getElementsByTagName(n)[0],i=/^http:/.test(e.location)?"http":"https";e.getElementById(s)||(t=e.createElement(n),t.id=s,t.src=i+"://platform.twitter.com/widgets.js",o.parentNode.insertBefore(t,o))}(document,"script","twitter-wjs")</script>
 <a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a>
 <script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
 <a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a>
-<script type=text/javascript>!function(a,c){var b,d;a.getElementById(c)||(b=a.createElement("script"),b.id=c,b.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",d=a.getElementById(c),a.body.appendChild(b))}(document,"pocket-btn-js")</script>
-</div>
-</div>
-<div class=related-posts>
-<h4>関連記事</h4>
-<ul>
-<li><a href=/post/20190117/>Reactの基本的な構文 ①親のStateを子のPropとして渡す構文</a></li>
-<li><a href=/post/20190109/>JavaScriptのthisをわかりやすく整理する（Arrow Function編）</a></li>
-<li><a href=/post/20190106/>JavaScriptのthisをわかりやすく整理する（関数とメソッド編）</a></li>
-</ul>
-</div>
-<footer id=footer>
+<script type=text/javascript>!function(e,t){if(!e.getElementById(t)){var n=e.createElement("script"),s;n.id=t,n.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",s=e.getElementById(t),e.body.appendChild(n)}}(document,"pocket-btn-js")</script>
+</div></div><div class=related-posts>
+<h4>関連記事</h4><ul>
+<li><a href=/post/20190117/>Reactの基本的な構文 ①親のStateを子のPropとして渡す構文</a></li><li><a href=/post/20190109/>JavaScriptのthisをわかりやすく整理する（Arrow Function編）</a></li><li><a href=/post/20190106/>JavaScriptのthisをわかりやすく整理する（関数とメソッド編）</a></li></ul></div><footer id=footer>
 <div id=social>
 <a class=symbol href=https://www.facebook.com/mom0tomo>
 circlefacebook
@@ -149,15 +99,10 @@ circlegithub
 <a class=symbol href=https://twitter.com/mom0tomo>
 circletwitterbird
 </a>
-</div>
-<p class=small>
+</div><p class=small>
 © Copyright 2022 mom0tomo
-</p>
-</footer>
-</section>
-<script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
+</p></footer></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
 <script src=https://mom0tomo.github.io/js/main.js></script>
 <script src=https://mom0tomo.github.io/js/highlight.min.js></script>
 <script>hljs.initHighlightingOnLoad()</script>
-</body>
-</html>
+</body></html>

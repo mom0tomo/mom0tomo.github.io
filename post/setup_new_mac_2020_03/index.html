@@ -14,155 +14,73 @@
 <meta name=twitter:title content="【2020年3月】新しいMacのセットアップと入れたアプリ">
 <meta name=twitter:description content="dotfiles gitで管理しており、install.shでシンボリックリンクを貼るだけ。 $ git clone https://github.com/mom0tomo/dotfiles.git homebrew なにはなくともhomebrew。 $ /usr/bin/ruby -e &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34; キーの変更">
 <meta name=twitter:site content="@https://twitter.com/mom0tomo">
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-104531981-1','auto'),ga('send','pageview'))</script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-104531981-1","auto"),ga("send","pageview"))</script>
 <meta name=description content>
-<meta name=generator content="Hugo 0.92.0">
-<title>【2020年3月】新しいMacのセットアップと入れたアプリ &#183; mom0tomo</title>
-<link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
+<meta name=generator content="Hugo 0.93.0">
+<title>【2020年3月】新しいMacのセットアップと入れたアプリ &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/style.css>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css>
 <link href=https://mom0tomo.github.io/index.xml rel=alternate type=application/rss+xml title=mom0tomo>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css>
-</head>
-<body>
+</head><body>
 <nav class=main-nav>
 <a href=https://mom0tomo.github.io/> <span class=arrow>← </span>Home</a>
 <a href=https://mom0tomo.github.io/about>About</a>
 <a href=https://mom0tomo.github.io/post>Archive</a>
 <a href=https://mom0tomo.github.io/tags>Tags</a>
 <a href=https://mom0tomo.github.io//index.xml class=symbol style=font-size:15px>rss</a>
-</nav>
-<section id=wrapper>
+</nav><section id=wrapper>
 <article class=post>
 <header>
 <h1>
 【2020年3月】新しいMacのセットアップと入れたアプリ
-</h1>
-<div class=posted style=display:none>
+</h1><div class=posted style=display:none>
 <a href=https://mom0tomo.github.io/post/setup_new_mac_2020_03/>【2020年3月】新しいMacのセットアップと入れたアプリ</a>
-</div>
-<h2 class=headline>
+</div><h2 class=headline>
 Apr 1, 2020 13:41
 · 1037 words
 · 3 minutes read
 <span class=tags>
 <a href=https://mom0tomo.github.io/tags/mac>Mac</a>
 </span>
-</h2>
-</header>
-<div id=toc>
+</h2></header><div id=toc>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#dotfiles>dotfiles</a></li>
-<li><a href=#homebrew>homebrew</a></li>
-<li><a href=#キーの変更>キーの変更</a></li>
-<li><a href=#screen-shotの場所を変更する>Screen Shotの場所を変更する</a></li>
-<li><a href=#go言語のダウンロード>Go言語のダウンロード</a></li>
-<li><a href=#brewで入れるツール>brewで入れるツール</a>
+<li><a href=#dotfiles>dotfiles</a></li><li><a href=#homebrew>homebrew</a></li><li><a href=#キーの変更>キーの変更</a></li><li><a href=#screen-shotの場所を変更する>Screen Shotの場所を変更する</a></li><li><a href=#go言語のダウンロード>Go言語のダウンロード</a></li><li><a href=#brewで入れるツール>brewで入れるツール</a>
 <ul>
-<li><a href=#fish>fish</a></li>
-<li><a href=#git関係>git関係</a></li>
-<li><a href=#ブログ用>ブログ用</a></li>
-</ul>
-</li>
-<li><a href=#デスクトップアプリ類>デスクトップアプリ類</a>
+<li><a href=#fish>fish</a></li><li><a href=#git関係>git関係</a></li><li><a href=#ブログ用>ブログ用</a></li></ul></li><li><a href=#デスクトップアプリ類>デスクトップアプリ類</a>
 <ul>
-<li><a href=#slack>Slack</a></li>
-<li><a href=#chrome>Chrome</a></li>
-<li><a href=#iterm2>iterm2</a></li>
-<li><a href=#alfred3>Alfred3</a></li>
-<li><a href=#jetbrains>JetBrains</a></li>
-<li><a href=#sublime-text-3>Sublime Text 3</a></li>
-<li><a href=#notion>Notion</a></li>
-<li><a href=#grammarly>Grammarly</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<section id=post-body>
-<h2 id=dotfiles>dotfiles</h2>
-<p>gitで管理しており、install.shでシンボリックリンクを貼るだけ。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ git clone https://github.com/mom0tomo/dotfiles.git
-</code></pre></div><hr>
-<h2 id=homebrew>homebrew</h2>
-<p>なにはなくともhomebrew。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ /usr/bin/ruby -e &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34;
-</code></pre></div><hr>
-<h2 id=キーの変更>キーの変更</h2>
-<p>邪魔で使わないCaps LockをCtrlキーに変えたい。JISキーボードと同じ場所にCtrlキーをおきたい。</p>
-<p>キャプチャのように設定したら変えられました。</p>
-<p><img src=/images/articles/setup_new_mac_2020_03/preference1.png alt="System Preferences">
+<li><a href=#slack>Slack</a></li><li><a href=#chrome>Chrome</a></li><li><a href=#iterm2>iterm2</a></li><li><a href=#alfred3>Alfred3</a></li><li><a href=#jetbrains>JetBrains</a></li><li><a href=#sublime-text-3>Sublime Text 3</a></li><li><a href=#notion>Notion</a></li><li><a href=#grammarly>Grammarly</a></li></ul></li></ul></nav></div><section id=post-body>
+<h2 id=dotfiles>dotfiles</h2><p>gitで管理しており、install.shでシンボリックリンクを貼るだけ。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ git clone https://github.com/mom0tomo/dotfiles.git
+</span></span></code></pre></div><hr>
+<h2 id=homebrew>homebrew</h2><p>なにはなくともhomebrew。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ /usr/bin/ruby -e &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34;
+</span></span></code></pre></div><hr>
+<h2 id=キーの変更>キーの変更</h2><p>邪魔で使わないCaps LockをCtrlキーに変えたい。JISキーボードと同じ場所にCtrlキーをおきたい。</p><p>キャプチャのように設定したら変えられました。</p><p><img src=/images/articles/setup_new_mac_2020_03/preference1.png alt="System Preferences">
 <img src=/images/articles/setup_new_mac_2020_03/preference2.png alt=Keyboard>
-<img src=/images/articles/setup_new_mac_2020_03/preference3.png alt="Modifier Keys&mldr;"></p>
-<h2 id=screen-shotの場所を変更する>Screen Shotの場所を変更する</h2>
-<p>デスクトップがごちゃごちゃするのが嫌なので<code>~/sshot</code>という場所にスクリーンショットが収まるようにしています。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ mkdir ~/sshot
-
-$ defaults write com.apple.screencapture location ~/SS/;killall SystemUIServer
-</code></pre></div><p>元の場所（デスクトップ）に戻すときは</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ defaults delete com.apple.screencapture location;killall SystemUIServer
-</code></pre></div><hr>
-<h2 id=go言語のダウンロード>Go言語のダウンロード</h2>
-<p>いまやGOPATHの指定など難しいことはなくなり、ダウンロードボタンをポチッとして開くだけで完結するようになりました。
-<a href=https://golang.org/dl/>https://golang.org/dl/</a></p>
-<hr>
-<h2 id=brewで入れるツール>brewで入れるツール</h2>
-<h3 id=fish>fish</h3>
-<p>2017年から、元同僚に勧められて<a href=https://fishshell.com/>fish</a>を使っています。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ brew install fish
-</code></pre></div><p>パッケージマネージャー<a href=https://github.com/fisherman/fisherman/wiki/%E6%97%A5%E6%9C%AC%E8%AA%9E>fisherman</a>も併せてインストール。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-</code></pre></div><h3 id=git関係>git関係</h3>
-<p>git logの代わりに見やすい<a href=https://jonas.github.io/tig/>tig</a>を使っています。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ brew insatll tig
-</code></pre></div><h3 id=ブログ用>ブログ用</h3>
-<p>このブログはGo製の静的サイトジェネレータ<a href=https://gohugo.io/>hugo</a>を使っています。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback>$ brew inastall hugo
-</code></pre></div><h2 id=デスクトップアプリ類>デスクトップアプリ類</h2>
-<h3 id=slack>Slack</h3>
-<p><a href=https://slack.com/intl/ja-jp/downloads/osx>Slack</a></p>
-<h3 id=chrome>Chrome</h3>
-<p><a href="https://www.google.co.jp/chrome/browser/desktop/index.html?brand=CHBD&gclid=EAIaIQobChMI45X78s-m2AIVVR0rCh33TgUeEAAYASAAEgKUBfD_BwE">Chrome</a></p>
-<p>Developerツールや拡張機能が便利でメインブラウザとして使っています。Safariは検証時しか使いません。</p>
-<h3 id=iterm2>iterm2</h3>
-<p>慣れ親しんだ画面<a href=https://www.iterm2.com/>iterm2</a>です。</p>
-<h3 id=alfred3>Alfred3</h3>
-<p><a href=https://www.alfredapp.com/>Alfread</a>は未だランチャーと計算機くらいしか使いこなせていないです&mldr;</p>
-<h3 id=jetbrains>JetBrains</h3>
-<p>Toolboxでまとめて管理したいので、まずJetBrains ToolboxをダウンロードしてToolBox上で各IDEをインストールします。
-<a href="https://www.jetbrains.com/ja-jp/toolbox-app/download/?_ga=2.43875813.1372113674.1585751570-1832300423.1585132437#section=mac">Toolboxをダウンロード | Mac</a></p>
-<p>どんなふうに便利かはこちらに書いてあります。Updateやインストールなど、各IDEの管理をToolboxアプリでまとめて管理できます。</p>
-<h3 id=sublime-text-3>Sublime Text 3</h3>
-<p>主にテキスト系の編集（このブログなど）に使っています　<a href=https://www.sublimetext.com/3>Download Sublime Text 3</a>。はじめて使ったエディタなので今でも好きで文章を書くときはいつも使っています。</p>
-<h3 id=notion>Notion</h3>
-<p>メモ書きを保存するのに使っています。仕事関連で打ったコマンドのメモ、大学の課題のメモや、プライベートで考えたことのメモなど。いまのところ無料枠で間に合っています。</p>
-<p><a href=https://www.notion.so/>Desktop App</a></p>
-<h3 id=grammarly>Grammarly</h3>
-<p>英語の文法やスペリングのミス、不自然な表現などを直してくれるアプリです。</p>
-<p>とても使い勝手が良く、英語で文章を書くときには欠かせません。12,000円くらいの年間プランを使っています。月々払いより少し安いです。</p>
-<p><a href=https://www.grammarly.com/>https://www.grammarly.com/</a></p>
-<p><a href=https://app.grammarly.com/apps>Grammarly for macOS | Chrome拡張</a></p>
-</section>
-</article>
-<div class=social>
+<img src=/images/articles/setup_new_mac_2020_03/preference3.png alt="Modifier Keys&mldr;"></p><h2 id=screen-shotの場所を変更する>Screen Shotの場所を変更する</h2><p>デスクトップがごちゃごちゃするのが嫌なので<code>~/sshot</code>という場所にスクリーンショットが収まるようにしています。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ mkdir ~/sshot
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$ defaults write com.apple.screencapture location ~/SS/;killall SystemUIServer
+</span></span></code></pre></div><p>元の場所（デスクトップ）に戻すときは</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ defaults delete com.apple.screencapture location;killall SystemUIServer
+</span></span></code></pre></div><hr>
+<h2 id=go言語のダウンロード>Go言語のダウンロード</h2><p>いまやGOPATHの指定など難しいことはなくなり、ダウンロードボタンをポチッとして開くだけで完結するようになりました。
+<a href=https://golang.org/dl/>https://golang.org/dl/</a></p><hr>
+<h2 id=brewで入れるツール>brewで入れるツール</h2><h3 id=fish>fish</h3><p>2017年から、元同僚に勧められて<a href=https://fishshell.com/>fish</a>を使っています。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ brew install fish
+</span></span></code></pre></div><p>パッケージマネージャー<a href=https://github.com/fisherman/fisherman/wiki/%E6%97%A5%E6%9C%AC%E8%AA%9E>fisherman</a>も併せてインストール。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+</span></span></code></pre></div><h3 id=git関係>git関係</h3><p>git logの代わりに見やすい<a href=https://jonas.github.io/tig/>tig</a>を使っています。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ brew insatll tig
+</span></span></code></pre></div><h3 id=ブログ用>ブログ用</h3><p>このブログはGo製の静的サイトジェネレータ<a href=https://gohugo.io/>hugo</a>を使っています。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ brew inastall hugo
+</span></span></code></pre></div><h2 id=デスクトップアプリ類>デスクトップアプリ類</h2><h3 id=slack>Slack</h3><p><a href=https://slack.com/intl/ja-jp/downloads/osx>Slack</a></p><h3 id=chrome>Chrome</h3><p><a href="https://www.google.co.jp/chrome/browser/desktop/index.html?brand=CHBD&gclid=EAIaIQobChMI45X78s-m2AIVVR0rCh33TgUeEAAYASAAEgKUBfD_BwE">Chrome</a></p><p>Developerツールや拡張機能が便利でメインブラウザとして使っています。Safariは検証時しか使いません。</p><h3 id=iterm2>iterm2</h3><p>慣れ親しんだ画面<a href=https://www.iterm2.com/>iterm2</a>です。</p><h3 id=alfred3>Alfred3</h3><p><a href=https://www.alfredapp.com/>Alfread</a>は未だランチャーと計算機くらいしか使いこなせていないです&mldr;</p><h3 id=jetbrains>JetBrains</h3><p>Toolboxでまとめて管理したいので、まずJetBrains ToolboxをダウンロードしてToolBox上で各IDEをインストールします。
+<a href="https://www.jetbrains.com/ja-jp/toolbox-app/download/?_ga=2.43875813.1372113674.1585751570-1832300423.1585132437#section=mac">Toolboxをダウンロード | Mac</a></p><p>どんなふうに便利かはこちらに書いてあります。Updateやインストールなど、各IDEの管理をToolboxアプリでまとめて管理できます。</p><h3 id=sublime-text-3>Sublime Text 3</h3><p>主にテキスト系の編集（このブログなど）に使っています　<a href=https://www.sublimetext.com/3>Download Sublime Text 3</a>。はじめて使ったエディタなので今でも好きで文章を書くときはいつも使っています。</p><h3 id=notion>Notion</h3><p>メモ書きを保存するのに使っています。仕事関連で打ったコマンドのメモ、大学の課題のメモや、プライベートで考えたことのメモなど。いまのところ無料枠で間に合っています。</p><p><a href=https://www.notion.so/>Desktop App</a></p><h3 id=grammarly>Grammarly</h3><p>英語の文法やスペリングのミス、不自然な表現などを直してくれるアプリです。</p><p>とても使い勝手が良く、英語で文章を書くときには欠かせません。12,000円くらいの年間プランを使っています。月々払いより少し安いです。</p><p><a href=https://www.grammarly.com/>https://www.grammarly.com/</a></p><p><a href=https://app.grammarly.com/apps>Grammarly for macOS | Chrome拡張</a></p></section></article><div class=social>
 <div class=social-inner>
 <a href=https://twitter.com/share class=twitter-share-button data-count=horizontal lang=hja>Tweet</a>
-<script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script>
+<script>!function(e,n,s){var t,o=e.getElementsByTagName(n)[0],i=/^http:/.test(e.location)?"http":"https";e.getElementById(s)||(t=e.createElement(n),t.id=s,t.src=i+"://platform.twitter.com/widgets.js",o.parentNode.insertBefore(t,o))}(document,"script","twitter-wjs")</script>
 <a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a>
 <script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
 <a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a>
-<script type=text/javascript>!function(a,c){var b,d;a.getElementById(c)||(b=a.createElement("script"),b.id=c,b.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",d=a.getElementById(c),a.body.appendChild(b))}(document,"pocket-btn-js")</script>
-</div>
-</div>
-<div class=related-posts>
-<h4>関連記事</h4>
-<ul>
-<li><a href=/post/20171226/>【2017年末】新しいMacのセットアップと入れたアプリ</a></li>
-</ul>
-</div>
-<footer id=footer>
+<script type=text/javascript>!function(e,t){if(!e.getElementById(t)){var n=e.createElement("script"),s;n.id=t,n.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",s=e.getElementById(t),e.body.appendChild(n)}}(document,"pocket-btn-js")</script>
+</div></div><div class=related-posts>
+<h4>関連記事</h4><ul>
+<li><a href=/post/20171226/>【2017年末】新しいMacのセットアップと入れたアプリ</a></li></ul></div><footer id=footer>
 <div id=social>
 <a class=symbol href=https://www.facebook.com/mom0tomo>
 circlefacebook
@@ -173,15 +91,10 @@ circlegithub
 <a class=symbol href=https://twitter.com/mom0tomo>
 circletwitterbird
 </a>
-</div>
-<p class=small>
+</div><p class=small>
 © Copyright 2022 mom0tomo
-</p>
-</footer>
-</section>
-<script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
+</p></footer></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
 <script src=https://mom0tomo.github.io/js/main.js></script>
 <script src=https://mom0tomo.github.io/js/highlight.min.js></script>
 <script>hljs.initHighlightingOnLoad()</script>
-</body>
-</html>
+</body></html>

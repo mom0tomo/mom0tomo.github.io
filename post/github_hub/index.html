@@ -14,99 +14,68 @@
 <meta name=twitter:title content="GitHubのhubを使ってコマンドラインからリポジトリを作る">
 <meta name=twitter:description content="Githubのコマンドラインツールhubを使うと、簡単にコマンドラインからリポジトリを作ることができます。">
 <meta name=twitter:site content="@https://twitter.com/mom0tomo">
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-104531981-1','auto'),ga('send','pageview'))</script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-104531981-1","auto"),ga("send","pageview"))</script>
 <meta name=description content="Githubのコマンドラインツールhubを使うと、簡単にコマンドラインからリポジトリを作ることができます。">
-<meta name=generator content="Hugo 0.92.0">
-<title>GitHubのhubを使ってコマンドラインからリポジトリを作る &#183; mom0tomo</title>
-<link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
+<meta name=generator content="Hugo 0.93.0">
+<title>GitHubのhubを使ってコマンドラインからリポジトリを作る &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/style.css>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css>
 <link href=https://mom0tomo.github.io/index.xml rel=alternate type=application/rss+xml title=mom0tomo>
 <link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css>
-</head>
-<body>
+</head><body>
 <nav class=main-nav>
 <a href=https://mom0tomo.github.io/> <span class=arrow>← </span>Home</a>
 <a href=https://mom0tomo.github.io/about>About</a>
 <a href=https://mom0tomo.github.io/post>Archive</a>
 <a href=https://mom0tomo.github.io/tags>Tags</a>
 <a href=https://mom0tomo.github.io//index.xml class=symbol style=font-size:15px>rss</a>
-</nav>
-<section id=wrapper>
+</nav><section id=wrapper>
 <article class=post>
 <header>
 <h1>
 GitHubのhubを使ってコマンドラインからリポジトリを作る
-</h1>
-<div class=posted style=display:none>
+</h1><div class=posted style=display:none>
 <a href=https://mom0tomo.github.io/post/github_hub/>GitHubのhubを使ってコマンドラインからリポジトリを作る</a>
-</div>
-<h2 class=headline>
+</div><h2 class=headline>
 Mar 31, 2019 20:31
 · 440 words
 · 1 minute read
 <span class=tags>
 <a href=https://mom0tomo.github.io/tags/github>Github</a>
 </span>
-</h2>
-</header>
-<div id=toc>
+</h2></header><div id=toc>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#使い方>使い方</a></li>
-<li><a href=#よく使うコマンド>よく使うコマンド</a></li>
-</ul>
-</nav>
-</div>
-<section id=post-body>
-<p>Githubのコマンドラインツール、<a href=https://github.com/github/hub>hub</a>がとても便利です。</p>
-<p>勉強用のコードなど、ちょっと書いてからGitHubに保存することがよくあります。
-いままではブラウザでGitHubを開いてリポジトリを作っていたのですが、hubを使うと簡単にコマンドラインからリポジトリを作ることができます。</p>
-<p>hubのインストール方法や使い方はシンプルで、<a href=https://github.com/github/hub>README</a>を読めばすぐに使うことができます。</p>
-<hr>
-<h2 id=使い方>使い方</h2>
-<p>brewでインストールします。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>$ brew install hub
-
-$ hub version
-git version 1.7.6
-hub version 2.2.3
-</code></pre></div><p>最初に自分のGitHubアカウントとひもづける設定をします。</p>
-<p>hub コマンドを叩くとuser nameとパスワードを聞かれるので、設定します。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>$ hub
-
-github.com username: mom0tomo
-github.com password <span style=color:#6ab825;font-weight:700>for</span> mom0tomo (never stored):
-</code></pre></div><h2 id=よく使うコマンド>よく使うコマンド</h2>
-<p><code>hub create</code>コマンドで作業中のディレクトリと同じ名前のリポジトリをGitHub上につくり、originとして指定します。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>$ hub cretate
-
-Updating origin
-Warning: Permanently added the RSA host key <span style=color:#6ab825;font-weight:700>for</span> IP address <span style=color:#ed9d13>&#39;192.30.255.113&#39;</span> to the list of known hosts.
-https://github.com/mom0tomo/sample-repo
-</code></pre></div><p><code>hub browse</code>コマンドで作業中のディレクトリと同じ名前のリポジトリをブラウザで開くことができます。</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell>$  hub browse
-</code></pre></div>
-</section>
-</article>
-<div class=social>
+<li><a href=#使い方>使い方</a></li><li><a href=#よく使うコマンド>よく使うコマンド</a></li></ul></nav></div><section id=post-body>
+<p>Githubのコマンドラインツール、<a href=https://github.com/github/hub>hub</a>がとても便利です。</p><p>勉強用のコードなど、ちょっと書いてからGitHubに保存することがよくあります。
+いままではブラウザでGitHubを開いてリポジトリを作っていたのですが、hubを使うと簡単にコマンドラインからリポジトリを作ることができます。</p><p>hubのインストール方法や使い方はシンプルで、<a href=https://github.com/github/hub>README</a>を読めばすぐに使うことができます。</p><hr>
+<h2 id=使い方>使い方</h2><p>brewでインストールします。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>$ brew install hub
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$ hub version
+</span></span><span style=display:flex><span>git version 1.7.6
+</span></span><span style=display:flex><span>hub version 2.2.3
+</span></span></code></pre></div><p>最初に自分のGitHubアカウントとひもづける設定をします。</p><p>hub コマンドを叩くとuser nameとパスワードを聞かれるので、設定します。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>$ hub
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>github.com username: mom0tomo
+</span></span><span style=display:flex><span>github.com password <span style=color:#6ab825;font-weight:700>for</span> mom0tomo (never stored):
+</span></span></code></pre></div><h2 id=よく使うコマンド>よく使うコマンド</h2><p><code>hub create</code>コマンドで作業中のディレクトリと同じ名前のリポジトリをGitHub上につくり、originとして指定します。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>$ hub cretate
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Updating origin
+</span></span><span style=display:flex><span>Warning: Permanently added the RSA host key <span style=color:#6ab825;font-weight:700>for</span> IP address <span style=color:#ed9d13>&#39;192.30.255.113&#39;</span> to the list of known hosts.
+</span></span><span style=display:flex><span>https://github.com/mom0tomo/sample-repo
+</span></span></code></pre></div><p><code>hub browse</code>コマンドで作業中のディレクトリと同じ名前のリポジトリをブラウザで開くことができます。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>$  hub browse
+</span></span></code></pre></div></section></article><div class=social>
 <div class=social-inner>
 <a href=https://twitter.com/share class=twitter-share-button data-count=horizontal lang=hja>Tweet</a>
-<script>!function(a,c,d){var b,e=a.getElementsByTagName(c)[0],f=/^http:/.test(a.location)?'http':'https';a.getElementById(d)||(b=a.createElement(c),b.id=d,b.src=f+'://platform.twitter.com/widgets.js',e.parentNode.insertBefore(b,e))}(document,'script','twitter-wjs')</script>
+<script>!function(e,n,s){var t,o=e.getElementsByTagName(n)[0],i=/^http:/.test(e.location)?"http":"https";e.getElementById(s)||(t=e.createElement(n),t.id=s,t.src=i+"://platform.twitter.com/widgets.js",o.parentNode.insertBefore(t,o))}(document,"script","twitter-wjs")</script>
 <a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a>
 <script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
 <a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a>
-<script type=text/javascript>!function(a,c){var b,d;a.getElementById(c)||(b=a.createElement("script"),b.id=c,b.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",d=a.getElementById(c),a.body.appendChild(b))}(document,"pocket-btn-js")</script>
-</div>
-</div>
-<div class=related-posts>
-<h4>関連記事</h4>
-<ul>
-<li><a href=/post/github_glass_become_bald/>リポジトリを削除するとGitHubの草は禿げる</a></li>
-</ul>
-</div>
-<footer id=footer>
+<script type=text/javascript>!function(e,t){if(!e.getElementById(t)){var n=e.createElement("script"),s;n.id=t,n.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",s=e.getElementById(t),e.body.appendChild(n)}}(document,"pocket-btn-js")</script>
+</div></div><div class=related-posts>
+<h4>関連記事</h4><ul>
+<li><a href=/post/github_glass_become_bald/>リポジトリを削除するとGitHubの草は禿げる</a></li></ul></div><footer id=footer>
 <div id=social>
 <a class=symbol href=https://www.facebook.com/mom0tomo>
 circlefacebook
@@ -117,15 +86,10 @@ circlegithub
 <a class=symbol href=https://twitter.com/mom0tomo>
 circletwitterbird
 </a>
-</div>
-<p class=small>
+</div><p class=small>
 © Copyright 2022 mom0tomo
-</p>
-</footer>
-</section>
-<script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
+</p></footer></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
 <script src=https://mom0tomo.github.io/js/main.js></script>
 <script src=https://mom0tomo.github.io/js/highlight.min.js></script>
 <script>hljs.initHighlightingOnLoad()</script>
-</body>
-</html>
+</body></html>
