@@ -1,64 +1,14 @@
-<!doctype html><html lang=ja>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta property="og:title" content="「恥ずかしいGo言語」ハンズオン">
-<meta property="og:description" content="『恥ずかしい勉強会』とは 「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」という">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://mom0tomo.github.io/post/20170606/"><meta property="og:image" content="https://mom0tomo.github.io/images/avatar.png"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2017-06-06T23:58:09+09:00">
-<meta property="article:modified_time" content="2017-06-06T23:58:09+09:00"><meta property="og:site_name" content="mom0tomo.github.io">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://mom0tomo.github.io/images/avatar.png">
-<meta name=twitter:title content="「恥ずかしいGo言語」ハンズオン">
-<meta name=twitter:description content="『恥ずかしい勉強会』とは 「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」という">
-<meta name=twitter:site content="@https://twitter.com/mom0tomo">
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-104531981-1","auto"),ga("send","pageview"))</script>
-<meta name=description content>
-<meta name=generator content="Hugo 0.93.0">
-<title>「恥ずかしいGo言語」ハンズオン &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico>
-<link rel=stylesheet href=https://mom0tomo.github.io/css/style.css>
-<link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css>
-<link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css>
-<link href=https://mom0tomo.github.io/index.xml rel=alternate type=application/rss+xml title=mom0tomo>
-<link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css>
-</head><body>
-<nav class=main-nav>
-<a href=https://mom0tomo.github.io/> <span class=arrow>← </span>Home</a>
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="「恥ずかしいGo言語」ハンズオン"><meta property="og:description" content="『恥ずかしい勉強会』とは 「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」という"><meta property="og:type" content="article"><meta property="og:url" content="https://mom0tomo.github.io/post/20170606/"><meta property="og:image" content="https://mom0tomo.github.io/images/avatar.png"><meta property="article:section" content="post"><meta property="article:published_time" content="2017-06-06T23:58:09+09:00"><meta property="article:modified_time" content="2017-06-06T23:58:09+09:00"><meta property="og:site_name" content="mom0tomo.github.io"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://mom0tomo.github.io/images/avatar.png"><meta name=twitter:title content="「恥ずかしいGo言語」ハンズオン"><meta name=twitter:description content="『恥ずかしい勉強会』とは 「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」という"><meta name=twitter:site content="@https://twitter.com/mom0tomo"><script async src="https://www.googletagmanager.com/gtag/js?id=G-YFDBYV8Y07"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-YFDBYV8Y07",{anonymize_ip:!1})}</script><meta name=description content><meta name=generator content="Hugo 0.94.2"><title>「恥ずかしいGo言語」ハンズオン &#183; mom0tomo</title><link rel="shortcut icon" href=https://mom0tomo.github.io/images/favicon.ico><link rel=stylesheet href=https://mom0tomo.github.io/css/style.css><link rel=stylesheet href=https://mom0tomo.github.io/css/highlight.css><link rel=stylesheet href=https://mom0tomo.github.io/css/monosocialiconsfont.css><link href=https://mom0tomo.github.io/index.xml rel=alternate type=application/rss+xml title=mom0tomo><link rel=stylesheet href=https://mom0tomo.github.io/css/custom.css></head><body><nav class=main-nav><a href=https://mom0tomo.github.io/><span class=arrow>← </span>Home</a>
 <a href=https://mom0tomo.github.io/about>About</a>
 <a href=https://mom0tomo.github.io/post>Archive</a>
 <a href=https://mom0tomo.github.io/tags>Tags</a>
-<a href=https://mom0tomo.github.io//index.xml class=symbol style=font-size:15px>rss</a>
-</nav><section id=wrapper>
-<article class=post>
-<header>
-<h1>
-「恥ずかしいGo言語」ハンズオン
-</h1><div class=posted style=display:none>
-<a href=https://mom0tomo.github.io/post/20170606/>「恥ずかしいGo言語」ハンズオン</a>
-</div><h2 class=headline>
-Jun 6, 2017 23:58
+<a href=https://mom0tomo.github.io//index.xml class=symbol style=font-size:15px>rss</a></nav><section id=wrapper><article class=post><header><h1>「恥ずかしいGo言語」ハンズオン</h1><div class=posted style=display:none><a href=https://mom0tomo.github.io/post/20170606/>「恥ずかしいGo言語」ハンズオン</a></div><h2 class=headline>Jun 6, 2017 23:58
 · 1805 words
 · 4 minutes read
-<span class=tags>
-<a href=https://mom0tomo.github.io/tags/go>Go</a>
-<a href=https://mom0tomo.github.io/tags/event>event</a>
-</span>
-</h2></header><div id=toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#お品書き>お品書き</a>
-<ul>
-<li><a href=#資料>資料</a></li></ul></li><li><a href=#学んだこと>学んだこと</a>
-<ul>
-<li><a href=#go言語のインストール>Go言語のインストール</a></li><li><a href=#hello-世界>Hello, 世界!</a></li><li><a href=#goの基本的な書き方>Goの基本的な書き方</a></li><li><a href=#goでfizzbuzz>GoでFizzBuzz</a></li><li><a href=#自作パッケージをつくる>自作パッケージをつくる</a></li><li><a href=#githubを使った自作パッケージの公開>GitHubを使った自作パッケージの公開</a></li><li><a href=#いろいろ試してみる>いろいろ試してみる</a></li></ul></li></ul></nav></div><section id=post-body>
-<p>『恥ずかしい勉強会』とは</p><blockquote>
-<p>「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」というコンセプトの勉強会です。
-ノーマサカリ！「ググレカス」禁止！</p></blockquote><p>建物にはたどり着いたけど、建物内で迷子になりました(恥ずかしい&mldr;)</p><hr>
-<h2 id=お品書き>お品書き</h2><ul>
-<li>Go言語とは</li><li>Go言語のインストール</li><li>Hello, 世界!</li><li>自作パッケージの開発・置き方 // ここをバッチリ聞きたい</li><li>GitHubを使った自作パッケージの公開</li><li>(時間が余りまくったら)自作HTTPサーバを書く</li></ul><h3 id=資料>資料</h3><p><a href=https://gist.github.com/otiai10/c2a1cfefdfb7f5798865a30d12ade4c1>https://gist.github.com/otiai10/c2a1cfefdfb7f5798865a30d12ade4c1</a></p><hr>
-<h2 id=学んだこと>学んだこと</h2><h3 id=go言語のインストール>Go言語のインストール</h3><p>わたしはGoのバージョン管理ツール<a href=https://github.com/moovweb/gvm>gvm</a>を利用しているので、以下のコマンドでインストールする。
+<span class=tags><a href=https://mom0tomo.github.io/tags/go>Go</a>
+<a href=https://mom0tomo.github.io/tags/event>event</a></span></h2></header><div id=toc><nav id=TableOfContents><ul><li><a href=#お品書き>お品書き</a><ul><li><a href=#資料>資料</a></li></ul></li><li><a href=#学んだこと>学んだこと</a><ul><li><a href=#go言語のインストール>Go言語のインストール</a></li><li><a href=#hello-世界>Hello, 世界!</a></li><li><a href=#goの基本的な書き方>Goの基本的な書き方</a></li><li><a href=#goでfizzbuzz>GoでFizzBuzz</a></li><li><a href=#自作パッケージをつくる>自作パッケージをつくる</a></li><li><a href=#githubを使った自作パッケージの公開>GitHubを使った自作パッケージの公開</a></li><li><a href=#いろいろ試してみる>いろいろ試してみる</a></li></ul></li></ul></nav></div><section id=post-body><p>『恥ずかしい勉強会』とは</p><blockquote><p>「今さら聞くのも恥ずかしいし勉強し始めるにも何から始めればいいか分からない人々が寄り添って1ミリだけ前進する」というコンセプトの勉強会です。
+ノーマサカリ！「ググレカス」禁止！</p></blockquote><p>建物にはたどり着いたけど、建物内で迷子になりました(恥ずかしい&mldr;)</p><hr><h2 id=お品書き>お品書き</h2><ul><li>Go言語とは</li><li>Go言語のインストール</li><li>Hello, 世界!</li><li>自作パッケージの開発・置き方 // ここをバッチリ聞きたい</li><li>GitHubを使った自作パッケージの公開</li><li>(時間が余りまくったら)自作HTTPサーバを書く</li></ul><h3 id=資料>資料</h3><p><a href=https://gist.github.com/otiai10/c2a1cfefdfb7f5798865a30d12ade4c1>https://gist.github.com/otiai10/c2a1cfefdfb7f5798865a30d12ade4c1</a></p><hr><h2 id=学んだこと>学んだこと</h2><h3 id=go言語のインストール>Go言語のインストール</h3><p>わたしはGoのバージョン管理ツール<a href=https://github.com/moovweb/gvm>gvm</a>を利用しているので、以下のコマンドでインストールする。
 <a href=http://qiita.com/isaoshimizu/items/1a5d51aed98a57a9bcd4>gvmの導入方法</a></p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ gvm install go1.8
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>$ gvm use go1.8 --default
@@ -88,8 +38,7 @@ GOROOTについては、現在では設定する必要はない。</p><p>gvmを�
 </span></span><span style=display:flex><span>CGO_CXXFLAGS=&#34;-g -O2&#34;
 </span></span><span style=display:flex><span>CGO_FFLAGS=&#34;-g -O2&#34;
 </span></span><span style=display:flex><span>CGO_LDFLAGS=&#34;-g -O2&#34;
-</span></span></code></pre></div><hr>
-<h3 id=hello-世界>Hello, 世界!</h3><p>※Goでは<code>Hello, World</code>ではなく<code>Hello, 世界</code>！
+</span></span></code></pre></div><hr><h3 id=hello-世界>Hello, 世界!</h3><p>※Goでは<code>Hello, World</code>ではなく<code>Hello, 世界</code>！
 GoはUnicodeに対応しているため、漢字も使える。<code>Hello, عالم</code>とかも行ける。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-:main.go data-lang=:main.go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>package</span> main <span style=color:#999;font-style:italic>// Goを実行するにはmainパッケージが必須
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
 </span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> <span style=color:#ed9d13>&#34;fmt&#34;</span> <span style=color:#999;font-style:italic>// 標準パッケージのfmt(フォーマットするやつ)をインポートする
@@ -100,8 +49,7 @@ GoはUnicodeに対応しているため、漢字も使える。<code>Hello, عا
 </span></span></code></pre></div><p>実行する。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ go run main.go
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  Hello, 世界！
-</span></span></code></pre></div><hr>
-<h3 id=goの基本的な書き方>Goの基本的な書き方</h3><p><code>main.go</code></p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>package</span> main 
+</span></span></code></pre></div><hr><h3 id=goの基本的な書き方>Goの基本的な書き方</h3><p><code>main.go</code></p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>package</span> main 
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (<span style=color:#999;font-style:italic>// 複数パッケージをインポートするときは()でくくる
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#ed9d13>&#34;fmt&#34;</span> <span style=color:#999;font-style:italic>// Goの標準・準標準パッケージは上にまとめて書く
@@ -114,8 +62,7 @@ GoはUnicodeに対応しているため、漢字も使える。<code>Hello, عا
 </span></span><span style=display:flex><span>    fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;hogehoge&#34;</span>) 
 </span></span><span style=display:flex><span>    <span style=color:#999;font-style:italic>// インポートしたのに使っていないパッケージがあるとコンパイル時に怒られる
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>}
-</span></span></code></pre></div><hr>
-<h3 id=goでfizzbuzz>GoでFizzBuzz</h3><p>Goにはwhile文がない。for文はある。
+</span></span></code></pre></div><hr><h3 id=goでfizzbuzz>GoでFizzBuzz</h3><p>Goにはwhile文がない。for文はある。
 if文はネストが深くなりがちなので、switch文を使うことが多い。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-:main.go data-lang=:main.go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>package</span> main
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> <span style=color:#ed9d13>&#34;fmt&#34;</span>
@@ -168,8 +115,7 @@ if文はネストが深くなりがちなので、switch文を使うことが多
 </span></span><span style=display:flex><span>17
 </span></span><span style=display:flex><span>fizz
 </span></span><span style=display:flex><span>19
-</span></span></code></pre></div><hr>
-<h3 id=自作パッケージをつくる>自作パッケージをつくる</h3><p>mainパッケージに全て書いてしまっていたので、GetOutputメソッドを切り出してfizzbuzzパッケージとする。</p><p><code>$GOPATH/src</code>配下にパッケージつくることで、標準パッケージのようにインポートして使うことができる。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ cd $GOPATH/src
+</span></span></code></pre></div><hr><h3 id=自作パッケージをつくる>自作パッケージをつくる</h3><p>mainパッケージに全て書いてしまっていたので、GetOutputメソッドを切り出してfizzbuzzパッケージとする。</p><p><code>$GOPATH/src</code>配下にパッケージつくることで、標準パッケージのようにインポートして使うことができる。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ cd $GOPATH/src
 </span></span><span style=display:flex><span>$ mkdir fizzbuzz
 </span></span><span style=display:flex><span>$ touch fizzbuzz/fizzbuzz.go
 </span></span><span style=display:flex><span>
@@ -211,8 +157,7 @@ if文はネストが深くなりがちなので、switch文を使うことが多
 </span></span><span style=display:flex><span>        fmt.<span style=color:#447fcf>Println</span>(output)
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><hr>
-<h3 id=githubを使った自作パッケージの公開>GitHubを使った自作パッケージの公開</h3><p>githubに公開してみる。</p><p>標準パッケージのような形式でインポートして開発してきたが、ここでgithubに公開したパッケージを使うことにする。</p><p>import部分の記述を以下のように変更する。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-:main.go data-lang=:main.go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>package</span> main
+</span></span></code></pre></div><hr><h3 id=githubを使った自作パッケージの公開>GitHubを使った自作パッケージの公開</h3><p>githubに公開してみる。</p><p>標準パッケージのような形式でインポートして開発してきたが、ここでgithubに公開したパッケージを使うことにする。</p><p>import部分の記述を以下のように変更する。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-:main.go data-lang=:main.go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>package</span> main
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
 </span></span><span style=display:flex><span>    <span style=color:#ed9d13>&#34;fmt&#34;</span>
@@ -228,7 +173,7 @@ if文はネストが深くなりがちなので、switch文を使うことが多
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>この状態で実行すると、以下のようなエラーが出る。
-<code>cannot find package "github.com/{user name}/fizzbuzz" </code></p><p>これは$GOPATH/src配下にインポートしようとしているパッケージがない、というエラー。</p><p>エラーを解消するために、<code>go get</code>というコマンドでパッケージを取得する。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ go get gihub.com/{user name}/fizzbuzz
+<code>cannot find package "github.com/{user name}/fizzbuzz"</code></p><p>これは$GOPATH/src配下にインポートしようとしているパッケージがない、というエラー。</p><p>エラーを解消するために、<code>go get</code>というコマンドでパッケージを取得する。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ go get gihub.com/{user name}/fizzbuzz
 </span></span></code></pre></div><p>ここで<code>go run</code>して、パッケージを分割する前と同じ結果になることを確認する。</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ go run main.go
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>FizzBuzz
@@ -251,35 +196,16 @@ if文はネストが深くなりがちなので、switch文を使うことが多
 </span></span><span style=display:flex><span>17
 </span></span><span style=display:flex><span>fizz
 </span></span><span style=display:flex><span>19
-</span></span></code></pre></div><p>OK！</p><hr>
-<h3 id=いろいろ試してみる>いろいろ試してみる</h3><h4 id=パッケージの名前と関数の名前を変えてみる>パッケージの名前と関数の名前を変えてみる</h4><p><code>fizzbuzz.go</code></p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>package</span> test <span style=color:#999;font-style:italic>// fizzbuzzじゃないのにしてみる
+</span></span></code></pre></div><p>OK！</p><hr><h3 id=いろいろ試してみる>いろいろ試してみる</h3><h4 id=パッケージの名前と関数の名前を変えてみる>パッケージの名前と関数の名前を変えてみる</h4><p><code>fizzbuzz.go</code></p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>package</span> test <span style=color:#999;font-style:italic>// fizzbuzzじゃないのにしてみる
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
 </span></span><span style=display:flex><span>...
-</span></span></code></pre></div><p>-> 動く！</p><h4 id=maingoの名前を変えてみる>main.goの名前を変えてみる</h4><p>-> mom0tomo.goとかでにしても動く！</p></section></article><div class=social>
-<div class=social-inner>
-<a href=https://twitter.com/share class=twitter-share-button data-count=horizontal lang=hja>Tweet</a>
-<script>!function(e,n,s){var t,o=e.getElementsByTagName(n)[0],i=/^http:/.test(e.location)?"http":"https";e.getElementById(s)||(t=e.createElement(n),t.id=s,t.src=i+"://platform.twitter.com/widgets.js",o.parentNode.insertBefore(t,o))}(document,"script","twitter-wjs")</script>
-<a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a>
+</span></span></code></pre></div><p>-> 動く！</p><h4 id=maingoの名前を変えてみる>main.goの名前を変えてみる</h4><p>-> mom0tomo.goとかでにしても動く！</p></section></article><div class=social><div class=social-inner><a href=https://twitter.com/share class=twitter-share-button data-count=horizontal lang=hja>Tweet</a>
+<script>!function(e,n,s){var t,o=e.getElementsByTagName(n)[0],i=/^http:/.test(e.location)?"http":"https";e.getElementById(s)||(t=e.createElement(n),t.id=s,t.src=i+"://platform.twitter.com/widgets.js",o.parentNode.insertBefore(t,o))}(document,"script","twitter-wjs")</script><a href=http://b.hatena.ne.jp/entry/ class=hatena-bookmark-button data-hatena-bookmark-layout=simple-balloon title=このエントリーをはてなブックマークに追加><img src=https://b.st-hatena.com/images/entry-button/button-only@2x.png alt=このエントリーをはてなブックマークに追加 width=20 height=20 style=border:none></a>
 <script type=text/javascript src=https://b.st-hatena.com/js/bookmark_button.js async></script>
 <a data-pocket-label=pocket data-pocket-count=horizontal class=pocket-btn data-lang=en></a>
-<script type=text/javascript>!function(e,t){if(!e.getElementById(t)){var n=e.createElement("script"),s;n.id=t,n.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",s=e.getElementById(t),e.body.appendChild(n)}}(document,"pocket-btn-js")</script>
-</div></div><div class=related-posts>
-<h4>関連記事</h4><ul>
-<li><a href=/post/20171009/>DevFestTokyo2017で登壇しました</a></li><li><a href=/post/20170810/>eureka Meetup #06 -Go! Go! Go!-</a></li><li><a href=/post/20170703/>golang.tokyo #7 参加レポート</a></li></ul></div><footer id=footer>
-<div id=social>
-<a class=symbol href=https://www.facebook.com/mom0tomo>
-circlefacebook
-</a>
-<a class=symbol href=https://github.com/mom0tomo>
-circlegithub
-</a>
-<a class=symbol href=https://twitter.com/mom0tomo>
-circletwitterbird
-</a>
-</div><p class=small>
-© Copyright 2022 mom0tomo
-</p></footer></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
+<script type=text/javascript>!function(e,t){if(!e.getElementById(t)){var n=e.createElement("script"),s;n.id=t,n.src="https://widgets.getpocket.com/v1/j/btn.js?v=1",s=e.getElementById(t),e.body.appendChild(n)}}(document,"pocket-btn-js")</script></div></div><div class=related-posts><h4>関連記事</h4><ul><li><a href=/post/20171009/>DevFestTokyo2017で登壇しました</a></li><li><a href=/post/20170810/>eureka Meetup #06 -Go! Go! Go!-</a></li><li><a href=/post/20170703/>golang.tokyo #7 参加レポート</a></li></ul></div><footer id=footer><div id=social><a class=symbol href=https://www.facebook.com/mom0tomo>circlefacebook</a>
+<a class=symbol href=https://github.com/mom0tomo>circlegithub</a>
+<a class=symbol href=https://twitter.com/mom0tomo>circletwitterbird</a></div><p class=small>© Copyright 2022 mom0tomo</p></footer></section><script src=https://mom0tomo.github.io/js/jquery-3.3.1.min.js></script>
 <script src=https://mom0tomo.github.io/js/main.js></script>
 <script src=https://mom0tomo.github.io/js/highlight.min.js></script>
-<script>hljs.initHighlightingOnLoad()</script>
-</body></html>
+<script>hljs.initHighlightingOnLoad()</script></body></html>
