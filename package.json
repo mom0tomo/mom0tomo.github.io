@@ -1,0 +1,23 @@
+{
+  "name": "mom0tomo.github.io",
+  "version": "1.0.1",
+  "description": "hugoでつくるブログサイト[mom0tomo.github.io](https://mom0tomo.github.io)。",
+  "main": "index.js",
+  "devDependencies": {
+    "textlint": "latest",
+    "textlint-rule-preset-ja-technical-writing": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mom0tomo/mom0tomo.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mom0tomo/mom0tomo.github.io/issues"
+  },
+  "homepage": "https://github.com/mom0tomo/mom0tomo.github.io#readme"
+}

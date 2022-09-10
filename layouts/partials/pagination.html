@@ -1,0 +1,12 @@
+<nav id="post-nav">
+    {{ with .PrevInSection }}
+    <span class="prev">
+        <a href="{{ .Permalink }}">← {{ .LinkTitle }}</a>
+    </span>
+    {{ end }}
+    {{ with .NextInSection }}
+    <span class="next">
+        <a href="{{ .Permalink }}">{{ .LinkTitle }} →</a>
+    </span>
+    {{ end }}
+</nav>
