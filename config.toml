@@ -1,0 +1,86 @@
+# Base settings
+title = "mom0tomo"
+baseURL = "https://mom0tomo.github.io/"
+languageCode = "ja"
+theme = "hugo-theme-cactus-plus"
+## Google Analytics ID
+googleAnalyticsID = "G-YFDBYV8Y07"
+## use CJK統合漢字
+hasCJKLanguage = true
+## Include content with publishdate in the future.
+buildFuture = true
+## default = 10
+paginate = 104
+## Enable Emoji emoticons support for page content.(like :tada:)
+enableEmoji = true
+
+## Hugo Configure Markup
+## see: https://gohugo.io/getting-started/configuration-markup#highlight
+[markup]
+  [markup.highlight]
+  guessSyntax = true
+	codeFences = true
+	lineNoStart = 1
+	lineNos = false
+	lineNumbersInTable = true
+	noClasses = true
+	style = "native" # https://xyproto.github.io/splash/docs/native.html
+	# style = "solarized-dark" # https://xyproto.github.io/splash/docs/solarized-dark.html
+	tabWidth = 2
+
+# User custom settings
+[params]
+	name = "mom0tomo"
+	bio = "Server-side Developer - Gopher"
+	twitter = "mom0tomo"
+	# Configure Open Graph
+	description = "Thoughts and links about programming, by mom0tomo. I Love Go, Travel, Beer, Programming!"
+	images = ["avatar.png"]
+	title = "mom0tomo.github.io"
+	# Custom static files
+	customCSS = ["css/custom.css"]
+	customJS  = []
+	# Pagination links
+	olderPosts = ""
+	newerPosts = ""
+	readMore = ""
+	copyright = ""
+	# Sharing options and author information in posts
+	aboutAuthor = ""
+	tweet = ""
+	share = ""
+	# rss
+	enableRSS = true
+	# 404 page
+	title404 = ""
+	subtitle404 = ""
+	# "mono-social" or "font-awesome"
+	iconFont = "mono-social"
+	# The social icons can be styled differently if you use mono-social as font
+	# circle, rounded, or empty
+	socialIconStyle = "circle"
+	# Add additional social link entries underneath
+	[social]
+		facebook = "https://www.facebook.com/mom0tomo"
+		twitter = "https://twitter.com/mom0tomo"
+		github = "https://github.com/mom0tomo"
+	# Navigation links
+	[params.links]
+		about = "about"
+		archive = "archive"
+		tags = "tags"
+
+# Configure Open Graph
+[taxonomies]
+  tags = "tags"
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = true
+[[related.indices]]
+  name = 'tags'
+  weight = 100
+[[related.indices]]
+  name = 'date'
+  weight = 10
