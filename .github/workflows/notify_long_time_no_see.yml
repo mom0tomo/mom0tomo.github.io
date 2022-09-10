@@ -35,8 +35,7 @@ jobs:
 
       - name: Run
         run: |
-          pwd
-          cd ../content/post
+          cd ./mom0tomo.github.io/content/post
           echo "SINCE_LAST_COMMIT=`sincelastcommit`" >> $GITHUB_ENV
 
       - name: Notify Slack
