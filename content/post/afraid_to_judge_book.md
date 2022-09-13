@@ -4,7 +4,7 @@ date: 2022-09-10T21:30:26+09:00
 draft: false
 tags: ["book"]
 images: ["images/articles/avatar.png"]
-description: 「判断するのが怖い」というタイトルはピンとこなかったが、読んでみたところときどき仕事やし生活で発生して困る問題とその対処法が書かれていて役に立つ内容だった。
+description: 「判断するのが怖い」というタイトルはピンとこなかったが、読んでみたところときどき仕事や私生活で発生して困る問題とその対処法が書かれていて役に立つ内容だった。
 ---
 
 [「判断するのが怖い」あなたへ 発達障害かもしれない人が働きやすくなる方法 ](https://www.amazon.co.jp/dp/B08CZSGQHV)を読んだ。
@@ -13,10 +13,10 @@ description: 「判断するのが怖い」というタイトルはピンとこ�
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">何年かに一度くらい発達障害の本読むんだけど Kindle Unlimited だとこの本良かった。 <a href="https://t.co/8FXEdf7rAE">https://t.co/8FXEdf7rAE</a></p>&mdash; kotori (@kotoriko) <a href="https://twitter.com/kotoriko/status/1567079339916926977?ref_src=twsrc%5Etfw">September 6, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-「判断するのが怖い」というタイトルはピンとこなかったが、読んでみたところときどき仕事やし生活で発生して困る問題とその対処法が書かれていて役に立つ内容だった。
+「判断するのが怖い」というタイトルはピンとこなかったが、読んでみたところときどき仕事や私生活で発生して困る問題とその対処法が書かれていて役に立つ内容だった。
 
 仕事の進め方や周囲との働き方、私生活でのコミュニケーションで「これは言われてもできない」「これはとても難しい」と思うことがいろいろある。
-この本を読んでいろいろな学びがあったので、今後もすぐ役に立ちそうなところをメモしておく。
+この本を読んでいろいろな学びがあったので、今後も役に立ちそうなところをメモしておく。
 
 ## 「判断するのが怖い」という場面で起こっていること
 
