@@ -3,7 +3,6 @@ name: Notify Long Time No See
 
 on:
   workflow_dispatch:
-  push:
   schedule:
     - cron: 0 22 * * *
 
@@ -36,7 +35,7 @@ jobs:
           echo "SINCE_LAST_COMMIT=`sincelastcommit`" >> $GITHUB_ENV
 
       - name: Notify Slack
-        # if: env.SINCE_LAST_COMMIT >= 14
+        if: env.SINCE_LAST_COMMIT >= 14
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: github通知
