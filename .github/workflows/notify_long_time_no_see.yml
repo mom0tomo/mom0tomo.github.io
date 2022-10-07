@@ -1,0 +1,45 @@
+# ref: https://pankona.github.io/blog/2021/03/04/long-time-no-see-blog-post/
+name: Notify Long Time No See
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 22 * * *
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: tools/sincelastcommit/go.mod
+
+      - name: Install tools
+        run: |
+          cd ./tools/sincelastcommit
+          go install .
+
+      - name: Run
+        run: |
+          cd ../../content/post
+          echo "SINCE_LAST_COMMIT=`sincelastcommit`" >> $GITHUB_ENV
+
+      - name: Notify Slack
+        if: env.SINCE_LAST_COMMIT >= 14
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: github通知
+          SLACK_MESSAGE: "最後のブログ更新から ${{ env.SINCE_LAST_COMMIT }} 日経ちました"
+          SLACK_USERNAME: mom0tomo
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
