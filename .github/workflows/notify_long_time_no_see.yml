@@ -33,7 +33,6 @@ jobs:
 
       - name: Run
         run: |
-          cd ./content/post
           echo "SINCE_LAST_COMMIT=`sincelastcommit`" >> $GITHUB_ENV
 
       - name: Notify Slack
