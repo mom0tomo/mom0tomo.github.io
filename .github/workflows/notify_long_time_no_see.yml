@@ -3,6 +3,7 @@ name: Notify Long Time No See
 
 on:
   workflow_dispatch:
+  push:
   schedule:
     - cron: 0 22 * * *
 
