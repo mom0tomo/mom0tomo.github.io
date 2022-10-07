@@ -38,7 +38,7 @@ jobs:
         if: env.SINCE_LAST_COMMIT >= 14
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: github通知
+          SLACK_CHANNEL: timeline
           SLACK_MESSAGE: "最後のブログ更新から ${{ env.SINCE_LAST_COMMIT }} 日経ちました"
-          SLACK_USERNAME: mom0tomo
+          SLACK_USERNAME: gopher6
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
