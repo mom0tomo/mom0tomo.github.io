@@ -36,7 +36,7 @@ jobs:
           echo "SINCE_LAST_COMMIT=`sincelastcommit`" >> $GITHUB_ENV
 
       - name: Notify Slack
-        if: env.SINCE_LAST_COMMIT >= 14
+        # if: env.SINCE_LAST_COMMIT >= 14
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: timeline
