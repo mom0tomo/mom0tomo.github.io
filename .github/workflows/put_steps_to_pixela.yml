@@ -53,7 +53,7 @@ jobs:
 
       - name: Install pi
         run: |
-          go install github.com/a-know/pi/cmd/pi
+          go install github.com/a-know/pi/cmd/pi@latest
 
       - name: Put Data to Pixela
         run: |
