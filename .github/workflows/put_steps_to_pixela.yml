@@ -31,6 +31,7 @@ jobs:
           TZ: "Asia/Tokyo" # タイムゾーン指定
         run: |
           echo ::set-output name=date1::$(date +'%Y-%m-%d')
+          echo ::set-output name=yesterday_date1::$(date +'%Y-%m-%d' --date '1 day ago')
           echo ::set-output name=date2::$(date +'%Y%m%d')
 
       - name: Count Steps
@@ -42,7 +43,7 @@ jobs:
         env:
           OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
           DATE: ${{ steps.check.outputs.date1 }}
-          YESTERDAY_DATE: "${{ steps.check.outputs.date1 }} - 1"
+          YESTERDAY_DATE: "${{ steps.check.outputs.yesterday_date1 }}"
 
       # - name: Manage Steps
       #   id: manage
@@ -52,7 +53,7 @@ jobs:
 
       - name: Install pi
         run: |
-          go get github.com/a-know/pi/cmd/pi
+          go install github.com/a-know/pi/cmd/pi
 
       - name: Put Data to Pixela
         run: |
