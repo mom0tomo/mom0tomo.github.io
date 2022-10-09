@@ -40,9 +40,7 @@ jobs:
           echo ::set-output name=steps::$(curl --location --request GET \
           "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.DATE }}&end_date=${{ env.TARGET_DATE }}" \
           --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}" | jq ".data[].steps")
-          echo $(curl --location --request GET \
-          "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.DATE }}&end_date=${{ env.TARGET_DATE }}" \
-          --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}" | jq ".data[].steps")
+          echo $(curl --location --request GET "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.DATE }}&end_date=${{ env.TARGET_DATE }}" --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}")
         env:
           OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
           DATE: ${{ steps.check.outputs.date }}
