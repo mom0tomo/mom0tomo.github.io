@@ -43,7 +43,7 @@ jobs:
         env:
           OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
           DATE: ${{ steps.check.outputs.date }}
-          YESTERDAY_DATE: "${{ steps.check.outputs.yesterday_date1}}"
+          YESTERDAY_DATE: "${{ steps.check.outputs.yesterday_date}}"
 
       # - name: Manage Steps
       #   id: manage
