@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
   schedule:
+    # アクティビティのデータは日付が変わるまで取得できない(nullが返る)
+    # 日付（UTC）が変わってから昨日のデータを取得し記録する
     - cron: 01 00 * * *
 
 jobs:
@@ -20,17 +22,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Go
-        uses: actions/setup-go@v3
-        with:
-          go-version-file: tools/sincelastcommit/go.mod
-
       - name: Set current datetime
         id: check
-        # env:
-        # TZ: "Asia/Tokyo" # タイムゾーン指定
         run: |
-          echo ::set-output name=date::$(date +'%Y-%m-%d' --date '2 days ago')
+          echo ::set-output name=target_date_minus_1_day::$(date +'%Y-%m-%d' --date '2 days ago')
           echo ::set-output name=target_date::$(date +'%Y-%m-%d' --date '1 day ago')
           echo ::set-output name=date_to_record::$(date +'%Y%m%d' --date '1 day ago')
 
@@ -38,18 +33,23 @@ jobs:
         id: count
         run: |
           echo ::set-output name=steps::$(curl --location --request GET \
-          "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.DATE }}&end_date=${{ env.TARGET_DATE }}" \
+          "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.START_DATE }}&end_date=${{ env.END_DATE }}" \
           --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}" | jq ".data[].steps")
         env:
           OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
-          DATE: ${{ steps.check.outputs.date }}
-          TARGET_DATE: "${{ steps.check.outputs.target_date}}"
+          START_DATE: ${{ steps.check.outputs.target_date_minus_1_day }}
+          END_DATE: "${{ steps.check.outputs.target_date}}"
 
       # - name: Manage Steps
       #   id: manage
       #   # OuraRingの歩数が多めにカウントされがちなので調整する
       #   run: |
       #     echo ::set-output name=steps::$(echo ${{ steps.count.outputs.steps }} - 1000)
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: tools/sincelastcommit/go.mod
 
       - name: Install pi
         run: |
@@ -70,5 +70,5 @@ jobs:
         env:
           SLACK_CHANNEL: devnull
           SLACK_MESSAGE: "Pixelaに歩数を記録しました"
-          SLACK_ICON_EMOJI: "footprints"
+          SLACK_ICON_EMOJI: ":footprints:"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
