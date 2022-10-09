@@ -1,0 +1,72 @@
+name: Put the Number of Steps to Pixela
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 55 14 * * * # JST: 23:55
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: tools/sincelastcommit/go.mod
+
+      - name: Set current datetime
+        id: check
+        env:
+          TZ: "Asia/Tokyo" # タイムゾーン指定
+        run: |
+          echo ::set-output name=date1::$(date +'%Y-%m-%d')
+          echo ::set-output name=date2::$(date +'%Y%m%d')
+
+      - name: Count Steps
+        id: count
+        run: |
+          echo ::set-output name=steps::$(curl --location --request GET \
+          "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.YESTERDAY_DATE }}&end_date=${{ env.DATE }}" \
+          --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}" | jq ".data[].steps")
+        env:
+          OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
+          DATE: ${{ steps.check.outputs.date1 }}
+          YESTERDAY_DATE: "${{ steps.check.outputs.date1 }} - 1"
+
+      # - name: Manage Steps
+      #   id: manage
+      #   # OuraRingの歩数が多めにカウントされがちなので調整する
+      #   run: |
+      #     echo ::set-output name=steps::$(echo ${{ steps.count.outputs.steps }} - 1000)
+
+      - name: Install pi
+        run: |
+          go get github.com/a-know/pi/cmd/pi
+
+      - name: Put Data to Pixela
+        run: |
+          pi pixel post -u ${{ env.USER_NAME }} -g ${{ env.GRAPH_NAME }} -d ${{ env.DATE }} -q ${{ env.STEPS }}
+        env:
+          PIXELA_USER_TOKEN: ${{ secrets.PIXELA_USER_TOKEN }}
+          USER_NAME: mom0tomo
+          GRAPH_NAME: pedometer
+          DATE: ${{ steps.check.outputs.date2 }}
+          QUANTITY: ${{ steps.manage.outputs.steps }}
+
+      - name: Notify Slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: devnull
+          SLACK_MESSAGE: "Pixelaに歩数を記録しました"
+          SLACK_ICON_EMOJI: "footprints"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
