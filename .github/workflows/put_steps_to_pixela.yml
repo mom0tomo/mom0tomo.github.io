@@ -63,7 +63,7 @@ jobs:
           USER_NAME: mom0tomo
           GRAPH_NAME: pedometer
           DATE: ${{ steps.check.outputs.date_to_record }}
-          QUANTITY: ${{ steps.manage.outputs.steps }}
+          QUANTITY: ${{ steps.count.outputs.steps }}
 
       - name: Notify Slack
         uses: rtCamp/action-slack-notify@v2
