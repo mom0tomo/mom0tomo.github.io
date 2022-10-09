@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
   schedule:
-    - cron: 55 14 * * * # JST: 23:55
+    - cron: 55 14 * * * # JST: 00:01
 
 jobs:
   record:
@@ -30,9 +30,9 @@ jobs:
         env:
           TZ: "Asia/Tokyo" # タイムゾーン指定
         run: |
-          echo ::set-output name=date1::$(date +'%Y-%m-%d')
-          echo ::set-output name=yesterday_date1::$(date +'%Y-%m-%d' --date '1 day ago')
-          echo ::set-output name=date2::$(date +'%Y%m%d')
+          echo ::set-output name=date::$(date +'%Y-%m-%d')
+          echo ::set-output name=yesterday_date::$(date +'%Y-%m-%d' --date '1 day ago')
+          echo ::set-output name=date_to_record::$(date +'%Y%m%d' --date '1 day ago')
 
       - name: Count Steps
         id: count
@@ -62,7 +62,7 @@ jobs:
           PIXELA_USER_TOKEN: ${{ secrets.PIXELA_USER_TOKEN }}
           USER_NAME: mom0tomo
           GRAPH_NAME: pedometer
-          DATE: ${{ steps.check.outputs.date2 }}
+          DATE: ${{ steps.check.outputs.date_to_record }}
           QUANTITY: ${{ steps.manage.outputs.steps }}
 
       - name: Notify Slack
