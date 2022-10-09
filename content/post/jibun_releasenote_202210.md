@@ -34,6 +34,8 @@ description: "じぶんリリースノート(202210)"
 
 - 平均: 歩/日
 
+![Pixela](https://pixe.la/v1/users/mom0tomo/graphs/pedometer)
+
 10/6に脚に怪我をして松葉杖生活だったので今月の歩数は少なめだった
 
 ## この期間のふりかえり（KPT形式）
