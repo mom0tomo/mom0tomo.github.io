@@ -7,7 +7,7 @@ on:
     - cron: 55 14 * * * # JST: 23:55
 
 jobs:
-  notify:
+  record:
     runs-on: ubuntu-latest
     env:
       TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
