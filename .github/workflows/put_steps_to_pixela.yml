@@ -30,15 +30,18 @@ jobs:
         env:
           TZ: "Asia/Tokyo" # タイムゾーン指定
         run: |
-          echo ::set-output name=date::$(date +'%Y-%m-%d' --date '1 days ago')
-          echo ::set-output name=target_date::$(date +'%Y-%m-%d' --date '2 days ago')
-          echo ::set-output name=date_to_record::$(date +'%Y%m%d' --date '2 days ago')
+          echo ::set-output name=date::$(date +'%Y-%m-%d' --date '2 days ago')
+          echo ::set-output name=target_date::$(date +'%Y-%m-%d' --date '1 day ago')
+          echo ::set-output name=date_to_record::$(date +'%Y%m%d' --date '1 day ago')
 
       - name: Count Steps
         id: count
         run: |
           echo ::set-output name=steps::$(curl --location --request GET \
-          "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.TARGET_DATE }}&end_date=${{ env.DATE }}" \
+          "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.DATE }}&end_date=${{ env.TARGET_DATE }}" \
+          --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}" | jq ".data[].steps")
+          echo $(curl --location --request GET \
+          "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.DATE }}&end_date=${{ env.TARGET_DATE }}" \
           --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}" | jq ".data[].steps")
         env:
           OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
