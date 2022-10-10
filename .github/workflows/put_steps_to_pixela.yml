@@ -25,9 +25,9 @@ jobs:
       - name: Set current datetime
         id: check
         run: |
-          echo ::set-output name=target_date_minus_1_day::$(date +'%Y-%m-%d' --date '2 days ago')
-          echo ::set-output name=target_date::$(date +'%Y-%m-%d' --date '1 day ago')
-          echo ::set-output name=date_to_record::$(date +'%Y%m%d' --date '1 day ago')
+          echo ::set-output name=target_date_minus_1_day::$(date +"%Y-%m-%d" --date "2 days ago")
+          echo ::set-output name=target_date::$(date +"%Y-%m-%d" --date "1 day ago")
+          echo ::set-output name=date_to_record::$(date +"%Y%m%d" --date "1 day ago")
 
       - name: Count Steps
         id: count
@@ -64,11 +64,24 @@ jobs:
           GRAPH_NAME: pedometer
           DATE: ${{ steps.check.outputs.date_to_record }}
           QUANTITY: ${{ steps.count.outputs.steps }}
+          # QUANTITY: ${{ steps.manage.outputs.steps }}
 
       - name: Notify Slack
+        if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: devnull
-          SLACK_MESSAGE: "Pixelaに歩数を記録しました"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "Pixelaに歩数を記録しました :footprints:"
           SLACK_ICON_EMOJI: ":footprints:"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_CHANNEL: devnull
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "歩数の記録に失敗しました"
+          SLACK_ICON_EMOJI: ":rotating_light:"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
