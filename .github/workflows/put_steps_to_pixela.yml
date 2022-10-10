@@ -4,9 +4,7 @@ on:
   workflow_dispatch:
   push:
   schedule:
-    # アクティビティのデータは日付が変わるまで取得できない(nullが返る)
-    # 日付（UTC）が変わってから昨日のデータを取得し記録する
-    - cron: 01 00 * * *
+    - cron: 55 14 * * * # JST 23:55
 
 jobs:
   record:
@@ -25,20 +23,17 @@ jobs:
       - name: Set current datetime
         id: check
         run: |
-          echo ::set-output name=target_date_minus_1_day::$(date +"%Y-%m-%d" --date "2 days ago")
-          echo ::set-output name=target_date::$(date +"%Y-%m-%d" --date "1 day ago")
-          echo ::set-output name=date_to_record::$(date +"%Y%m%d" --date "1 day ago")
+          echo ::set-output name=date::$(date +"%Y%m%d" --date "1 day ago")
 
+      # ref: https://cloud.ouraring.com/v2/docs#tag/Daily-Activity
       - name: Count Steps
         id: count
         run: |
           echo ::set-output name=steps::$(curl --location --request GET \
-          "https://api.ouraring.com/v2/usercollection/daily_activity?start_date=${{ env.START_DATE }}&end_date=${{ env.END_DATE }}" \
+          "https://api.ouraring.com/v2/usercollection/daily_activity" \
           --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}" | jq ".data[].steps")
         env:
           OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
-          START_DATE: ${{ steps.check.outputs.target_date_minus_1_day }}
-          END_DATE: "${{ steps.check.outputs.target_date}}"
 
       # - name: Manage Steps
       #   id: manage
@@ -62,11 +57,11 @@ jobs:
           PIXELA_USER_TOKEN: ${{ secrets.PIXELA_USER_TOKEN }}
           USER_NAME: mom0tomo
           GRAPH_NAME: pedometer
-          DATE: ${{ steps.check.outputs.date_to_record }}
+          DATE: ${{ steps.check.outputs.date }}
           QUANTITY: ${{ steps.count.outputs.steps }}
           # QUANTITY: ${{ steps.manage.outputs.steps }}
 
-      - name: Notify Slack
+      - name: Notify Slack on Success
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
