@@ -2,7 +2,6 @@ name: Put the Number of Steps to Pixela
 
 on:
   workflow_dispatch:
-  push:
   schedule:
     - cron: 55 14 * * * # JST 23:55
 
