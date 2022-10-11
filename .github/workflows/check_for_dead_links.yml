@@ -1,0 +1,40 @@
+name: Check for Dead Links
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: 55 0 * * * # JST 9:55
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for dead links
+        id: link-report
+        uses: celinekurpershoek/link-checker@v1.0.2
+        with:
+          url: "https://mom0tomo.github.io"
+
+      - name: Get the result
+        run: echo "${{steps.link-report.outputs.result}}"
+
+      - name: Notify Slack on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: devnull
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "リンク切れはありませんでした :check:"
+          SLACK_ICON_EMOJI: ":link:"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_CHANNEL: devnull
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "リンク切れがあります :exclamation:"
+          SLACK_ICON_EMOJI: ":link:"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
