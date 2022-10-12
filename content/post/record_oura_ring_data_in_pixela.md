@@ -14,7 +14,7 @@ description: "「じぶんリリースノート」にPixelaで歩数を表示し
 
 ### やったこと
 
-[Mitsuyuki.ShiibaさんがCircleCIとFitbitでやっていたの]((https://bufferings.hatenablog.com/entry/2022/02/27/150342))とだいたい同じイメージです。
+[Mitsuyuki.ShiibaさんがCircleCIとFitbitでやっていたの](https://bufferings.hatenablog.com/entry/2022/02/27/150342)とだいたい同じイメージです。
 
 1. Oura RingのAPIで歩数を取得する
 2. Pixelaに記録する

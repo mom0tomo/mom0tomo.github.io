@@ -30,7 +30,7 @@ Licensed under the Creative Commons 3.0 Attributions license.
 ## Hall
 - [Hacking Go Compiler Internals](https://speakerdeck.com/moriyoshi/hacking-go-compiler-internals-2nd-season)
 - Security Scan for golang Using Open Source
-- [標準パッケージのみで大量のPNG画像をいかに高速に処理するか](https://go-talks.appspot.com/github.com/cia-rana/go-png-bench/doc/slide/gocon2019.slide#1)
+- [標準パッケージのみで大量のPNG画像をいかに高速に処理するか](https://qiita.com/cia_rana/items/a56269b11e909b3a246d)
 - [煩雑な運用をGoを使って楽にする](https://speakerdeck.com/konboi/go-conference-2019-spring)
 - [Writing Go Analyses with go/analysis](https://github.com/matloob/analysistalk/blob/master/presentations/tokyo.key)
 - [Dive into Buildkit LLB with Go](https://speakerdeck.com/po3rin/dive-into-buildkit-llb-with-go)
@@ -85,14 +85,14 @@ Licensed under the Creative Commons 3.0 Attributions license.
 ### Sponsors
 - [CloudSignの裏話 | 弁護士ドットコム様](https://speakerdeck.com/koichiwada/inside-story-of-cloudsign)
 - [Go Quiz | メルカリ様](https://docs.google.com/presentation/d/1wp1odSpNmYmFkdYVk-Xn6M5ipbXcOi0cxMiI3ujKa6U/edit)
-- [Kubernetes の API Client における キャッシュ設計 | Wantedly様](https://speakerdeck.com/unblee/cache-design-in-kubernetes-api-client)
+- [Kubernetes の API Client におけるキャッシュ設計 | Wantedly様](https://speakerdeck.com/unblee/cache-design-in-kubernetes-api-client)
 - DeNA様
 - freee様
 - Google様
 - リクルート様
 
 ### LT
-- [gobpfでPostgreSQLを動的トレーシングする](https://docs.google.com/presentation/d/1yR6H2gJbUA0F7nQe6dZk9MJjEPIzmDlFk5_sVGS2wQw/edit#slide=id.p1)
+- [gobpfでPostgreSQLを動的トレーシングする](https://speakerdeck.com/ujun/gobpfdepostgresqlwodong-de-toresingusuru)
 - [標準パッケージにおけるテストでの利用例から学ぶ testing / quick パッケージ](https://speakerdeck.com/yusukehosonuma/golang-testing-quick)
 - [SQLFormatter written in Go](https://speakerdeck.com/pongzu/sqlformatter-written-in-go)
 - [Event Sourcing with Go](https://docs.google.com/presentation/d/16s8bynqiupbB_n-KVjvA0Biy3mgatN3KSg4shyJ_C6A/edit)
@@ -107,7 +107,6 @@ Licensed under the Creative Commons 3.0 Attributions license.
 - [[補足資料] Go Conference 2019 Springでdatabase/sql入門を発表した #gocon - My External Storage ](https://budougumi0617.github.io/2019/05/19/gocon2019spring/)
 - [Go Conference 2019 Spring で登壇してきた。- CIARANA](https://medium.com/@cia_rana/go-conference-2019-spring-%E3%81%A7%E7%99%BB%E5%A3%87%E3%81%97%E3%81%A6%E3%81%8D%E3%81%9F-168e47f36d21)
 - [Go Conference 2019 Spring で発表してきた - blog.syfm](https://syfm.hatenablog.com/entry/2019/05/19/170218)
-- [Go Conference 2019 Spring で登壇して反省しました - micnncim](https://micnncim.github.io/2019/05/18/go-conference-2019-spring/)
 - [Go Conference 2019 Springにスカラーシップで参加してきた - サーバーサイドを嗜む](https://ssabcire.hatenablog.com/entry/2019/05/19/161026)
 - [Go Conference 2019 Spring」に参加してきた！ - Fumiエンジニアブログ](https://engineer-fumi.hatenablog.com/entry/2019/05/18/172000)
 - [Go Conference 2019 Spring に参加してきました - ミツバブログ ](https://mitubaex.hatenablog.com/entry/2019/05/19/014059)
