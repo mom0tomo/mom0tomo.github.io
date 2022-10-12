@@ -19,7 +19,7 @@ jobs:
         run: pip3 install linkchecker
 
       - name: Check for dead links
-        run: linkchecker ${{ env.URL }}"
+        run: linkchecker ${{ env.URL }}
         env:
           URL: https://mom0tomo.github.io
 
