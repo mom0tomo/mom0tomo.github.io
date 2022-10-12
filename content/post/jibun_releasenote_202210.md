@@ -15,13 +15,14 @@ description: "じぶんリリースノート(202210)"
 
 - [DNSがよくわかる教科書](https://bookmeter.com/books/13194174)
 - [AWSを使って学ぶ監視設計](https://bookmeter.com/books/16530950)
+- [インフラエンジニアの教科書](https://bookmeter.com/books/7426889)
+- [ソフトウェアアーキテクチャの基礎 ―エンジニアリングに基づく体系的アプローチ](https://bookmeter.com/books/19331212)
 
 ### 途中
 
 - [コンテナ物語―世界を変えたのは「箱」の発明だった](https://bookmeter.com/books/977)
 - [達人が教えるWebパフォーマンスチューニング 〜ISUCONから学ぶ高速化の実践](https://bookmeter.com/books/19792437)
 - [実用 Go言語 ―システム開発の現場で知っておきたいアドバイス](https://bookmeter.com/books/19535730)
-- [ソフトウェアアーキテクチャの基礎 ―エンジニアリングに基づく体系的アプローチ](https://bookmeter.com/books/19331212)
 - [詳解Go言語Webアプリケーション開発](https://bookmeter.com/books/19190920)
 
 ## ブログ
@@ -48,7 +49,7 @@ description: "じぶんリリースノート(202210)"
 
 #### 専門スキル
 
-- インフラ関連の技術書をたくさん読むことができた
+- 技術書をたくさん読むことができた
   - 朝活・読書の習慣ができている
 
 #### 仕事
