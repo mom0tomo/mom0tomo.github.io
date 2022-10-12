@@ -103,7 +103,7 @@ const Button = (props: Props) => (
 ```
 
 そもそもhrefはaタグを使う際に必須とされる属性ではありません。
-[<a>: アンカー要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/a])
+[<a>: アンカー要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/a)
 
 そのため、このような飛び先のないクリックイベントの処理ではhrefの定義は不要です。
 
