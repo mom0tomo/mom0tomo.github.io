@@ -10,11 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check for dead links
-        id: link-report
-        uses: celinekurpershoek/link-checker@v1.0.2
+      - name: Setup Python3
+        uses: actions/setup-python@v4
         with:
-          url: "https://mom0tomo.github.io"
+          python-version: "3.10"
+
+      - name: Install Link Checker
+        run: pip3 install linkchecker
+
+      - name: Check for dead links
+        run: linkchecker ${{ env.URL }}"
+        env:
+          URL: https://mom0tomo.github.io
 
       - name: Get the result
         run: echo "${{steps.link-report.outputs.result}}"
