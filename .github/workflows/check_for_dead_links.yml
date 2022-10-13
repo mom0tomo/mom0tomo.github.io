@@ -18,7 +18,7 @@ jobs:
       - name: Check for dead link
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
-          config-file: "../../markdown-link-check.json"
+          config-file: "markdown-link-check.json"
 
       - name: Get the result
         run: echo "${{steps.link-report.outputs.result}}"
