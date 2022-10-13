@@ -15,13 +15,11 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install Link Checker
-        run: pip3 install linkchecker
-
-      - name: Check for dead links
-        run: linkchecker ${{ env.URL }}
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.5.1
         env:
-          URL: https://mom0tomo.github.io
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Get the result
         run: echo "${{steps.link-report.outputs.result}}"
