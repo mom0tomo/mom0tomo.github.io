@@ -1,6 +1,5 @@
 name: Check for Dead Links
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: 55 0 * * * # JST 9:55
@@ -27,7 +26,7 @@ jobs:
         env:
           SLACK_CHANNEL: devnull
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: "リンク切れはありませんでした :check:"
+          SLACK_MESSAGE: "リンク切れはありませんでした :white_check_mark:"
           SLACK_ICON_EMOJI: ":link:"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
 
