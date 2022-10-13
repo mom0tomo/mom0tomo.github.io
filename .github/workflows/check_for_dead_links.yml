@@ -10,10 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Python3
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Check for dead link
         uses: gaurav-nelson/github-action-markdown-link-check@v1
