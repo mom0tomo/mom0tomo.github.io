@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 55 14 * * * # JST 23:55
+  push:
 
 jobs:
   record:
@@ -22,23 +23,17 @@ jobs:
       - name: Set current datetime
         id: check
         run: |
-          echo ::set-output name=date::$(date +"%Y%m%d")
+          echo "date=$(date +"%Y%m%d")" >> $GITHUB_OUTPUT
 
       # ref: https://cloud.ouraring.com/v2/docs#tag/Daily-Activity
       - name: Count Steps
         id: count
         run: |
-          echo ::set-output name=steps::$(curl --location --request GET \
-          "https://api.ouraring.com/v2/usercollection/daily_activity" \
-          --header "Authorization: Bearer ${{ env.OURA_USER_TOKEN }}" | jq ".data[].steps")
+          echo "steps=$(curl --location --request GET \
+          https://api.ouraring.com/v2/usercollection/daily_activity \
+          --header 'Authorization: Bearer ${{ env.OURA_USER_TOKEN }}' | jq '.data[].steps')" >> $GITHUB_OUTPUT
         env:
           OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
-
-      # - name: Manage Steps
-      #   id: manage
-      #   # OuraRingの歩数が多めにカウントされがちなので調整する
-      #   run: |
-      #     echo ::set-output name=steps::$(echo ${{ steps.count.outputs.steps }} - 1000)
 
       - name: Setup Go
         uses: actions/setup-go@v3
