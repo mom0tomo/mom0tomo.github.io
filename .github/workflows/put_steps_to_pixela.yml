@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 55 14 * * * # JST 23:55
-  push:
 
 jobs:
   record:
