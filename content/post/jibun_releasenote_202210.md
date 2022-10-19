@@ -13,13 +13,12 @@ description: "じぶんリリースノート(202210)"
 
 ### 読みおわった
 
-- [DNSがよくわかる教科書](https://bookmeter.com/books/13194174)
 - [AWSを使って学ぶ監視設計](https://bookmeter.com/books/16530950)
 - [インフラエンジニアの教科書](https://bookmeter.com/books/7426889)
 - [ソフトウェアアーキテクチャの基礎 ―エンジニアリングに基づく体系的アプローチ](https://bookmeter.com/books/19331212)
 
 ### 途中
-
+- [DNSがよくわかる教科書](https://bookmeter.com/books/13194174)
 - [コンテナ物語―世界を変えたのは「箱」の発明だった](https://bookmeter.com/books/977)
 - [達人が教えるWebパフォーマンスチューニング 〜ISUCONから学ぶ高速化の実践](https://bookmeter.com/books/19792437)
 - [実用 Go言語 ―システム開発の現場で知っておきたいアドバイス](https://bookmeter.com/books/19535730)
@@ -34,8 +33,6 @@ description: "じぶんリリースノート(202210)"
 - [山形国際ドキュメンタリー映画祭2021 リバイバル上映](https://www.yidff.jp/2021/cat011/21c014.html)で『カマグロガ』を見ました
   - 国際ドキュメンタリー映画祭が初めてでしたがとてもよかったです
   - スペイン、バレンシア地方のオルタという農業地で農家を営む家族を西部劇調のタッチで描いた作品でした
-- [Go Conference mini 2022 Autumn IN SENDAI](https://sendaigo.connpass.com/event/256463/)に行きました
-  - 久しぶりに物理で友人、知人と会ってモチベーションが上がりました
 
 ## 今月の歩数
 
@@ -67,10 +64,11 @@ description: "じぶんリリースノート(202210)"
 
 - Women Who Go Tokyoの活動方針の部分をconnpassで修正した
   - 完全初心者向けの勉強会の文言は削り（いまはプログラミング経験がある人同士が学ぶ読書会が中心なので）、SlackとDiscordの招待リンクを整備した
+- [Go Conference mini 2022 Autumn IN SENDAI](https://sendaigo.connpass.com/event/256463/)に行った
+  - 久しぶりに物理で友人、知人と会ってモチベーションが上がった
 
 #### 交友
 
-- 
 
 ##### 健康
 
@@ -81,6 +79,10 @@ description: "じぶんリリースノート(202210)"
 - [ジョジョ6部アニメ2期](https://jojo-portal.com/anime/so/news/35/)を見終わった
   - Netflixは1ヶ月で解約した
   - まとめて配信されるとつい何話も続けて毎日見てしまうので、5部までのように毎週放送する方式の方が長く楽しめて好き
+- Amazon Primeで[メトロポリス](https://tezukaosamu.net/jp/anime/129.html)を見た
+  - ストーリーの展開的には「このキャラクター、エピソードを入れておいてそのまとめ方はちょっと...」と思うところもあったけど映像は素晴らしかった
+  - 20年前なのにCGが現代を超えるレベルの滑らかさで、手書きの仕上げのクオリティの高さを感じた
+  
 
 ### Problem
 
