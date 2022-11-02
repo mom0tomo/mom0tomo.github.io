@@ -1,0 +1,16 @@
+{
+  "httpHeaders": [
+    {
+      "urls": [
+        "https://mom0tomo.github.io"
+      ],
+      "headers": {
+        "Accept": "text/html"
+      }
+    }
+  ],
+  "aliveStatusCodes": [
+    200,
+    301
+  ]
+}

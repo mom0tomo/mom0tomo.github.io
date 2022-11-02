@@ -1,0 +1,41 @@
+name: Check for Dead Links
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 55 0 * * * # JST 9:55
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check for dead link
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          config-file: "markdown-link-check.json"
+
+      - name: Get the result
+        run: echo "${{steps.link-report.outputs.result}}"
+
+      - name: Notify Slack on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: devnull
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "リンク切れはありませんでした :white_check_mark:"
+          SLACK_ICON_EMOJI: ":link:"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_CHANNEL: devnull
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "リンク切れがあります :exclamation:"
+          SLACK_ICON_EMOJI: ":link:"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
