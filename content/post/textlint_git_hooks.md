@@ -63,7 +63,7 @@ $ npm install textlint-rule-preset-ja-technical-writing --save-dev
 ***
 
 ## git hookを利用してcommit時にリンターをかける
-[git hooks](https://git-scm.com/book/ja/v1/Git-%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA-Git-%E3%83%95%E3%83%83%E3%82%AF)とはgit操作をフックとして他のコマンドやタスクを実行する機能です。
+[git hooks](https://git-scm.com/book/ja/v2/Git-%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA-Git-%E3%83%95%E3%83%83%E3%82%AF)とはgit操作をフックとして他のコマンドやタスクを実行する機能です。
 
 今回はcommit時にtextlintをかけるようにしてみます。
 

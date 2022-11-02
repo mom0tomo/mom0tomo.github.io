@@ -26,7 +26,7 @@ Selenium上でchromedriverを使ったテストでは、Capybaraの「check」�
 ```ruby
 find('label', text: 'ほげほげ', match: :first).click
 ```
-- [#find (*args, **options, &optional_filter_block) ⇒ Capybara::Node::Element](https://www.rubydoc.info/github/jnicklas/capybara/Capybara/Node/Finders#find-instance_method)
+- [#find (*args, **options, &optional_filter_block) ⇒ Capybara::Node::Element](https://rubydoc.info/github/jnicklas/capybara/Capybara/Node/Finders)
 - [#click (keys = [], **options) ⇒ Object](https://www.rubydoc.info/github/jnicklas/capybara/Capybara/Driver/Node#click-instance_method)
 
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://stackoverflow.com/questions/10613354/how-do-i-click-this-button-in-capybara" data-iframely-url="//cdn.iframe.ly/RVIA3O0"></a></div></div><script async src="//cdn.iframe.ly/embed.js" charset="utf-8"></script>
