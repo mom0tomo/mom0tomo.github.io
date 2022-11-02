@@ -40,5 +40,6 @@ jobs:
         env:
           SLACK_CHANNEL: timeline
           SLACK_MESSAGE: "最後のブログ更新から ${{ env.SINCE_LAST_COMMIT }} 日経ちました"
+          SLACK_USERNAME: ブログを書いていますか？
           SLACK_ICON_EMOJI: ":gopher6:"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
