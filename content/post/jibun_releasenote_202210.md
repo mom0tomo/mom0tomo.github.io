@@ -46,7 +46,7 @@ description: "じぶんリリースノート(202211)"
 
 ## 今月の歩数
 
-- 平均: 歩/日
+- 平均: 5223歩/日
 
 ![Pixela](https://pixe.la/v1/users/mom0tomo/graphs/pedometer)
 
