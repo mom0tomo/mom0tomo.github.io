@@ -51,7 +51,8 @@ jobs:
           USER_NAME: mom0tomo
           GRAPH_NAME: pedometer
           DATE: ${{ steps.check.outputs.date }}
-          QUANTITY: ${{ steps.count.outputs.steps }} - 1100
+          # Oura Ringの歩数は仕事のある日は1000歩/休みの日は500歩くらい多く出るので調整する
+          QUANTITY: ${{ steps.count.outputs.steps }} - 850
 
       - name: Notify Slack on Success
         if: success()
