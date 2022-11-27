@@ -89,7 +89,7 @@ jobs:
         if: failure()
         uses: rtCamp/action-slack-notify@v2.0.0
         env:
-          SLACK_CHANNEL: timeline
+          SLACK_CHANNEL: devnull
           SLACK_COLOR: ${{ job.status }}
           SLACK_MESSAGE: "歩数の記録に失敗しました :rotating_light:"
           SLACK_ICON_EMOJI: ":rotating_light:"
