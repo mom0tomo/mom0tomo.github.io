@@ -45,8 +45,10 @@ jobs:
           go install github.com/a-know/pi/cmd/pi@latest
 
       - name: Put Data to Pixela
+        id: pixela
         run: |
           pi pixel post -u ${{ env.USER_NAME }} -g ${{ env.GRAPH_NAME }} -d ${{ env.DATE }} -q ${{ env.QUANTITY }}
+          echo "steps=${{ env.QUANTITY }}" >> $GITHUB_OUTPUT
         env:
           PIXELA_USER_TOKEN: ${{ secrets.PIXELA_USER_TOKEN }}
           USER_NAME: mom0tomo
@@ -62,12 +64,12 @@ jobs:
           spreadsheetId: ${{ secrets.GSHEET_ID }}
           commands: |
             [
-            { "command": "appendData", "args": { "data": [[ ${{ env.QUANTITY }} ]], "minCol": 1, } }
+              { "command": "appendData", "args": { "data": [[ ${{ env.QUANTITY }} ]], "minCol": 1, } }
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
-          QUANTITY: ${{ steps.count.outputs.steps }} - 850
+          QUANTITY: ${{ steps.pixela.outputs.steps }}
 
       - name: Notify Slack on Success
         if: success()
