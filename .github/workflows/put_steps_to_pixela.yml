@@ -69,6 +69,7 @@ jobs:
         uses: jroehl/gsheet.action@v1.0.0
         with:
           spreadsheetId: ${{ secrets.GSHEET_ID }}
+          worksheetTitle: ${{ secrets.GSHEET_TITLE }}
           commands: |
             [
               { "command": "appendData", "args": { "data": [[ ${{ env.STEPS }} ]], "minCol": 1 }}
