@@ -2,8 +2,9 @@ name: Put the Number of Steps to Pixela
 
 on:
   workflow_dispatch:
+  push:
   schedule:
-    - cron: 55 14 * * * # JST 23:55
+    - cron: 55 14 * * * # JST 23:55 every day
 
 jobs:
   record:
@@ -54,6 +55,20 @@ jobs:
           # Oura Ringの歩数は仕事のある日は1000歩/休みの日は500歩くらい多く出るので調整する
           QUANTITY: ${{ steps.count.outputs.steps }} - 850
 
+      # 月平均等を出したいのでスプレッドシートにも転機する
+      - name: Put Data to Spreadsheet
+        uses: jroehl/gsheet.action@v1.0.0
+        with:
+          spreadsheetId: ${{ secrets.GSHEET_ID }}
+          commands: |
+            [
+            { "command": "appendData", "args": { "data": [[ ${{ env.QUANTITY }} ]], "minCol": 1, } }
+            ]
+        env:
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+          QUANTITY: ${{ steps.count.outputs.steps }} - 850
+
       - name: Notify Slack on Success
         if: success()
         uses: rtCamp/action-slack-notify@v2
@@ -68,8 +83,8 @@ jobs:
         if: failure()
         uses: rtCamp/action-slack-notify@v2.0.0
         env:
-          SLACK_CHANNEL: devnull
+          SLACK_CHANNEL: timeline
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: "歩数の記録に失敗しました"
+          SLACK_MESSAGE: "歩数の記録に失敗しました :rotating_light:"
           SLACK_ICON_EMOJI: ":rotating_light:"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
