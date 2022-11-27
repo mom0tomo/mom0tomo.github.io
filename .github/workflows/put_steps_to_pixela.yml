@@ -71,7 +71,7 @@ jobs:
           spreadsheetId: ${{ secrets.GSHEET_ID }}
           commands: |
             [
-              { "command": "appendData", "args": { "worksheetTitle": ${{ secrets.GSHEET_TITLE }} ,"data": [[ ${{ env.STEPS }} ]], "minCol": 1 }}
+              { "command": "appendData", "args": { "worksheetTitle": "${{ secrets.GSHEET_TITLE }}" ,"data": [[ ${{ env.STEPS }} ]], "minCol": 1 }}
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
