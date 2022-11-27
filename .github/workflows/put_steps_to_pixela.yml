@@ -49,7 +49,9 @@ jobs:
         # Oura Ringの歩数は仕事のある日は1000歩/休みの日は500歩くらい多く出るので調整する
         # https://github.com/orgs/community/discussions/25386#discussioncomment-3247730
         run: |
-          echo "steps=$(${{ steps.count.outputs.steps }} - 850)" >> $GITHUB_OUTPUT
+          echo "steps=$( ${{ env.STEPS }}- 850)" >> $GITHUB_OUTPUT
+        env:
+          STEPS: ${{ steps.count.outputs.steps }}
 
       - name: Put Data to Pixela
         run: |
@@ -69,11 +71,12 @@ jobs:
           spreadsheetId: ${{ secrets.GSHEET_ID }}
           commands: |
             [
-              { "command": "appendData", "args": { "data": [[ ${{ steps.correct.outputs.steps }} ]], "minCol": 1, } }
+              { "command": "appendData", "args": { "data": [[ ${{ env.steps }} ]], "minCol": 1, } }
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+          STEPS: ${{ steps.correct.outputs.steps }}
 
       - name: Notify Slack on Success
         if: success()
