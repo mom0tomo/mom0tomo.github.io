@@ -12,11 +12,11 @@ description: "最近、長い間積読になっていた技術書を読了しま
 最近、一件すると奇妙な読み方を編み出して、長い間積読になっていた技術書を読了しました。
 具体的には、GitHubを利用してこういうふうにして読んでいます。
 
-![GitHubのPull Requestの差分を利用して実装をわかりやすくする](https://user-images.githubusercontent.com/16359292/205665756-ef3cadb8-0cbf-4972-8db5-9816d5e8c768.png)
+![GitHubのPull Requestの差分を利用して実装をわかりやすくする](/images/articles/github_pr_1.png)
 GitHubのPull Requestの差分を利用して実装をわかりやすくする
-![GitHubのPull Requestのコメントを利用してメモを取る](https://user-images.githubusercontent.com/16359292/205666513-f0048b85-0c2f-4d0a-a9ea-440dc5539b00.png)
-![GitHubのPull Requestを利用して本の一部をメモとして残す](https://user-images.githubusercontent.com/16359292/205665756-ef3cadb8-0cbf-4972-8db5-9816d5e8c768.png)
-![GitHubのull Requestのラベルを利用して節ごとにわかりやすく一覧化する](https://user-images.githubusercontent.com/16359292/205665777-85c6a349-a426-4ef4-9eeb-4893b27f01ea.png)
+![GitHubのPull Requestのコメントを利用してメモを取る](/images/articles/github_pr_2.png)
+![GitHubのPull Requestを利用して本の一部をメモとして残す](/images/articles/github_pr_3.png)
+![GitHubのull Requestのラベルを利用して節ごとにわかりやすく一覧化する](/images/articles/github_pr_4.png)
 
 ### この読み方をして何をやりたいのか
 
