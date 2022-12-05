@@ -1,6 +1,6 @@
 ---
 title: "じぶんリリースノート(202211)"
-date: 2022-12-05T10:47:39+09:00
+date: 2022-12-05T12:57:39+09:00
 draft: false
 tags: ["じぶんリリースノート"]
 images: ["images/articles/avatar.png"]
