@@ -1,0 +1,65 @@
+name: Get Monthly Steps Count from Pixela
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 1 1 * * # JST 10:00 the 1st of every month
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set current datetime
+        id: check
+        run: |
+          echo "date=$(date +"%Y%m%d")" >> $GITHUB_OUTPUT
+
+      - name: Get the last day of the last month
+        id: get_days
+        run: |
+          echo "$(date +"%Y%m%d" -d"`date +"%Y%m01"` 1 days ago" | sed 's/^[2][0-9][0-9][0-9][0-9][0-9]//g')" >> $GITHUB_OUTPUT
+
+      - name: Get Data from Pixela
+        id: count
+        run: |
+          count = 0
+          while ${{ steps.get_days.outputs.date }}; do
+            n = "$(pi pixel get -u ${{ env.USER_NAME }} -g ${{ env.GRAPH_NAME }} -d ${{ env.DATE }} | jq .quantity)"
+            w
+          done
+          echo $count >> $GITHUB_OUTPUT
+        env:
+          PIXELA_USER_TOKEN: ${{ secrets.PIXELA_USER_TOKEN }}
+          USER_NAME: mom0tomo
+          GRAPH_NAME: pedometer
+          DATE: ${{ steps.check.outputs.date }}
+
+      - name: Notify Slack on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: devnull
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "今月の平均歩数は ${{ steps.count.outputs.data }}です :footprints:"
+          SLACK_ICON_EMOJI: ":footprints:"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_CHANNEL: timeline
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "今月の平均歩数の取得に失敗しました :rotating_light:"
+          SLACK_ICON_EMOJI: ":rotating_light:"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
