@@ -54,6 +54,11 @@ description: "じぶんリリースノート(202212)"
 - TODOをチケットに積み上げ、終わったものが目に見えるようにする->グラフで見られるようにした
   - Pixelaに記録してもいいかもしれない->まだやってみていない
 - Sad Serversの課題を解く->朝活で解いている
+  - 解き終わった:
+  - 1	"Saint John": what is writing to this log file?
+  - 2	"Santiago": Find the secret combination
+  - 3	"Saskatoon": counting IPs.
+  - 4	"Tokyo": can't serve web file
 
 ### Keep
 
