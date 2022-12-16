@@ -55,10 +55,10 @@ description: "じぶんリリースノート(202212)"
   - Pixelaに記録してもいいかもしれない->まだやってみていない
 - Sad Serversの課題を解く->朝活で解いている
   - 解き終わった:
-  - 1	"Saint John": what is writing to this log file?
-  - 2	"Santiago": Find the secret combination
-  - 3	"Saskatoon": counting IPs.
-  - 4	"Tokyo": can't serve web file
+  - 1	"Saint John": what is writing to this log file?(Easy)
+  - 2	"Santiago": Find the secret combination(Easy)
+  - 3	"Saskatoon": counting IPs.(Easy)
+  - 4	"Tokyo": can't serve web file(Medium)
 
 ### Keep
 
