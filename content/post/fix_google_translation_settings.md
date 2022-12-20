@@ -15,7 +15,7 @@ description: "検索バーにGoogle翻訳ツールが表示されなくなり、
 
 うまく翻訳ツールが表示されているプロファイルの設定と比較して確認すると、下記の設定が違った。
 
-![Googleの「言語」の設定](/images/articles/google_translation.jpg)
+![Googleの「言語」の設定](/images/articles/google_translation.png)
 
 「この言語のページで翻訳ツールを表示する」チェックボックスがオフになってした。
 
