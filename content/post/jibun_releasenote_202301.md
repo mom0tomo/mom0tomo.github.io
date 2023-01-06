@@ -40,10 +40,12 @@ description: "じぶんリリースノート(202301)"
 ## この期間のふりかえり（KPT形式）
 
 ### 前回のTry
-
 - 年明けすぐ仕事の目標決める/予定書き出す
 - 個人タスクの消化VelocityをGitHub ProjectのInsightで見られるようにする
 - Sad Serversを引き続き解く
+  - 解いた
+    - 9	"Oaxaca": Close an Open File
+container.
 - 副業の監視を整備する
 
 ### Keep
