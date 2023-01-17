@@ -44,6 +44,7 @@ description: "じぶんリリースノート(202301)"
 - 個人タスクの消化VelocityをGitHub ProjectのInsightで見られるようにする
 - Sad Serversを引き続き解く
   - 解いた
+    - 7	"Salta": Docker container won't start.
     - 9	"Oaxaca": Close an Open File
 container.
 - 副業の監視を整備する
