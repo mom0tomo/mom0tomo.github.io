@@ -2,7 +2,7 @@
 title: "docker container runコマンドとdocker container startコマンドを使い分ける"
 date: 2023-01-19T13:00:39+09:00
 draft: false
-tags: ["ECS"]
+tags: ["Docker"]
 images: ["images/articles/avatar.png"]
 description: "Dockerで8888ポートをLISTENするサーバーを起動して、Dockerコンテナからcurlで動作確認する場合の想定。docker container runコマンドとdocker container startコマンドを使う方法がある。"
 ---
