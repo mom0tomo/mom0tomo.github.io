@@ -1,6 +1,6 @@
 ---
 title: "docker container runコマンドとdocker container startコマンドを使い分ける"
-date: 2023-01-15T21:45:39+09:00
+date: 2023-01-19T13:00:39+09:00
 draft: false
 tags: ["ECS"]
 images: ["images/articles/avatar.png"]
@@ -29,6 +29,7 @@ $ curl localhost:8888
 Hello World!
 
 # 事後処理としてコンテナを停止して削除する
+
 ## 停止と削除を行わずにもう一度runコマンドを打つと、同じ名前のコンテナを作成しようとして
 ## The container name "/app_run" is already in use by container xxxとエラーになる
 ## 起動中のコンテナを確認する
