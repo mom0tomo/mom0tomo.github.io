@@ -13,18 +13,21 @@ description: "じぶんリリースノート(202301)"
 
 ### 読みおわった
 
-
+- [キングコング・セオリー](https://bookmeter.com/books/17115023)
+- [キンドレッド](https://bookmeter.com/books/18682426)
+- [ネガティブ・ケイパビリティ 答えの出ない事態に耐える力](https://bookmeter.com/books/11697672)
+- [強いチームはオフィスを捨てる: 37シグナルズが考える「働き方革命」](https://bookmeter.com/books/7918802)
+- [[試して理解]Linuxのしくみ ~実験と図解で学ぶOSとハードウェアの基礎知識](https://bookmeter.com/books/12664489)
 
 ### 途中
 
-- [[試して理解]Linuxのしくみ ~実験と図解で学ぶOSとハードウェアの基礎知識](https://bookmeter.com/books/12664489)
-- [コンテナ物語―世界を変えたのは「箱」の発明だった](https://bookmeter.com/books/977)
-- [達人が教えるWebパフォーマンスチューニング 〜ISUCONから学ぶ高速化の実践](https://bookmeter.com/books/19792437)
 - [詳解Go言語Webアプリケーション開発](https://bookmeter.com/books/19190920)
 
 ## ブログ
 
-- 
+SadServersを解きながら疑問に思ったdockerのコマンドについてと、ECSコンテナでRailsアプリケーションを起動するときに疑問に思ったことをまとめた小さい記事を書きました。
+- [docker container runコマンドとdocker container startコマンドを使い分ける](https://mom0tomo.github.io/post/docker_container_run_pattern/)
+- [S3に.envを配置しているコンテナで、.envに破壊的変更を加えている最中に新しいコンテナが起動するとどうなるのか調べた](https://mom0tomo.github.io/post/ecs_load_timing_of_environmentfiles_s3/)
 
 ## イベント
 
@@ -32,6 +35,8 @@ description: "じぶんリリースノート(202301)"
   - 親族と都合を合わせるため、冬季休暇はずっと実家で過ごしました
 
 ## 今月の歩数
+
+月中からこの時期にしては珍しいほど寒さが緩み、天気がよかったので朝と夕方に歩いてみるようにしました。明るいうちに歩くのは気持ちがいいので、来月もできるだけ朝や日中に散歩できるようにしたいです。
 
 - 平均: 歩/日
 
@@ -46,8 +51,12 @@ description: "じぶんリリースノート(202301)"
   - 解いた
     - 7	"Salta": Docker container won't start.
     - 9	"Oaxaca": Close an Open File
-container.
-- 副業の監視を整備する
+    - 10	"Melbourne": WSGI with Gunicorn
+- 複業の監視を整備する
+  - CloudWatch Metrics Alarmを利用したログ監視を設定した
+  - AWS ChatbotとSNSを利用したSlack通知の仕組みを入れた
+  - ECSコンテナの起動数監視を入れた
+  - 本当はDatadogを使いたいが、料金が高いのでまだ導入しない
 
 ### Keep
 
@@ -57,7 +66,7 @@ container.
 
 #### 仕事
 
-- 
+- 月後半はかなり複業に入りました。
 
 #### 個人プロジェクト/コミュニティ活動
 
@@ -71,6 +80,7 @@ container.
 ##### 健康
 
 - カイロプラクティックの施術を受けた
+- 朝散歩するようにしたところ体調がさらによくなった
 
 #### 生活
 
