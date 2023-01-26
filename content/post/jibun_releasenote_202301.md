@@ -53,6 +53,7 @@ SadServersを解きながら疑問に思ったdockerのコマンドについて�
     - 9	"Oaxaca": Close an Open File
     - 10	"Melbourne": WSGI with Gunicorn
     - 11	"Lisbon": etcd SSL cert troubles
+    - 12	"Jakarta": it's always DNS.
 - 複業の監視を整備する
   - CloudWatch Metrics Alarmを利用したログ監視を設定した
   - AWS ChatbotとSNSを利用したSlack通知の仕組みを入れた
