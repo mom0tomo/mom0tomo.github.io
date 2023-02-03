@@ -29,9 +29,9 @@ $ curl localhost:8888
 Hello World!
 
 # 事後処理としてコンテナを停止して削除する
-
 ## 停止と削除を行わずにもう一度runコマンドを打つと、同じ名前のコンテナを作成しようとして
-## The container name "/app_run" is already in use by container xxxとエラーになる
+## The container name "/app_run" is already in use by container xxxとエラーになるため。
+
 ## 起動中のコンテナを確認する
 $ docker container ls
 CONTAINER ID   IMAGE     COMMAND   CREATED       STATUS                   PORTS     NAMES
@@ -39,6 +39,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED       STATUS                   PORTS 
 
 $ docker container stop app_run
 $ docker container rm app_run
+
 ## コンテナが削除されたことを確認する
 $ docker container ls -a
 CONTAINER ID   IMAGE     COMMAND   CREATED       STATUS                   PORTS     NAMES
@@ -62,6 +63,7 @@ Hello World!
 ```bash
 # コンテナを作成する
 $ docker container create --name app_create -p 8888:8888 app_image
+
 # コンテナを起動する
 $ docker container start app_create
 app_create
@@ -77,6 +79,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED       STATUS                   PORTS 
 8ad5f2b083bb   app_image    "node"     5 minutes ago   Exited (0) 3 minutes ago             app_run
 $ docker container stop app_run
 $ docker container rm app_run
+
 ## コンテナが削除されたことを確認する
 $ docker container ls -a
 CONTAINER ID   IMAGE     COMMAND   CREATED       STATUS                   PORTS     NAMES
