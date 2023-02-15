@@ -1,6 +1,6 @@
 ---
 title: "ChatGPTを使ってkubernetesの本を読んでいる"
-date: 2023-02-15T23:35:39+09:00
+date: 2023-02-15T22:55:39+09:00
 draft: false
 tags: ["メモ"]
 images: ["images/articles/avatar.png"]
