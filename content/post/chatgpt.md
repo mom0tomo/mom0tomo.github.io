@@ -1,5 +1,5 @@
 ---
-title: "ChatGPTを使ってkubernetesの本を読んでいる"
+title: "ChatGPTを使ってKubernetesの本を読んでいる"
 date: 2023-02-15T22:55:39+09:00
 draft: false
 tags: ["メモ"]
