@@ -15,6 +15,7 @@ description: "じぶんリリースノート(202302)"
 
 - [アダム・スミスの夕食を作ったのは誰か? ; これからの経済と女性の話](https://bookmeter.com/books/18683487)
 - [[試して理解]Linuxのしくみ ~実験と図解で学ぶOSとハードウェアの基礎知識](https://bookmeter.com/books/12664489)
+- [時計じかけのオレンジ 完全版](https://bookmeter.com/books/573801)
 
 ### 途中
 
