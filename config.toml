@@ -2,15 +2,17 @@ baseURL = "https://mom0tomo.github.io/"
 languageCode = "ja"
 title = "mom0tomo"
 theme = "github.com/nodejh/hugo-theme-mini"
+## Default content language, support en (English) / zh (Chinese) / nl (Dutch) / fr (French) / es (Spanish) / da (Danish), default 'en'
 defaultContentLanguage = "en"
-themesDir = "../../"
 hasCJKLanguage = true
-paginate = 100
+paginate = 100 # 無限スクロールに近い挙動にする
 googleAnalytics = "G-YFDBYV8Y07"
 
-[permalinks]
-posts = "/posts/:title/"
+# [permalinks]
+# posts = "/posts/:title/"
 
+# Hugo Configure Markup
+## More info: https://gohugo.io/getting-started/configuration-markup#
 [markup.highlight]
 guessSyntax = true
 codeFences = true
@@ -18,76 +20,66 @@ lineNoStart = 1
 lineNos = false
 lineNumbersInTable = true
 noClasses = true
-style = "native" # https://xyproto.github.io/splash/docs/native.html
+style = "emacs"
 tabWidth = 2
-
 [markup.tableOfContents]
 endLevel = 3
 ordered = false
 startLevel = 2
-
+## needed to render raw HTML (e.g. <sub>, <sup>, <kbd>, <mark>)
 [markup.goldmark.renderer]
 unsafe = true
 
+# Social links in footer, support github,twitter,stackoverflow,facebook
 [social]
 twitter = "https://twitter.com/mom0tomo"
 github = "https://github.com/mom0tomo"
 
+# Site parameters
 [params]
 author = "mom0tomo"
-bio = "Server-side Developer - Gopher"
+bio = "SRE - Gopher"
 description = "Thoughts and links about programming, by mom0tomo. I Love Go, Travel, Beer, Programming!"
+# Optional Configuration
 enableRSS = true
-enableComments = true
 enableGoogleAnalytics = true
+## To enable table of content, you could set `showToc: true`, default is `false`
 showToc = true
-showPowerBy = true
+## To hidden powerBy message in the page footer, you could set: `showPowerBy: false`, default is `true`
+showPowerBy = false
+## To enable math typesetting , you could set `math: true`, default is `false`
 math = false
+## To hidden post summary in home page, you could set `hiddenPostSummaryInHomePage: true`, default is `false`
 hiddenPostSummaryInHomePage = false
+## Website copy write, default: '© Copyright 2021 ❤️ {params.author}'
 copyright = ""
-twitter = "mom0tomo"
-# Configure Open Graph
-images = ["avatar.png"]
-title = "mom0tomo.github.io"
 # Custom static files
 customCSS = ["css/custom.css"]
-customJS  = []
-# Pagination links
-olderPosts = ""
-newerPosts = ""
-readMore = ""
-# Sharing options and author information in posts
-aboutAuthor = ""
-tweet = ""
-share = ""
-# 404 page
-title404 = ""
-subtitle404 = ""
-# "mono-social" or "font-awesome"
-iconFont = "mono-social"
-# The social icons can be styled differently if you use mono-social as font
-# circle, rounded, or empty
-socialIconStyle = "circle"
 
-# Navigation links
-[links]
-about = "about"
-archive = "archive"
-tags = "tags"
-
-# Configure Open Graph
+###########################################
+# User Original Configuration
+###########################################
+## Hugo includes support for user-defined groupings of content called taxonomies.
+## Taxonomies are classifications of logical relationships between content.
+## @see https://gohugo.io/content-management/taxonomies/#what-is-a-taxonomy
 [taxonomies]
-tags = "tags"
+tag = "tags"
 
+# 関連するコンテンツを生成する
+## @see https://gohugo.io/content-management/related/#configure-related-content
 [related]
+## Set to true to include pages newer than the current page in the related content listing.
+## This will mean that the output for older posts may change as new related content gets added.
 includeNewer = true
+## A value between 0-100. Lower value will give more, but maybe not so relevant, matches.
 threshold = 80
+## Set to true to lower case keywords in both the indexes and the queries.
+### This may give more accurate results at a slight performance penalty. Note that this can also be set per index.
 toLower = true
-
 [[related.indices]]
+## Note that if you have configured tags as a taxonomy, tags will also be added to the default configuration above with the weight of 80.
 name = "tags"
 weight = 100
-
 [[related.indices]]
 name = "date"
 weight = 10

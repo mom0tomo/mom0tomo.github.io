@@ -1,0 +1,10 @@
+<div id="social">
+
+    {{ range $key, $val := .Site.Social }}
+    <a class="symbol" href="{{ $val }}" rel="me" target="_blank">
+        {{ $svg := print "svgs/" $key ".svg" }}
+        {{ partial $svg (dict "fill" "#bbbbbb" "width" 22 "height" 22 ) }}
+    </a>
+    {{ end }}
+
+</div>
