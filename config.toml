@@ -1,84 +1,93 @@
-# Base settings
-title = "mom0tomo"
 baseURL = "https://mom0tomo.github.io/"
 languageCode = "ja"
-theme = "hugo-theme-cactus-plus"
-## use CJK統合漢字
+title = "mom0tomo"
+theme = "github.com/nodejh/hugo-theme-mini"
+defaultContentLanguage = "en"
+themesDir = "../../"
 hasCJKLanguage = true
-## Include content with publishdate in the future.
-buildFuture = true
-## default = 10
-paginate = 104
-## Enable Emoji emoticons support for page content.(like :tada:)
-enableEmoji = true
+paginate = 100
+googleAnalytics = "G-YFDBYV8Y07"
 
-## Hugo Configure Markup
-## see: https://gohugo.io/getting-started/configuration-markup#highlight
-[markup]
-  [markup.highlight]
-  guessSyntax = true
-	codeFences = true
-	lineNoStart = 1
-	lineNos = false
-	lineNumbersInTable = true
-	noClasses = true
-	style = "native" # https://xyproto.github.io/splash/docs/native.html
-	# style = "solarized-dark" # https://xyproto.github.io/splash/docs/solarized-dark.html
-	tabWidth = 2
+[permalinks]
+posts = "/posts/:title/"
 
-# User custom settings
+[markup.highlight]
+guessSyntax = true
+codeFences = true
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = true
+noClasses = true
+style = "native" # https://xyproto.github.io/splash/docs/native.html
+tabWidth = 2
+
+[markup.tableOfContents]
+endLevel = 3
+ordered = false
+startLevel = 2
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[social]
+twitter = "https://twitter.com/mom0tomo"
+github = "https://github.com/mom0tomo"
+
 [params]
-	name = "mom0tomo"
-	bio = "Server-side Developer - Gopher"
-	twitter = "mom0tomo"
-	# Configure Open Graph
-	description = "Thoughts and links about programming, by mom0tomo. I Love Go, Travel, Beer, Programming!"
-	images = ["avatar.png"]
-	title = "mom0tomo.github.io"
-	# Custom static files
-	customCSS = ["css/custom.css"]
-	customJS  = []
-	# Pagination links
-	olderPosts = ""
-	newerPosts = ""
-	readMore = ""
-	copyright = ""
-	# Sharing options and author information in posts
-	aboutAuthor = ""
-	tweet = ""
-	share = ""
-	# rss
-	enableRSS = true
-	# 404 page
-	title404 = ""
-	subtitle404 = ""
-	# "mono-social" or "font-awesome"
-	iconFont = "mono-social"
-	# The social icons can be styled differently if you use mono-social as font
-	# circle, rounded, or empty
-	socialIconStyle = "circle"
-	# Add additional social link entries underneath
-	[social]
-		facebook = "https://www.facebook.com/mom0tomo"
-		twitter = "https://twitter.com/mom0tomo"
-		github = "https://github.com/mom0tomo"
-	# Navigation links
-	[params.links]
-		about = "about"
-		archive = "archive"
-		tags = "tags"
+author = "mom0tomo"
+bio = "Server-side Developer - Gopher"
+description = "Thoughts and links about programming, by mom0tomo. I Love Go, Travel, Beer, Programming!"
+enableRSS = true
+enableComments = true
+enableGoogleAnalytics = true
+showToc = true
+showPowerBy = true
+math = false
+hiddenPostSummaryInHomePage = false
+copyright = ""
+twitter = "mom0tomo"
+# Configure Open Graph
+images = ["avatar.png"]
+title = "mom0tomo.github.io"
+# Custom static files
+customCSS = ["css/custom.css"]
+customJS  = []
+# Pagination links
+olderPosts = ""
+newerPosts = ""
+readMore = ""
+# Sharing options and author information in posts
+aboutAuthor = ""
+tweet = ""
+share = ""
+# 404 page
+title404 = ""
+subtitle404 = ""
+# "mono-social" or "font-awesome"
+iconFont = "mono-social"
+# The social icons can be styled differently if you use mono-social as font
+# circle, rounded, or empty
+socialIconStyle = "circle"
+
+# Navigation links
+[links]
+about = "about"
+archive = "archive"
+tags = "tags"
 
 # Configure Open Graph
 [taxonomies]
-  tags = "tags"
+tags = "tags"
 
 [related]
-  includeNewer = true
-  threshold = 80
-  toLower = true
+includeNewer = true
+threshold = 80
+toLower = true
+
 [[related.indices]]
-  name = 'tags'
-  weight = 100
+name = "tags"
+weight = 100
+
 [[related.indices]]
-  name = 'date'
-  weight = 10
+name = "date"
+weight = 10
