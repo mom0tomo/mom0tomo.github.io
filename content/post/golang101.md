@@ -2,7 +2,7 @@
 title: "Golang 101 #1でTeaching Assistantをした"
 date: 2019-07-20T21:45:57+09:00
 draft: false
-tags: ["Go", "event"]
+tags: ["Event", "Go"]
 images: ["images/articles/avatar.png"]
 description: "@nasa9084氏が講師として開催したGolang101というイベントにTAとして参加してきました。ふだんWomenWhoGoTokyoのスタッフとして初心者向けの勉強会のスタッフをしていますが、それ以外のコミュニティでTAをするのは初めてだったので、勉強になりました。"
 ---

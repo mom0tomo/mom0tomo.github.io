@@ -18,7 +18,7 @@ module: {
 
 なんでtestなんだ...と思って色々調べたところ、どうやらJavaScriptでは正規表現オブジェクトに `test()`というメソッドがあるらしいことを知りました。
 
-[Github issue | What is a "test" -- why is named "test"?](https://github.com/webpack/webpack/issues/866)
+[GitHub issue | What is a "test" -- why is named "test"?](https://github.com/webpack/webpack/issues/866)
 
 [MDN web Docs | RegExp.prototype.test()](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
 

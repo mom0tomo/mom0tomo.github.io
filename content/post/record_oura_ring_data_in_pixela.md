@@ -2,7 +2,7 @@
 title: "Oura Ringの歩数データをGitHub ActionsでPixelaに記録する"
 date: 2022-10-10T18:47:39+09:00
 draft: false
-tags: ["Pixela", "GitHub Actions", "Oura Ring"]
+tags: ["Pixela", "GitHub", "GitHub Actions", "Oura Ring"]
 images: ["images/articles/avatar.png"]
 description: "「じぶんリリースノート」にPixelaで歩数を表示したくなったので、Oura Ringから歩数データを取得してGitHub Actionsで自動で記録するようにしました。"
 ---

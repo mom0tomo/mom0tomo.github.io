@@ -44,7 +44,7 @@ jobs:
             --minify \
             --baseURL ${{ steps.pages.outputs.base_url }}
 
-      # Github Actionsのartifactsに静的コンテンツをアップロードする
+      # GitHub Actionsのartifactsに静的コンテンツをアップロードする
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
