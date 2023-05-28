@@ -2,7 +2,7 @@
 title: "『Amazon Web Services コスト最適化入門』を読んだ"
 date: 2022-09-09T09:47:39+09:00
 draft: false
-tags: ["Books", "AWS"]
+tags: ["Book", "AWS"]
 images: ["images/articles/avatar.png"]
 description: "『Amazon Web Services コスト最適化入門』を読みました。 具体的な計算式やユースケースが載っていて実用的な本でした。 AWSをある程度利用したことがある方にとっては、全体的な料金体系や請求管理系のサービスを把握することができる便利な本です。"
 ---

@@ -3,7 +3,7 @@ title: >
   【fish shell】anyenvを入れた環境でbrew doctorするとWarning: "config" cripts exist outside your system...が出る件の対策
 date: 2022-05-29T10:17:50+09:00
 draft: false
-tags: ["fish"]
+tags: ["Fish", "Homebrew"]
 images: ["images/articles/avatar.png"]
 description: >
   anyenvを入れた環境でbrew doctorするとWarning: "config" cripts exist outside your system...というwarnが出るので簡単にエイリアスを設定して解消したいと思いました。しかし、fishでコマンドと同じ名前のエイリアスを設定する際は無限ループのエラーを回避するために、ちょっと工夫がいりました。

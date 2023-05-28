@@ -2,7 +2,7 @@
 title: "golang.tokyo#21「Goエンジニアの採用」レポート"
 date: 2019-01-28T19:35:51+09:00
 draft: false
-tags: ["Go", "event"]
+tags: ["Event", "Go"]
 images: ["images/articles/golanggopher.png"]
 description: "golang.tokyoも21回目！今回のgolang.tokyoは「Goエンジニアの採用」がテーマでした。"
 ---

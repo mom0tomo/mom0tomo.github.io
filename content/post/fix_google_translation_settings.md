@@ -2,7 +2,7 @@
 title: "Google翻訳の設定がうまく動かなくなったので直した"
 date: 2022-12-20T12:07:39+09:00
 draft: false
-tags: ["メモ"]
+tags: ["English"]
 images: ["images/articles/avatar.png"]
 description: "検索バーにGoogle翻訳ツールが表示されなくなり、サイト丸ごと翻訳する便利な機能が使えなくなったので設定を調べて直しました。"
 ---

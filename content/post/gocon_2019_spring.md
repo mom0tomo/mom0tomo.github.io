@@ -2,7 +2,7 @@
 title: "Gocon 2019 spring 発表資料まとめ"
 date: 2019-05-18T21:14:44+09:00
 draft: false
-tags: ["Go", "event"]
+tags: ["Event", "Go"]
 images: ["images/articles/gocon2019.png"]
 description: "GoCon2019 springでスタッフをしてきました。最大４ルームにて発表が行われた大規模な開催でした。
 全ての発表を見ることができないのが残念でしたので、公開されているスライドのリンクをまとめました。"

@@ -2,7 +2,7 @@
 title: "夜散歩+風呂のためにswitch bot 指ロボットを買った"
 date: 2022-04-21T23:04:12+09:00
 draft: false
-tags: ["electronic kit"]
+tags: ["電子工作", "Life"]
 images: ["images/articles/avatar.png"]
 description: 
 ---

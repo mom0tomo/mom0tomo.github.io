@@ -2,7 +2,7 @@
 title: "Gophercon2019に行ってきました"
 date: 2019-08-02T17:51:08+09:00
 draft: false
-tags: ["Go", "event"]
+tags: ["Event", "Go"]
 images: ["images/articles/gophercon2019.png"]
 description: ""
 ---

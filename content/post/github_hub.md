@@ -2,12 +2,12 @@
 title: "GitHubのhubを使ってコマンドラインからリポジトリを作る"
 date: 2019-03-31T20:31:10+09:00
 draft: false
-tags: ["Github"]
+tags: ["GitHub"]
 images: ["images/articles/avatar.png"]
-description: "Githubのコマンドラインツールhubを使うと、簡単にコマンドラインからリポジトリを作ることができます。"
+description: "GitHubのコマンドラインツールhubを使うと、簡単にコマンドラインからリポジトリを作ることができます。"
 ---
 
-Githubのコマンドラインツール、[hub](https://github.com/github/hub)がとても便利です。
+GitHubのコマンドラインツール、[hub](https://github.com/github/hub)がとても便利です。
 
 勉強用のコードなど、ちょっと書いてからGitHubに保存することがよくあります。
 いままではブラウザでGitHubを開いてリポジトリを作っていたのですが、hubを使うと簡単にコマンドラインからリポジトリを作ることができます。

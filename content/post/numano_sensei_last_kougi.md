@@ -2,7 +2,7 @@
 title: "沼野充義先生最終講義「チェーホフとサハリンの美しいニヴフ人―村上春樹、大江健三郎からサンギまで」聴講記録"
 date: 2020-03-29T16:44:31+09:00
 draft: false
-tags: ["Literature"]
+tags: ["文学", "Life"]
 images: ["images/articles/avatar.png"]
 description: ""
 ---
