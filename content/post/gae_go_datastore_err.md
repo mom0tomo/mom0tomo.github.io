@@ -2,7 +2,7 @@
 title: "GAE / Cloud Functions + Datastore + Go で “rpc error: code = PermissionDenied desc = Missing or insufficient permissions.” エラー"
 date: 2022-04-15T22:23:12+09:00
 draft: false
-tags: ["GCP"]
+tags: ["GCP", "GAE", "Go"]
 images: ["images/articles/avatar.png"]
 description: GCPのプロジェクトIDをプログラムの中にハードコードしている場合、異なるプロジェクトIDをデプロイ対象に指定すると、デプロイ後にエラーになります。エラーの内容を見るとDatastoreの権限が不足しているように見えますが、実際はプロジェクトIDが間違っているだけの場合があります。
 ---

@@ -2,8 +2,10 @@
 name: "Deploy Hugo site to Pages"
 
 on:
-  push:
-    branches: ["main"]
+  pull_request:
+    branches:
+      - main
+    types: [closed]
   workflow_dispatch:
 concurrency:
   group: "pages"
@@ -15,6 +17,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     timeout-minutes: 10
     env:
       HUGO_VERSION: 0.102.3
@@ -27,8 +30,12 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          submodules: recursive
+
+      - name: Update submodule
+        run: |
+          git submodule deinit --all
+          rm go.mod go.sum
+          hugo mod init github.com/mom0tomo/momotomo.github.io
 
       - name: Setup Pages
         id: pages
@@ -40,7 +47,7 @@ jobs:
             --minify \
             --baseURL ${{ steps.pages.outputs.base_url }}
 
-      # Github Actionsのartifactsに静的コンテンツをアップロードする
+      # GitHub Actionsのartifactsに静的コンテンツをアップロードする
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

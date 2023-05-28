@@ -2,7 +2,7 @@
 title: "GAE上で動くアプリケーションをGo1.12にアップデートする上でやったこと"
 date: 2019-08-22T13:34:20+09:00
 draft: false
-tags: ["Go", "GAE"]
+tags: ["GCP", "GAE", "Go"]
 images: ["images/articles/avatar.png"]
 description: "Go1.11から依存管理にgo modulesが使えるようになりました。Women Who Go TokyoのハンズオンでつくったSlackbotに利用しているライブラリのバージョン管理をgo modulesを使って行いたいと思ったため、アプリケーションのGoのバージョンを1.9から1.12に一気に上げたときの記録です。"
 

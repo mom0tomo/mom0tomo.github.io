@@ -2,7 +2,7 @@
 title: "シャドウ・ワーク、「名もなき家事」とSREの「トイル」"
 date: 2022-03-02T10:36:51+09:00
 draft: false
-tags: ["etc"]
+tags: ["SRE", "Life"]
 images: ["images/articles/avatar.png"]
 description: 「名もなき家事(Nameless Chores)」と「SREのトイル(Toil)」の類似性について書いている。これらは暗黙的に「善意の、経験豊富な、自ら進んで手を上げたわけではない誰か」にボールが偏りがちで、場合によってはキャリアの妨げになる。
 
