@@ -2,7 +2,7 @@
 title: "カフェインレスコーヒーを飲むようにして1年経った"
 date: 2023-02-23T00:20:52+09:00
 draft: false
-tags: ["life"]
+tags: ["Life"]
 images: ["images/articles/avatar.png"]
 description: "毎朝飲むコーヒーをカフェインレスにして1年が経った。全体的に健康にいい影響があったと感じている。豆はスターバックスから無印良品に変更した。"
 ---

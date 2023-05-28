@@ -2,7 +2,7 @@
 title: "ChatGPTを使ってKubernetesの本を読んでいる"
 date: 2023-02-15T22:55:39+09:00
 draft: false
-tags: ["メモ"]
+tags: ["Life"]
 images: ["images/articles/avatar.png"]
 description: "Kubernetesについて、Dockerコンテナの技術がどのように応用されているのかというのをポンチ絵でかけるレベルの知識はあるが、詳しいことは何もわからない状態。
 この状態から人に聞いて学ぶのは聞く側も聞かれる側も大変すぎるので、本を読むことにした。

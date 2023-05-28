@@ -2,7 +2,7 @@
 title: "brew 2.0.0からcleanupが自動で走るようになっていた"
 date: 2019-02-17T17:00:05+09:00
 draft: false
-tags: ["homebrew"]
+tags: ["Homebrew"]
 images: ["images/articles/homebrew.png"]
 description: "brew 2.0.0から、brew install、brew update、brew reinstallを実行したときにcleanupが自動で走るようになりました。また、何もしなくても30日ごとに定期的に実行されます。これを防ぎたい場合はHOMEBREW_NO_INSTALL_CLEANUPという環境変数を設定します。"
 ---

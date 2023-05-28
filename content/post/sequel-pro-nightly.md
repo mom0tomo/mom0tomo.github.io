@@ -2,7 +2,7 @@
 title: "Sequel Pro Nightly buildをbrewでインストールできない（IPv6関連のエラー）"
 date: 2019-12-31T23:01:02+09:00
 draft: false
-tags: ["MySQL"]
+tags: ["DB", "MySQL"]
 images: ["images/articles/avatar.png"]
 description: ""
 ---
@@ -44,7 +44,7 @@ IPv6のアドレスを指定する場合はブラケット `[]` でアドレス�
 
 ## MacでIPv6 を無効化する
 
-とりあえずの対応として、Githubのissueに書いてあった方法を使ってMacでIPv6 を無効化した。
+とりあえずの対応として、GitHubのissueに書いてあった方法を使ってMacでIPv6 を無効化した。
 
 ```
 $ networksetup -setv6off Wi-Fi

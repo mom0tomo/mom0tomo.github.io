@@ -2,7 +2,7 @@
 title: "Amazon Linux2にPostgreSQLのクライアントモジュールをインストールする"
 date: 2021-05-05T22:59:40+09:00
 draft: false
-tags: ["AWS"]
+tags: ["AWS", "EC2", "PostgreSQL"]
 images: ["images/articles/avatar.png"]
 description: EC2(Amazon Linux)上に建てた踏み台サーバーをクライアントとして、RDS(PostgreSQL)に接続したい。EC2をPostgreSQL DBとしてて使うのではなく、RDSに接続するクライアントとして使う場合には、クライアントモジュールをインストールするだけで十分です。
 ---
