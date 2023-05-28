@@ -2,8 +2,10 @@
 name: "Deploy Hugo site to Pages"
 
 on:
-  push:
-    branches: ["main"]
+  pull_request:
+    branches:
+      - main
+    types: [closed]
   workflow_dispatch:
 concurrency:
   group: "pages"
@@ -15,6 +17,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     timeout-minutes: 10
     env:
       HUGO_VERSION: 0.102.3
