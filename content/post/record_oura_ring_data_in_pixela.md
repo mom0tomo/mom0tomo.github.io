@@ -104,7 +104,7 @@ rtCamp/action-slack-notify@v2はデフォルトで成功した場合には通知
 ```:bash
 - name: Notify Slack on Failure
   if: failure()
-  uses: rtCamp/action-slack-notify@v2.0.0
+  uses: rtCamp/action-slack-notify@v2
   env:
     SLACK_CHANNEL: xxx
     SLACK_COLOR: ${{ job.status }}

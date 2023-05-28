@@ -35,7 +35,7 @@ jobs:
           OURA_USER_TOKEN: ${{ secrets.OURA_USER_TOKEN }}
 
       - name: Setup Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
           go-version-file: tools/sincelastcommit/go.mod
 
@@ -75,7 +75,7 @@ jobs:
 
       - name: Notify Slack on Failure
         if: failure()
-        uses: rtCamp/action-slack-notify@v2.0.0
+        uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: devnull
           SLACK_COLOR: ${{ job.status }}
