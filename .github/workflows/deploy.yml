@@ -30,8 +30,12 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          submodules: recursive
+
+      - name: Update submodule
+        run: |
+          git submodule deinit --all
+          rm go.mod go.sum
+          hugo mod init github.com/mom0tomo/momotomo.github.io
 
       - name: Setup Pages
         id: pages
