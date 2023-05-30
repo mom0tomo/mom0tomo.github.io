@@ -91,8 +91,8 @@ SadServersを解きながら疑問に思ったdockerのコマンドについて�
   - [楽器.me！](https://gakufu.gakki.me/)の英語歌詞が崩れて見づらいと人が言うので、簡単なchrome拡張をつくってCSSを調整した
   - [ストアのリンクはこれ](https://chrome.google.com/webstore/detail/formatter-of-the-english/hdcnmphailbopaegahomamecpoflfmdg)
   - いままでも拡張機能を作ったことはあるが、個人で利用する目的だったのでストアに出したことはなかった
-  - 非エンジニアに渡すため、はじめてChrome Developers登録してみた
-  - $5払った。635円だった
+    - 非エンジニアに渡すため、はじめてChrome Developers登録してみた
+    - $5払った。635円だった
   - 説明文が悪く、一度申請拒否されたので英文とスクリーンショットを足して再申請したら通った。うれしい
   - つくる時にこれを読んだ： [Chrome拡張 つくりかた 令和最新版](https://r7kamura.com/articles/2022-05-07-chrome-extension-dev-2022)
 

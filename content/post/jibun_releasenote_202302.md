@@ -80,7 +80,7 @@ description: "じぶんリリースノート(202302)"
 - 新しく入社された方のサポートをして、チームに貢献ができた
 - AWSに関する社内勉強会を開催して評判が良かった（講師はAWS SAの方なので自分は場をセッティングしただけ）
 - 会社の17周年記念サイトを突貫で公開した
-- https://www.livesense.co.jp/2023anniversary/
+  - https://www.livesense.co.jp/2023anniversary/
 
 #### 個人プロジェクト/コミュニティ活動
 
