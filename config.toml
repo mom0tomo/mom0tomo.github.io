@@ -54,7 +54,7 @@ hiddenPostSummaryInHomePage = false
 ## Website copy write, default: '© Copyright 2021 ❤️ {params.author}'
 copyright = ""
 # Custom static files
-customCSS = ["css/custom.css"]
+customCSS = ["/css/custom.css"]
 
 ###########################################
 # User Original Configuration
