@@ -2,7 +2,7 @@
 title: "GitHubの差分表示を利用して技術書を読む"
 date: 2022-12-11T00:47:39+09:00
 draft: false
-tags: ["Book", "静的解析"]
+tags: ["Book", "静的解析", "GitHub"]
 images: ["images/articles/avatar.png"]
 description: "最近、読み方を工夫することで長い間積読になっていた技術書を読了しました。相性が合う本および読者であればこの読み方はお薦めできると思ったので紹介します。"
 ---

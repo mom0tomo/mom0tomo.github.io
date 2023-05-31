@@ -2,7 +2,7 @@
 title: "ActiveModelにおけるattributeの扱い"
 date: 2019-02-04T22:13:32+09:00
 draft: false
-tags: ["Ruby", "Rails"]
+tags: ["Rails"]
 images: ["images/articles/rails_guides.png"]
 description: "ActiveRecordの代わりにActiveModelを使うモデル設計のパターンがあります。ActiveModelはActiveRecordと違い、attributeのような機能を持っていないので、attr_readerの外でインスタンス変数を定義して対処する必要があります。"
 ---

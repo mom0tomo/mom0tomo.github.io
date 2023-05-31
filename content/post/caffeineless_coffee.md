@@ -2,7 +2,7 @@
 title: "カフェインレスコーヒーを飲むようにして3ヶ月経った"
 date: 2022-07-01T00:10:12+09:00
 draft: false
-tags: ["life"]
+tags: ["Life"]
 images: ["images/articles/avatar.png"]
 description: 
 ---

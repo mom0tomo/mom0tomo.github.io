@@ -2,7 +2,7 @@
 title: 『達人が教えるWebパフォーマンスチューニング』を読んだ（①基礎的な負荷試験編）
 date: 2023-05-26T09:29:20+09:00
 draft: false
-tags: ["book"]
+tags: ["Book", "SRE"]
 images: ["images/articles/avatar.png"]
 description: "まだ読み切っていないので、追記していく予定。クラシックな構成であるという感想もあったが、わかりやすくシンプルな解説をしている本書の構成を良いと思った。
 

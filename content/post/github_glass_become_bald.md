@@ -2,7 +2,7 @@
 title: "リポジトリを削除するとGitHubの草は禿げる"
 date: 2019-03-22T16:42:20+09:00
 draft: false
-tags: ["Github"]
+tags: ["GitHub"]
 images: ["images/articles/avatar.png"]
 description: "フォルダ整理の感覚でいらなくなったGitHubからリポジトリを削除していたのですが、リポジトリを削除するとせっかく生やした草もまとめて禿げるということを先日知りました。
 また、masterにマージしないとcommitしていても草は生えないということも最近知りました。"

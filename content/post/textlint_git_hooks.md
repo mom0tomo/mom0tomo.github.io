@@ -2,7 +2,7 @@
 title: "ブログにtextlintを入れてgit commit時に走るようにした"
 date: 2019-04-02T00:07:58+09:00
 draft: false
-tags: ["Git, textlint"]
+tags: ["Git", "textlint", "Blog"]
 images: ["images/articles/avatar.png"]
 description: "静的サイトジェネレータhugoを使って書いているブログににtextlintを入れました。git hookを使うことで、git commitやgit push時に自動でリンターをかけて文章のチェックを行うことができます。"
 ---

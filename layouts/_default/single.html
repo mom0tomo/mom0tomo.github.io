@@ -1,46 +1,46 @@
-{{ partial "head.html" . }}
+{{ define "main" }}
 
-<body>
-  {{ partial "nav.html" . }}
-  <section id="wrapper">
-    <article class="post">
-      <header>
-        <h1>
-          {{ .Title }}
-        </h1>
-        <div class="posted" style="display:none;">
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </div>
-        <h2 class="headline">
-          {{ .Date.Format "Jan 2, 2006 15:04" }}
-          · {{ if lt 1 .WordCount }}{{ .WordCount }} words{{ else }}{{ .WordCount }} word{{ end }}
-          · {{ if eq 1 .ReadingTime }}{{ .ReadingTime }} minute read{{ else }}{{ .ReadingTime }} minutes read{{ end }}
-          <span class="tags">
-            {{ with .Params.tags }}
-            {{ if ge (len .) 1 }}
-            {{ range . }}
-            <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a>
-            {{ end }}
-            {{ end }}
-            {{ end}}
-          </span>
-        </h2>
-      </header>
-      {{ if .TableOfContents }}
-      <div id="toc">
-        {{ .TableOfContents }}
-      </div>
-      {{ end }}
-      <section id="post-body">
-        {{ .Content }}
-      </section>
-    </article>
-    {{ partial "sharing.html" . }}
-    {{ partial "pagination.html" . }}
-    {{ partial "related.html" . }}
-    {{ partial "footer.html" . }}
-  </section>
-  {{ partial "js.html" . }}
-</body>
+<section id="single">
+  <h1 class="title">{{ .Title }}</h1>
 
-</html>
+  <div class="tip">
+    <time datetime="{{ .PublishDate }}">{{ i18n "publishDateFull" . }}</time>
+    <span class="split">
+      ·
+    </span>
+    <span>
+      {{ i18n "wordCount" . }}
+    </span>
+    <span class="split">
+      ·
+    </span>
+    <span>
+      {{ i18n "minuteRead" . }}
+    </span>
+  </div>
+
+
+  {{ if or .Site.Params.showToc .Params.showToc }}
+  {{ partial "toc.html" . }}
+  {{ end }}
+
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.tags }}
+  <div class="tags">
+    {{ range . }}
+    <a href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+    {{ end }}
+  </div>
+  {{ end}}
+
+  {{ partial "sharing.html" . }}
+  {{ partial "pagination.html" . }}
+  {{ partial "related.html" . }}
+
+</section>
+
+{{ end }}
