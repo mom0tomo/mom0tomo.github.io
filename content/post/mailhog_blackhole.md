@@ -18,7 +18,7 @@ MailHogは、Go言語で書かれたSMTPサーバーです。
 しかし検証したい内容によっては、メールをキャプチャする必要がない場合もあります。
 この場合メールを/dev/nullに捨てることで、必要以上にメールサーバーのメモリを消費することを防ぐことができます。
 
-AWSなどクラウドインフラを利用している場合、メモリをたくさん積むと料金も嵩みます。アプリケーション側でのメール送信処理のテストを実行したいが、ブラウザ上でのメール本文の確認が不要という場合、メールをキャプチャせずに捨てたいです。
+AWSなどクラウドインフラを利用している場合、メモリをたくさん積むと料金も嵩みます。アプリケーション側でのメール送信処理のテストを実行したいが、ブラウザ上でのメール本文の確認が不要という場合、SMTPで受信さえしてくれれば要件は満たせるので、メールをキャプチャせずに捨てたいです。
 
 MailHogのREADMEを見ても設定方法が書いていなかったので、オプションで指定できるのか調べました。
 
@@ -49,27 +49,6 @@ CMDの上書きを利用して、コンテナで動かしてみました。ベ�
 
 この設定でコンテナを起動すると、期待通りメールをキャプチャせずに捨てることができました。
 
-## 余談
-
-MailHogのDockerfileを確認すると、デフォルトでSMTPのポート（1025）とHTTPのポート（8025）が開いていました。
-
-```bash
-CMD ["/bin/sh"]
-/bin/sh -c apk add --no-cache
-/bin/sh -c [ ! -e
-ENV GOLANG_VERSION=1.14.7
-/bin/sh -c set -eux; apk
-ENV GOPATH=/go
-ENV PATH=/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-/bin/sh -c mkdir -p "$GOPATH/src"
-WORKDIR /go
-/bin/sh -c apk --no-cache add
-/bin/sh -c adduser -D -u
-USER mailhog
-WORKDIR /home/mailhog
-ENTRYPOINT ["MailHog"]
-EXPOSE 1025 8025
-```
 
 [CONFIG.md](https://github.com/mailhog/MailHog/blob/master/docs/CONFIG.md)には、このポートを上書きした場合に使えるオプションもありました。
 
