@@ -1,6 +1,6 @@
 ---
 title: MailHogでメールを/dev/nullに捨てる方法
-date: 2023-06-09T15:29:20+09:00
+date: 2023-06-13T23:08:20+09:00
 draft: false
 tags: ["Mail"]
 images: ["images/articles/avatar.png"]
@@ -47,7 +47,7 @@ CMDの上書きを利用して、コンテナで動かしてみました。ベ�
 ]
 ```
 
-この設定でコンテナを起動すると、期待通りメールをキャプチャせずに捨てることができました。
+この設定でコンテナを起動すると、期待通りメールをキャプチャせずに/dev/nullに捨てることができました。
 
 
 [CONFIG.md](https://github.com/mailhog/MailHog/blob/master/docs/CONFIG.md)には、このポートを上書きした場合に使えるオプションもありました。
