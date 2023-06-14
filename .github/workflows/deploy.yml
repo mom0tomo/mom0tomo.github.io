@@ -1,4 +1,5 @@
-# see: https://zenn.dev/ssssota/articles/f2509a21b768ed
+# see@https://zenn.dev/ssssota/articles/f2509a21b768ed
+# see@https://gohugo.io/hosting-and-deployment/hosting-on-github
 name: "Deploy Hugo site to Pages"
 
 on:
@@ -6,10 +7,7 @@ on:
     branches:
       - main
     types: [closed]
-  workflow_dispatch:
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+
 defaults:
   run:
     shell: bash
@@ -25,17 +23,15 @@ jobs:
     steps:
       - name: Install Hugo CLI
         run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb \
+          wget -O ${{ runner.temp }}/hugo.deb \
+          https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Update submodule
-        run: |
-          git submodule deinit --all
-          rm go.mod go.sum
-          hugo mod init github.com/mom0tomo/momotomo.github.io
+        with:
+          submodules: recursive
+          fetch-depth: 0
 
       - name: Setup Pages
         id: pages
@@ -44,8 +40,12 @@ jobs:
       - name: Build with Hugo
         run: |
           hugo \
+            --gc \
             --minify \
-            --baseURL ${{ steps.pages.outputs.base_url }}
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
 
       # GitHub Actionsのartifactsに静的コンテンツをアップロードする
       - name: Upload artifact
