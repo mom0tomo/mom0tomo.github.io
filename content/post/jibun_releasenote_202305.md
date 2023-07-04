@@ -51,7 +51,7 @@ description: "じぶんリリースノート(202305)"
 
 ![Pixela](https://pixe.la/v1/users/mom0tomo/graphs/pedometer)
 
-### ねこの数
+- 散歩中に出会ったねこの数
 
 散歩中に出会ったねこの数をPixelaにつけ始めました。
 ![Pixela](https://pixe.la/v1/users/mom0tomo/graphs/neko)
