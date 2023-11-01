@@ -34,6 +34,7 @@ jobs:
       - name: Update submodule
         run: |
           git submodule deinit --all
+          git submodule add https://github.com/nodejh/hugo-theme-mini.git
           rm go.mod go.sum
           hugo mod init github.com/mom0tomo/momotomo.github.io
 
