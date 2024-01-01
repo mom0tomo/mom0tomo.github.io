@@ -1,6 +1,6 @@
 ---
 title: "じぶんリリースノート(202312)"
-date: 2023-01-01T21:34:39+09:00
+date: 2024-01-01T21:34:39+09:00
 draft: false
 tags: ["じぶんリリースノート"]
 images: ["images/articles/avatar.png"]
