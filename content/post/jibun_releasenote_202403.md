@@ -92,6 +92,8 @@ description: "じぶんリリースノート(202403)"
 
 #### 生活
 
+- 確定申告を終えた
+- 
 - PrimeビデオやNetflixで好きなミュージカルを見ながら運動して楽しんでいる
 - 晴れて天気のいい日に、行ったことのないところまで散歩の足を伸ばしてみた
 - 家族が久しぶりにイタリア野菜を買ってきたので、料理を楽しんだ
@@ -104,11 +106,9 @@ description: "じぶんリリースノート(202403)"
   - [ハリオール・ブライトN　2杯用](https://hario-official.net/collections/tea-press/products/thjn-2hsv)
   - 簡単なのに美味しいコーヒーが淹れられるので、毎日使っている
 - Lushのトワイライトムーンを使っている
-- [「哀れなるものたち」](https://www.searchlightpictures.jp/movies/poorthings)を観た
-  - [「哀れなるものたち」感想](https://sizu.me/mom0tomo/posts/bn1deux5dvf5)
-- 攻殻機動隊 STAND ALONE COMPLEXを見た
-  - 先月に続けて攻殻機動隊のアニメーションを見ている。今まで見たことがないのがもったいないと思うくらい面白かった
-  - 時代を先取りしていてすごい
+- [「RENT(Live for Broadway」](https://www.amazon.co.jp/gp/video/detail/B00REWZT9Y/ref=atv_dp_share_cu_r)を観た
+- Netflixを契約した
+  - [クィア・アイ](https://www.netflix.com/jp/title/80160037)を見ている
 
 ### Problem
 
@@ -148,6 +148,10 @@ description: "じぶんリリースノート(202403)"
 - 山形市で友人と会う約束をしていたが、友人が体調を壊してキャンセルになったので残念だった
 
 #### 生活
+
+- 今年の確定申告も大変で、丸一日かかった
+  - 毎年のようにイレギュラーがあって一度も楽だった年がない
+  - あまりにも大変でへこたれたので、今年は毎月帳簿締めをすることにして仕組みをつくった
 
 - 上京した際に、同僚同士のトラブルが眼前で発生したり、化粧品の強引な勧誘を受けたりしてやや疲れた
 - 【前回のProblem】Lightroomで現像した写真の保管の仕方が確立できていない
