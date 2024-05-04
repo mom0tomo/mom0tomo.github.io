@@ -1,11 +1,11 @@
 baseURL = "https://mom0tomo.github.io/"
 languageCode = "ja"
 title = "mom0tomo"
-theme = "github.com/nodejh/hugo-theme-mini"
+
 ## Default content language, support en (English) / zh (Chinese) / nl (Dutch) / fr (French) / es (Spanish) / da (Danish), default 'en'
 defaultContentLanguage = "en"
 hasCJKLanguage = true
-paginate = 100 # 無限スクロールに近い挙動にする
+paginate = 100                   # 無限スクロールに近い挙動にする
 googleAnalytics = "G-YFDBYV8Y07"
 
 # [permalinks]
