@@ -1,6 +1,9 @@
 baseURL = "https://mom0tomo.github.io/"
 languageCode = "ja"
 title = "mom0tomo"
+[module]
+[[module.imports]]
+path = "github.com/nodejh/hugo-theme-mini"
 
 ## Default content language, support en (English) / zh (Chinese) / nl (Dutch) / fr (French) / es (Spanish) / da (Danish), default 'en'
 defaultContentLanguage = "en"

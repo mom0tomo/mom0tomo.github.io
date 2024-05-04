@@ -31,10 +31,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Update submodule
+      - name: Update go.mod
         run: |
-          rm go.mod go.sum
-          hugo mod init github.com/mom0tomo/momotomo.github.io
+          hugo mod tidy
 
       - name: Setup Pages
         id: pages
