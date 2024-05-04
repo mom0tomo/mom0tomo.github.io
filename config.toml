@@ -53,7 +53,7 @@ showPowerBy = false
 ## To enable math typesetting , you could set `math: true`, default is `false`
 math = false
 ## To hidden post summary in home page, you could set `hiddenPostSummaryInHomePage: true`, default is `false`
-hiddenPostSummaryInHomePage = false
+hiddenPostSummaryInHomePage = true
 ## Website copy write, default: '© Copyright 2021 ❤️ {params.author}'
 copyright = ""
 # Custom static files
