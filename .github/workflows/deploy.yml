@@ -31,12 +31,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Update submodule
+      - name: Update go.mod
         run: |
-          git submodule deinit --all
-          git submodule add https://github.com/nodejh/hugo-theme-mini.git
-          rm go.mod go.sum
-          hugo mod init github.com/mom0tomo/momotomo.github.io
+          hugo mod tidy
 
       - name: Setup Pages
         id: pages
