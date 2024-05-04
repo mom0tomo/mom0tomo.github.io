@@ -2,7 +2,6 @@
 name: "Deploy Hugo site to Pages"
 
 on:
-  push:
   pull_request:
     branches:
       - main
@@ -18,7 +17,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     timeout-minutes: 10
     env:
       HUGO_VERSION: 0.124.1
