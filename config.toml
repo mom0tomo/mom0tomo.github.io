@@ -11,6 +11,8 @@ hasCJKLanguage = true
 paginate = 100                   # 無限スクロールに近い挙動にする
 googleAnalytics = "G-YFDBYV8Y07"
 
+buildFuture = true
+
 # [permalinks]
 # posts = "/posts/:title/"
 
